@@ -296,7 +296,6 @@
             </a>
         <div class="relative z-10 max-w-md mx-auto mt-8">
             <div class="border-2 border-preludio-blue shadow-[0_0_25px_rgba(255,106,0,.35)] overflow-hidden"><iframe id="map-f" class="w-full h-56 block" style="filter:invert(92%) hue-rotate(180deg) saturate(.8)" loading="lazy" title="Mapa"></iframe></div>
-            <a href="#" onclick="Staff.open('admin','map');return false" class="block mt-2 text-[10px] text-gray-500 uppercase tracking-widest hover:text-white">✏️ Editar ubicación</a>
         </div>
         </div>
         
@@ -500,7 +499,7 @@
                     <span class="font-bold text-sm uppercase">${rel.name}</span>
                     <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 `;
-                btn.onclick = () => sendToWhatsapp(rel.phone, rel.name);
+                btn.onclick = () => sendToWhatsapp(rel.phone, rel.name, rel.id);
                 list.appendChild(btn);
             });
             modal.classList.remove('hidden');
@@ -522,20 +521,23 @@
             }, 300);
         }
 
-        function sendToWhatsapp(phone, name) {
-            let text = `Hola ${name}, quiero comprar entradas para *PRELUDIO - LAST BREAK*:\n\n`;
-            let hasItems = false;
+        function sendToWhatsapp(phone, name, relId) {
+            const items = [];
             let total = 0;
             for (const key in sectors) {
                 const s = sectors[key];
-                if (s.qty > 0) {
-                    text += `▫️ ${s.qty} x ${s.name} (${s.qty * s.price} Bs)\n`;
-                    total += s.qty * s.price;
-                    hasItems = true;
-                }
+                if (s.qty > 0) { items.push({ k: key, label: s.name, qty: s.qty, price: s.price }); total += s.qty * s.price; }
             }
-            if (!hasItems) return;
+            if (!items.length) return;
+            let text = `Hola ${name}, quiero comprar entradas para *PRELUDIO - LAST BREAK*:\n\n`;
+            items.forEach(i => { text += `▫️ ${i.qty} x ${i.label} (${i.qty * i.price} Bs)\n`; });
             text += `\n*TOTAL: ${total} Bs*`;
+            /* Venta pendiente: se registra en Firebase para el relacionador elegido */
+            if (window.Pending && relId) {
+                const pid = Pending.newId();
+                text += `\n_Pedido #${pid}_`;
+                Pending.create({ id: pid, relId, rel: name, items, total });
+            }
             window.open(`https://wa.me/591${phone}?text=${encodeURIComponent(text)}`, '_blank');
             closeModal();
         }
@@ -634,16 +636,24 @@ const DB = {
     const q = await DB.fs.collection('tickets').get();
     return q.docs.map(d => d.data()).sort((a, b) => b.ts - a.ts);
   },
-  /* Crea la entrada SOLO si ni el N° de comprobante ni la imagen se usaron antes (transacción atómica) */
-  createTicket(t) {
-    const { img, ...ticket } = t;
+  /* Crea las entradas de UNA compra SOLO si ni el N° de comprobante ni la imagen se usaron antes (transacción atómica).
+     Si viene de un pedido pendiente, lo marca como concretado en la misma transacción. */
+  createTickets(tickets, img, pendingId) {
+    const { rid, hash } = tickets[0];
     return DB.fs.runTransaction(async tx => {
-      const byId = DB.fs.doc('receipts/r' + t.rid), byImg = DB.fs.doc('receipts/h' + t.hash);
+      const byId = DB.fs.doc('receipts/r' + rid), byImg = DB.fs.doc('receipts/h' + hash);
       const [a, b] = await Promise.all([tx.get(byId), tx.get(byImg)]);
       if (a.exists || b.exists) throw new Error('DUP');
-      tx.set(byId, { id: t.id, img }); tx.set(byImg, { id: t.id });
-      tx.set(DB.fs.doc('tickets/' + t.id), ticket);
+      tx.set(byId, { id: tickets[0].id, img }); tx.set(byImg, { id: tickets[0].id });
+      tickets.forEach(t => tx.set(DB.fs.doc('tickets/' + t.id), t));
+      if (pendingId) tx.update(DB.fs.doc('pending/' + pendingId), { status: 'done', doneTs: Date.now() });
     });
+  },
+  /* Ventas pendientes (llegan desde la página pública) */
+  createPending: p => DB.fs.doc('pending/' + p.id).set(p),
+  watchPending(relId, cb) {   // tiempo real: devuelve la función para dejar de escuchar
+    return DB.fs.collection('pending').where('relId', '==', relId).onSnapshot(
+      q => cb(q.docs.map(d => d.data()).filter(p => p.status === 'pending').sort((a, b) => b.ts - a.ts)), e => console.error(e));
   },
   /* Marca un ingreso en puerta. Devuelve {r:'ok'|'used'|'none', t} */
   useTicket(id) {
@@ -657,10 +667,15 @@ const DB = {
       return { r: 'ok', t };
     });
   },
-  async receiptDocs(id) { return (await DB.fs.collection('receipts').where('id', '==', id).get()).docs; },
+  async getReceipt(rid) { const d = await DB.fs.doc('receipts/r' + rid).get(); return d.exists ? d.data() : null; },
+  /* Anula una entrada; si era la última de su comprobante, libera el comprobante y la imagen */
   async deleteTicket(id) {
-    (await DB.receiptDocs(id)).forEach(d => d.ref.delete());
+    const d = await DB.fs.doc('tickets/' + id).get(); if (!d.exists) return;
+    const { rid, hash } = d.data();
     await DB.fs.doc('tickets/' + id).delete();
+    if ((await DB.fs.collection('tickets').where('rid', '==', rid).get()).empty) {
+      await DB.fs.doc('receipts/r' + rid).delete(); await DB.fs.doc('receipts/h' + hash).delete();
+    }
   }
 };
 
@@ -684,6 +699,15 @@ async function loadState() {
 const ready = DB.init().then(loadState).catch(e => {
   console.error(e); State.error = e; State.cfg = State.cfg || defaultSettings(); renderStore();
 });
+
+/* Puente con la página pública: registra el pedido pendiente sin frenar el envío a WhatsApp */
+window.Pending = {
+  newId: uid,
+  async create(p) {
+    try { await ready; if (!State.error) await DB.createPending({ ...p, ts: Date.now(), status: 'pending' }); }
+    catch (e) { console.error('No se pudo registrar el pedido', e); }
+  }
+};
 
 /* ======================================================================
    5. TIENDA PÚBLICA (tiers, cuenta regresiva, aviso, mapa)
@@ -755,6 +779,36 @@ function parseReceipt(text, expected) {
   return { amountOk: amounts.some(n => Math.abs(n - expected) < 0.01), amounts: [...new Set(amounts)], receiptId: id ? id[1].toUpperCase() : '' };
 }
 
+/* Fecha/hora impresa en el comprobante: dd/mm/aaaa, aaaa-mm-dd o "12 oct 2026", con hora hh:mm. Devuelve null si no la entiende */
+const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+function parseReceiptDate(text) {
+  const t = text.toLowerCase().replace(/,/g, ' ');
+  const forms = [
+    [/(\d{1,2})\s*[\/\-.]\s*(\d{1,2})\s*[\/\-.]\s*(\d{4}|\d{2})\b/, r => [+r[1], +r[2], +r[3]]],
+    [/(\d{4})-(\d{1,2})-(\d{1,2})/, r => [+r[3], +r[2], +r[1]]],
+    [/(\d{1,2})\s*(?:de\s+)?(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)[a-z]*\.?\s*(?:de\s+)?(\d{4})/, r => [+r[1], MONTHS.indexOf(r[2]) + 1, +r[3]]]
+  ];
+  for (const [re, pick] of forms) {
+    const r = t.match(re); if (!r) continue;
+    let [d, m, y] = pick(r); if (y < 100) y += 2000;
+    if (m < 1 || m > 12 || d < 1 || d > 31) continue;
+    const near = t.slice(Math.max(0, r.index - 40), r.index + r[0].length + 40);   // la hora suele estar junto a la fecha
+    const hm = near.match(/(\d{1,2}):(\d{2})(?::\d{2})?\s*(a\.?m\.?|p\.?m\.?)?/);
+    let h = hm ? +hm[1] : 0; const min = hm ? +hm[2] : 0;
+    if (hm && hm[3]) { if (/^p/.test(hm[3]) && h < 12) h += 12; if (/^a/.test(hm[3]) && h === 12) h = 0; }
+    return { ts: new Date(y, m - 1, d, h, min).getTime(), hasTime: !!hm };
+  }
+  return null;
+}
+/* Compara con la hora del pedido. NUNCA bloquea: devuelve un texto de advertencia ('' si todo bien).
+   Tolerancia de 10 min porque el reloj del celular del comprador puede no coincidir con el del banco. */
+function dateWarning(text, pendingTs) {
+  const f = parseReceiptDate(text), tol = 10 * 60e3;
+  if (!f) return `⚠️ No pude leer la fecha del comprobante: revísala a ojo (el pedido llegó ${fmtDate(pendingTs)}).`;
+  const ok = f.hasTime ? f.ts >= pendingTs - tol : f.ts + 864e5 >= pendingTs - tol;   // sin hora: se compara por día
+  return ok ? '' : `⚠️ Parece que la fecha del comprobante (${fmtDate(f.ts)}) es ANTERIOR al pedido (${fmtDate(pendingTs)}). Verifica que sea el pago correcto.`;
+}
+
 /* ======================================================================
    7. ENTRADA CON QR (imagen para compartir)
    ====================================================================== */
@@ -796,12 +850,25 @@ async function shareTicket(cv, t) {
   await saveImage(cv, t);                                              // computadora: descarga + abre WhatsApp
   window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
 }
+const warnBox = w => w ? `<p class="border border-yellow-500 text-yellow-300 text-sm p-3 mb-3">${esc(w)}</p>` : '';
+function ticketRow(t) {
+  const b = document.createElement('button'); b.className = 'w-full text-left border border-purple-900 p-3 mb-2 flex justify-between gap-2 text-sm';
+  b.innerHTML = `<span><b>${esc(t.name)}</b> · ${esc(t.type)}<br><span class="text-gray-400">#${t.id} · ${fmtDate(t.ts)}</span></span><span>${t.used >= t.max ? '✅ usada' : '🎟️ ver QR'}</span>`;
+  b.onclick = () => ticketView(t); return b;
+}
 async function ticketView(t) {
   setTitle('🎟️ Entrada lista'); body.innerHTML = '<p class="text-center text-gray-400">Generando…</p>';
   const cv = await drawTicket(t); cv.className = 'w-full max-w-xs mx-auto border-2 border-preludio-blue';
-  body.innerHTML = '<div id="t-c"></div><button id="t-s" class="btn mt-4" style="background:#25D366">📲 Compartir por WhatsApp</button><button id="t-d" class="btn2 mt-2">⬇️ Descargar imagen</button><button id="t-n" class="btn2 mt-2">← Volver</button>';
+  body.innerHTML = warnBox(t.warn) + '<div id="t-c"></div><button id="t-s" class="btn mt-4" style="background:#25D366">📲 Compartir por WhatsApp</button><button id="t-d" class="btn2 mt-2">⬇️ Descargar imagen</button><button id="t-n" class="btn2 mt-2">← Volver</button>';
   $('t-c').appendChild(cv);
-  $('t-s').onclick = () => shareTicket(cv, t); $('t-d').onclick = () => saveImage(cv, t); $('t-n').onclick = relView;
+  $('t-s').onclick = () => shareTicket(cv, t); $('t-d').onclick = () => saveImage(cv, t);$('t-n').onclick = relView;
+}
+/* Compra con varias entradas: una lista; cada una abre su propio QR para compartir */
+function ticketsView(list) {
+  setTitle('🎟️ ' + list.length + ' entradas');
+  body.innerHTML = warnBox(list[0].warn) + '<p class="text-sm text-gray-300 mb-3">Toca cada entrada para compartir su QR.</p><div id="t-l"></div><button id="t-n" class="btn2 mt-3">← Volver</button>';
+  list.forEach(t => $('t-l').appendChild(ticketRow(t)));
+  $('t-n').onclick = relView;
 }
 
 /* ======================================================================
@@ -823,59 +890,91 @@ function loginView(view, tab) {
   $('pin-s').onchange = e => { $('pin').type = e.target.checked ? 'text' : 'password'; };
 }
 
-let me = null, lastReceipt = null;
+let me = null, lastReceipt = null, pendingSel = null, pendingList = [], unsubPending = null;
+const stopPendingWatch = () => { if (unsubPending) { unsubPending(); unsubPending = null; } };
+
 function relView() {
   me = State.rels.find(r => r.id === sessionStorage.getItem('rel'));
   if (!me) return loginView('rel');
+  stopPendingWatch(); pendingList = []; if (pendingSel && pendingSel.relId !== me.id) pendingSel = null;
   setTitle('🎃 ' + me.name);
-  const options = Object.entries(TICKET_TYPES).filter(([k]) => sectors[k].price).map(([k, T]) => `<option value="${k}">${T.label} · ${sectors[k].price} Bs</option>`).join('');
-  body.innerHTML = (options ? `
-    <label class="lb">Nombre completo del comprador</label><input id="r-name" class="fld mb-3" placeholder="Ej: María José Sarabia">
-    <label class="lb">Tipo de entrada</label><select id="r-type" class="fld mb-3">${options}</select>
-    <label class="lb">Comprobante de pago</label><input id="r-file" type="file" accept="image/*" class="fld mb-3">
-    <div id="r-rid-w" class="hidden"><label class="lb">N° de comprobante (no se pudo leer)</label><input id="r-rid" class="fld mb-3"></div>
-    <button id="r-go" class="btn">Comprobar y generar QR</button><p id="r-msg" class="text-sm mt-3"></p>` : '<p class="text-alert-red font-bold">Entradas agotadas.</p>') + `
+  body.innerHTML = `<h3 class="font-display text-xl mb-2">📥 Ventas pendientes</h3><div id="r-pend" class="mb-6"></div><div id="r-form"></div>
     <h3 class="font-display text-xl mt-6 mb-2">Mis entradas</h3><div id="r-list"></div>
     <details class="mt-6 border border-purple-900 p-3"><summary class="lb cursor-pointer">Cambiar mi PIN</summary><input id="o-p" type="password" class="fld my-2" placeholder="PIN actual"><input id="n-p" type="password" class="fld mb-2" placeholder="Nuevo PIN (mín. 4)"><button id="p-go" class="btn2">Guardar PIN</button></details>
     <button class="btn2 mt-4" onclick="Staff.logout()">Cerrar sesión</button>`;
-  if ($('r-go')) $('r-go').onclick = submitReceipt;
+  renderForm(); renderPending();
+  unsubPending = DB.watchPending(me.id, list => { pendingList = list; renderPending(); });   // llegan en vivo
   $('p-go').onclick = async () => {
     if (hashPin($('o-p').value) !== me.pin) return alert('PIN actual incorrecto');
     if (cleanPin($('n-p').value).length < 4) return alert('Mínimo 4 caracteres');
     me.pin = hashPin($('n-p').value); await saveRels(); alert('PIN cambiado ✔'); relView();
   };
   DB.listTickets().then(all => {   // solo se muestran SUS entradas
-    const mine = all.filter(t => t.relId === me.id), box = $('r-list'); if (!box) return;
+    const box = $('r-list'); if (!box) return;
+    const mine = all.filter(t => t.relId === me.id);
     box.innerHTML = mine.length ? '' : '<p class="text-gray-500 text-sm">Aún no hay entradas.</p>';
-    mine.forEach(t => {
-      const b = document.createElement('button'); b.className = 'w-full text-left border border-purple-900 p-3 mb-2 flex justify-between gap-2 text-sm';
-      b.innerHTML = `<span><b>${esc(t.name)}</b><br><span class="text-gray-400">#${t.id} · ${fmtDate(t.ts)}</span></span><span>${t.used >= t.max ? '✅ usada' : '🎟️ ver QR'}</span>`;
-      b.onclick = () => ticketView(t); box.appendChild(b);
-    });
+    mine.forEach(t => box.appendChild(ticketRow(t)));
   });
 }
+const itemsText = items => items.map(i => `${i.qty}× ${esc(i.label)}`).join(' · ');
 
-/* Flujo: validar datos → leer comprobante → comprobar monto → comprobar duplicados → crear entrada */
+/* Lista de pedidos pendientes de este relacionador */
+function renderPending() {
+  const box = $('r-pend'); if (!box) return;
+  if (pendingSel && !pendingList.some(p => p.id === pendingSel.id)) { pendingSel = null; renderForm(); }   // ya se concretó
+  box.innerHTML = pendingList.length ? '' : '<p class="text-gray-500 text-sm">No hay pedidos nuevos.</p>';
+  pendingList.forEach(p => {
+    const b = document.createElement('button');
+    b.className = 'w-full text-left border p-3 mb-2 text-sm ' + (pendingSel && pendingSel.id === p.id ? 'border-preludio-blue bg-black' : 'border-purple-900');
+    b.innerHTML = `<b class="text-preludio-blue">#${p.id}</b> · ${fmtDate(p.ts)} · <b>${p.total} Bs</b><br><span class="text-gray-300">${itemsText(p.items)}</span>`;
+    b.onclick = () => { pendingSel = p; lastReceipt = null; renderForm(); renderPending(); };
+    box.appendChild(b);
+  });
+}
+/* Formulario: concretar el pedido elegido, o venta directa (sin pedido previo) */
+function renderForm() {
+  const f = $('r-form'); if (!f) return;
+  const options = Object.entries(TICKET_TYPES).filter(([k]) => sectors[k].price).map(([k, T]) => `<option value="${k}">${T.label} · ${sectors[k].price} Bs</option>`).join('');
+  const what = pendingSel
+    ? `<div class="border border-preludio-blue p-3 mb-3 text-sm"><b>Pedido #${pendingSel.id}</b> · ${pendingSel.total} Bs<br>${itemsText(pendingSel.items)}<br><a href="#" id="r-cancel" class="text-xs text-gray-400 underline">Cancelar y hacer venta directa</a></div>`
+    : `<label class="lb">Venta directa · tipo de entrada</label><select id="r-type" class="fld mb-3">${options}</select>`;
+  f.innerHTML = (pendingSel || options) ? what + `
+    <label class="lb">Nombre completo del comprador</label><input id="r-name" class="fld mb-3" placeholder="Ej: María José Sarabia">
+    <label class="lb">Comprobante de pago</label><input id="r-file" type="file" accept="image/*" class="fld mb-3">
+    <div id="r-rid-w" class="hidden"><label class="lb">N° de comprobante (no se pudo leer)</label><input id="r-rid" class="fld mb-3"></div>
+    <button id="r-go" class="btn">Comprobar y generar QR</button><p id="r-msg" class="text-sm mt-3"></p>` : '<p class="text-alert-red font-bold">Entradas agotadas.</p>';
+  if ($('r-go')) $('r-go').onclick = submitReceipt;
+  if ($('r-cancel')) $('r-cancel').onclick = e => { e.preventDefault(); pendingSel = null; lastReceipt = null; renderForm(); renderPending(); };
+}
+
+/* Flujo: validar datos → leer comprobante → comprobar monto → comprobar duplicados → (aviso de fecha) → crear entradas */
 async function submitReceipt() {
   const msg = html => $('r-msg').innerHTML = html;
   const name = $('r-name').value.trim().replace(/\s+/g, ' '), file = $('r-file').files[0];
-  const type = $('r-type').value, expected = sectors[type].price;
+  let sale;   // qué se está cobrando: el pedido pendiente elegido o una venta directa
+  if (pendingSel) sale = { pid: pendingSel.id, ts: pendingSel.ts, expected: pendingSel.total, units: pendingSel.items.flatMap(i => Array(i.qty).fill({ k: i.k, price: i.price })) };
+  else { const k = $('r-type').value; sale = { expected: sectors[k].price, units: [{ k, price: sectors[k].price }] }; }
   if (name.split(' ').length < 2) return msg('⚠️ Escribe nombre y apellido.');
   if (!file) return msg('⚠️ Sube el comprobante.');
   $('r-go').disabled = true;
   try {
     msg('⏳ Leyendo comprobante… (puede tardar unos segundos)');
     const img = await loadImage(file), small = scaleImage(img, 720).toDataURL('image/jpeg', .6);
-    if (!lastReceipt || lastReceipt.file !== file || lastReceipt.expected !== expected)
-      lastReceipt = { file, expected, parsed: parseReceipt(await ocr(scaleImage(img, 1600)), expected) };
+    if (!lastReceipt || lastReceipt.file !== file || lastReceipt.expected !== sale.expected) {
+      const text = await ocr(scaleImage(img, 1600));
+      lastReceipt = { file, expected: sale.expected, text, parsed: parseReceipt(text, sale.expected) };
+    }
     const p = lastReceipt.parsed;
-    if (!p.amountOk) return msg(`❌ El monto no coincide. Se esperan <b>${expected} Bs</b>. Leído: ${p.amounts.join(', ') || 'ningún monto'}. Prueba con una captura más clara.`);
+    if (!p.amountOk) return msg(`❌ El monto no coincide. Se esperan <b>${sale.expected} Bs</b>. Leído: ${p.amounts.join(', ') || 'ningún monto'}. Prueba con una captura más clara.`);
     const rid = ($('r-rid').value || p.receiptId).replace(/[^A-Z0-9]/gi, '').toUpperCase();
     if (!rid) { $('r-rid-w').classList.remove('hidden'); return msg('✍️ Monto correcto ✔. Escribe el N° de comprobante y toca de nuevo el botón.'); }
-    const ticket = { id: uid(), name, relId: me.id, rel: me.name, type: TICKET_TYPES[type].label, max: TICKET_TYPES[type].seats,
-                     used: 0, amount: expected, rid, hash: hash(small), img: small, ts: Date.now() };
-    await DB.createTicket(ticket); delete ticket.img;
-    ticketView(ticket);
+    const warn = sale.pid ? dateWarning(lastReceipt.text, sale.ts) : '';   // solo advertencia, no bloquea
+    const now = Date.now(), imgHash = hash(small);
+    const tickets = sale.units.map(u => ({ id: uid(), name, relId: me.id, rel: me.name, type: TICKET_TYPES[u.k].label, max: TICKET_TYPES[u.k].seats,
+      used: 0, amount: u.price, rid, hash: imgHash, ts: now, ...(sale.pid && { pid: sale.pid }), ...(warn && { warn }) }));
+    await DB.createTickets(tickets, small, sale.pid);
+    pendingSel = null;
+    tickets.length === 1 ? ticketView(tickets[0]) : ticketsView(tickets);
   } catch (e) {
     msg(e.message === 'DUP' ? '❌ Este comprobante ya fue utilizado.' : '⚠️ Error: ' + esc(e.message));
   } finally { if ($('r-go')) $('r-go').disabled = false; }
@@ -939,7 +1038,7 @@ async function adminView(tab) {
 const tabRels = () => `<div id="ar">${State.rels.map((r, i) => `<div class="border border-purple-900 p-2 mb-2"><input class="fld mb-1" data-i="${i}" data-f="name" value="${esc(r.name)}"><input class="fld mb-2" data-i="${i}" data-f="phone" value="${esc(r.phone)}" placeholder="Teléfono"><div class="flex gap-2"><button class="btn2" onclick="A.relReset(${i})">Reset PIN → 1234</button><button class="btn2" onclick="A.relDel(${i})">🗑 Quitar</button></div></div>`).join('')}</div><button class="btn2 mb-2" onclick="A.relAdd()">+ Añadir relacionador</button><button class="btn" onclick="A.relSave()">Guardar cambios</button>`;
 async function tabTickets() {
   const all = await DB.listTickets();
-  return `<p class="text-sm text-gray-400 mb-3">${all.length} entradas · ${all.reduce((s, t) => s + t.amount, 0)} Bs</p>` + (all.map(t => `<div class="border border-purple-900 p-3 mb-2 text-sm"><b class="text-preludio-blue">#${t.id}</b> · ${esc(t.type)} · ${t.amount} Bs<br>Comprador: <b>${esc(t.name)}</b><br>Vendió: ${esc(t.rel)}<br><span class="text-gray-400">${fmtDate(t.ts)} · ingresos ${t.used}/${t.max}</span><div class="flex gap-2 mt-2"><button class="btn2" onclick="A.tkImg('${t.id}')">Ver comprobante</button><button class="btn2" onclick="A.tkDel('${t.id}')">Anular</button></div></div>`).join('') || '<p class="text-gray-500">Aún no hay entradas.</p>');
+  return `<p class="text-sm text-gray-400 mb-3">${all.length} entradas · ${all.reduce((s, t) => s + t.amount, 0)} Bs</p>` + (all.map(t => `<div class="border border-purple-900 p-3 mb-2 text-sm"><b class="text-preludio-blue">#${t.id}</b> · ${esc(t.type)} · ${t.amount} Bs<br>Comprador: <b>${esc(t.name)}</b><br>Vendió: ${esc(t.rel)}<br><span class="text-gray-400">${fmtDate(t.ts)} · ingresos ${t.used}/${t.max}</span>${t.warn ? `<br><span class="text-yellow-300">${esc(t.warn)}</span>` : ''}<div class="flex gap-2 mt-2"><button class="btn2" onclick="A.tkImg('${t.rid}')">Ver comprobante</button><button class="btn2" onclick="A.tkDel('${t.id}')">Anular</button></div></div>`).join('') || '<p class="text-gray-500">Aún no hay entradas.</p>');
 }
 const tabPrices = () => `<label class="lb">Fecha del evento (texto)</label><input id="p-d" class="fld mb-3" value="${esc(State.cfg.dateLabel)}"><label class="lb">Aviso del lote (vacío = oculto)</label><input id="p-b" class="fld mb-3" value="${esc(State.cfg.banner)}">
 <p class="text-xs text-gray-400 mb-2">La entrada activa es el primer tier que no esté agotado ni vencido. Al marcar "Agotado" o pasar su fecha, pasa al siguiente.</p><div>${State.cfg.tiers.map((t, i) => `<div class="border border-purple-900 p-2 mb-2 grid grid-cols-2 gap-2" data-t="${i}"><input class="fld col-span-2" data-f="n" value="${esc(t.n)}" placeholder="Nombre (TIER 1)"><div><span class="lb">Hombre Bs</span><input class="fld" type="number" data-f="m" value="${t.m}"></div><div><span class="lb">Mujer Bs</span><input class="fld" type="number" data-f="w" value="${t.w}"></div><div><span class="lb">Pareja Bs</span><input class="fld" type="number" data-f="c" value="${t.c}"></div><div><span class="lb">Termina</span><input class="fld" type="datetime-local" data-f="end" value="${t.end}"></div><label class="text-sm"><input type="checkbox" data-f="sold" ${t.sold ? 'checked' : ''}> Agotado</label><button class="btn2" onclick="A.tierDel(${i})">🗑 Quitar</button></div>`).join('')}</div><button class="btn2 mb-2" onclick="A.tierAdd()">+ Añadir tier / lote</button><button class="btn" onclick="A.tierSave()">Guardar</button>`;
@@ -971,10 +1070,10 @@ const A = window.A = {
     await saveCfg(); alert('PINs guardados ✔');
   },
   /* entradas */
-  async tkImg(id) {
-    const doc = (await DB.receiptDocs(id)).map(d => d.data()).find(r => r.img);
-    if (!doc) return alert('Sin comprobante');
-    window.open('').document.write(`<img src="${doc.img}" style="max-width:100%">`);
+  async tkImg(rid) {
+    const r = await DB.getReceipt(rid);
+    if (!r || !r.img) return alert('Sin comprobante');
+    window.open('').document.write(`<img src="${r.img}" style="max-width:100%">`);
   },
   async tkDel(id) { if (confirm('¿Anular la entrada #' + id + '? Se libera su comprobante.')) { await DB.deleteTicket(id); adminView(); } }
 };
@@ -982,7 +1081,7 @@ const A = window.A = {
 /* ======================================================================
    11. ROUTER DEL PANEL (abrir / cerrar / sesión)
    ====================================================================== */
-function route(view, tab) { stopCamera(); ({ rel: relView, gate: gateView, admin: adminView })[view](tab); }
+function route(view, tab) { stopCamera(); stopPendingWatch(); ({ rel: relView, gate: gateView, admin: adminView })[view](tab); }
 function connectionError() {
   setTitle('⚠️ Sin conexión');
   body.innerHTML = `<p class="text-red-400 mb-3">No se pudo conectar con la base de datos.</p><p class="text-sm text-gray-400">Revisa que <b>Authentication → Anónimo</b> esté activado y que las reglas de Firestore estén publicadas.<br><br><code>${esc(State.error && State.error.message)}</code></p>`;
@@ -993,7 +1092,7 @@ window.Staff = {
     if (State.error) return connectionError();
     sessionStorage.getItem(view) ? route(view, tab) : loginView(view, tab);
   },
-  close() { stopCamera(); ov.classList.remove('on'); document.body.style.overflow = ''; },
+  close() { stopCamera(); stopPendingWatch(); ov.classList.remove('on'); document.body.style.overflow = ''; },
   logout() { sessionStorage.clear(); Staff.close(); }
 };
 })();
