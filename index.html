@@ -63,7 +63,7 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* TÍTULO LAST BREAK */
+    /* TÍTULO Halloween | Dark Garden */
     .title-last-break {
       font-family: 'Anton', sans-serif;
       text-transform: uppercase;
@@ -702,7 +702,7 @@
         if (s.qty > 0) { items.push({ k: key, label: s.name, qty: s.qty, price: s.price }); total += s.qty * s.price; }
       }
       if (!items.length) return;
-      let text = `Hola ${name}, quiero comprar entradas para *PRELUDIO - LAST BREAK*:\n\n`;
+      let text = `Hola ${name}, quiero comprar entradas para *Dark Garden*:\n\n`;
       items.forEach(i => { text += `▫️ ${i.qty} x ${i.label} (${i.qty * i.price} Bs)\n`; });
       text += `\n*TOTAL: ${total} Bs*`;
       /* Venta pendiente: se registra en Firebase para el relacionador elegido */
@@ -749,7 +749,7 @@
       };
       const APP_VERSION = 'v7 · 13-oct-2026';    // se muestra en la pantalla de PIN: sirve para comprobar que Netlify ya publicó la última versión
       const QR_BACKGROUND = 'qr-fondo.png';        // foto de fondo del QR (junto al index.html)
-      const EVENT_NAME = 'PRELUDIO · LAST BREAK';
+      const EVENT_NAME = 'Halloween | Dark Garden';
       const DEFAULT_PIN = '1234';                 // PIN inicial de relacionadores y puerta
       const DEFAULT_ADMIN = 'admin123';             // PIN inicial de administración
       const TICKET_TYPES = {                       // field = columna de precio dentro de cada tier
@@ -1012,7 +1012,7 @@
         /* textos */
         x.fillStyle = '#fff'; x.font = '600 32px Inter,sans-serif'; x.fillText(t.name, W / 2, 790, 620);
         x.fillStyle = '#ff8c1a'; x.font = '130px Anton'; x.fillText('PRELUDIO', W / 2, 960, 640);
-        x.fillStyle = '#fff'; x.font = '64px Anton'; x.fillText('LAST BREAK', W / 2, 1040);
+        x.fillStyle = '#fff'; x.font = '64px Anton'; x.fillText('Halloween | Dark Garden', W / 2, 1040);
         x.font = '600 26px Inter,sans-serif';
         x.fillText(`${State.cfg.dateLabel} · ${t.type.toUpperCase()}`, W / 2, 1110);
         x.fillText(`Válida para ${t.max > 1 ? t.max + ' ingresos' : '1 solo ingreso'}`, W / 2, 1150);
