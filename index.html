@@ -1,472 +1,644 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRELUDIO | LAST BREAK</title>
-    
-    <!-- PRELOAD -->
-    <link rel="preload" as="image" href="image1.png" fetchpriority="high">
-    <link rel="preload" as="image" href="image2.png" fetchpriority="high">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRELUDIO | LAST BREAK</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'preludio-blue': '#ff6a00',
-                        'preludio-light': '#ff8c1a',
-                        'dark-bg': '#020205',
-                        'whatsapp-green': '#25D366',
-                        'alert-red': '#ef4444',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Anton', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'blue-texture': "url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to bottom, #0a0a0a, #ff6a00)",
-                        'paper-texture': "url('https://www.transparenttextures.com/patterns/crinkle-paper.png')",
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
-                    }
-                }
-            }
-        }
-    </script>
+  <!-- PRELOAD -->
+  <link rel="preload" as="image" href="image1.png" fetchpriority="high">
+  <link rel="preload" as="image" href="image2.png" fetchpriority="high">
 
-    <style>
-        body {
-            background-color: #020205;
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap"
+    rel="stylesheet">
 
-        /* TEXTURA DE FONDO */
-        .bg-noise {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0.05;
-            pointer-events: none;
-            z-index: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'preludio-blue': '#ff6a00',
+            'preludio-light': '#ff8c1a',
+            'dark-bg': '#020205',
+            'whatsapp-green': '#25D366',
+            'alert-red': '#ef4444',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Anton', 'sans-serif'],
+          },
+          backgroundImage: {
+            'blue-texture': "url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to bottom, #0a0a0a, #ff6a00)",
+            'paper-texture': "url('https://www.transparenttextures.com/patterns/crinkle-paper.png')",
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+          }
         }
+      }
+    }
+  </script>
 
-        /* TÍTULO LAST BREAK */
-        .title-last-break {
-            font-family: 'Anton', sans-serif;
-            text-transform: uppercase;
-            line-height: 0.9;
-            transform: rotate(-2deg);
-            text-shadow: 4px 4px 0px rgba(0,0,0,0.5);
-        }
+  <style>
+    body {
+      background-color: #020205;
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        /* EFECTO PAPEL RASGADO */
-        .torn-paper-top {
-            position: absolute;
-            top: -20px;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background: #020205;
-            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 v50 q10,10 20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 V0 H0 Z' fill='black'/%3E%3C/svg%3E");
-            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 v50 q10,10 20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 V0 H0 Z' fill='black'/%3E%3C/svg%3E");
-            z-index: 10;
-            transform: rotate(180deg);
-        }
+    /* TEXTURA DE FONDO */
+    .bg-noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
 
-        /* BARRAS DE NAVEGACIÓN */
-        .nav-bar {
-            background: rgba(2, 2, 5, 0.95);
-            border-bottom: 2px solid #ff6a00;
-        }
+    /* TÍTULO LAST BREAK */
+    .title-last-break {
+      font-family: 'Anton', sans-serif;
+      text-transform: uppercase;
+      line-height: 0.9;
+      transform: rotate(-2deg);
+      text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+    }
 
-        /* Galería Desktop */
-        .ig-feed-container {
-            aspect-ratio: 16 / 10;
-            position: relative;
-            overflow: hidden;
-            border: 4px solid white;
-            transform: rotate(0deg);
-            transition: transform 0.3s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            background: #000;
-        }
-        .ig-feed-container:hover {
-            transform: rotate(-1deg) scale(1.02);
-            z-index: 10;
-        }
-        .ig-feed-container img {
-            width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
-        }
+    /* EFECTO PAPEL RASGADO */
+    .torn-paper-top {
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: #020205;
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 v50 q10,10 20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 V0 H0 Z' fill='black'/%3E%3C/svg%3E");
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 v50 q10,10 20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 V0 H0 Z' fill='black'/%3E%3C/svg%3E");
+      z-index: 10;
+      transform: rotate(180deg);
+    }
 
-        /* Carrusel Móvil */
-        .mobile-carousel {
-            width: 100%; 
-            aspect-ratio: 4/5; 
-            overflow: hidden; 
-            position: relative;
-            border: 4px solid white;
-            background: #000;
-        }
-        
-        .mobile-slide {
-            position: absolute; 
-            top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0; 
-            transition: opacity 1s ease-in-out;
-            z-index: 0;
-        }
-        
-        .mobile-slide img {
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
-        
-        .mobile-slide.active { opacity: 1; z-index: 1; }
+    /* BARRAS DE NAVEGACIÓN */
+    .nav-bar {
+      background: rgba(2, 2, 5, 0.95);
+      border-bottom: 2px solid #ff6a00;
+    }
 
-        /* TICKETS */
-        .ticket-card {
-            background: #0a0a0a;
-            border: 1px solid #333;
-            position: relative;
-        }
-        .ticket-card::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-            background: #ff6a00;
-        }
-        .sold-out { opacity: 0.6; filter: grayscale(1); border-style: dashed; }
-        
-        .qty-btn {
-            width: 30px; height: 30px; background: #222; color: white;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: bold; transition: 0.2s;
-        }
-        .qty-btn:hover { background: #ff6a00; }
+    /* Galería Desktop */
+    .ig-feed-container {
+      aspect-ratio: 16 / 10;
+      position: relative;
+      overflow: hidden;
+      border: 4px solid white;
+      transform: rotate(0deg);
+      transition: transform 0.3s;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      background: #000;
+    }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #020205; }
-        ::-webkit-scrollbar-thumb { background: #ff6a00; }
+    .ig-feed-container:hover {
+      transform: rotate(-1deg) scale(1.02);
+      z-index: 10;
+    }
 
-        .modal-bg { background: rgba(0,0,0,0.9); backdrop-filter: blur(5px); }
-        
-        .urgent-notice {
-            animation: pulse-red 1s infinite;
-        }
-        @keyframes pulse-red {
-            0%, 100% { color: #ef4444; }
-            50% { color: #ff8888; }
-        }
+    .ig-feed-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
 
-        /* Countdown Style */
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,106,0,.12);
-            border: 1px solid rgba(255,106,0,.4);
-            border-radius: 4px;
-            padding: 5px 10px;
-            min-width: 60px;
-        }
-        .countdown-val {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.5rem;
-            color: #ff8c1a;
-            line-height: 1;
-        }
-        .countdown-label {
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            color: #aaa;
-            letter-spacing: 1px;
-        }
-    
-.title-last-break{text-shadow:4px 4px 0 rgba(0,0,0,.5),0 0 30px rgba(255,106,0,.55)}
-.ov{position:fixed;inset:0;z-index:120;background:radial-gradient(circle at top,#2b0a3d,#07030a 70%);overflow-y:auto;display:none}
-.ov.on{display:block}
-.fld{display:block;width:100%;background:#000;border:1px solid #4a2a66;padding:12px;color:#fff;font-size:16px}
-.lb{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ff8c1a;margin-bottom:4px}
-.btn,.btn2{display:block;width:100%;padding:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px;background:#ff6a00;color:#000}
-.btn2{background:transparent;color:#fff;border:1px solid #4a2a66}
-.btn:disabled{opacity:.5}
-</style>
+    /* Carrusel Móvil */
+    .mobile-carousel {
+      width: 100%;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      position: relative;
+      border: 4px solid white;
+      background: #000;
+    }
+
+    .mobile-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+
+    .mobile-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .mobile-slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    /* TICKETS */
+    .ticket-card {
+      background: #0a0a0a;
+      border: 1px solid #333;
+      position: relative;
+    }
+
+    .ticket-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #ff6a00;
+    }
+
+    .sold-out {
+      opacity: 0.6;
+      filter: grayscale(1);
+      border-style: dashed;
+    }
+
+    .qty-btn {
+      width: 30px;
+      height: 30px;
+      background: #222;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .qty-btn:hover {
+      background: #ff6a00;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #020205;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #ff6a00;
+    }
+
+    .modal-bg {
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(5px);
+    }
+
+    .urgent-notice {
+      animation: pulse-red 1s infinite;
+    }
+
+    @keyframes pulse-red {
+
+      0%,
+      100% {
+        color: #ef4444;
+      }
+
+      50% {
+        color: #ff8888;
+      }
+    }
+
+    /* Countdown Style */
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 106, 0, .12);
+      border: 1px solid rgba(255, 106, 0, .4);
+      border-radius: 4px;
+      padding: 5px 10px;
+      min-width: 60px;
+    }
+
+    .countdown-val {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.5rem;
+      color: #ff8c1a;
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      color: #aaa;
+      letter-spacing: 1px;
+    }
+
+    .title-last-break {
+      text-shadow: 4px 4px 0 rgba(0, 0, 0, .5), 0 0 30px rgba(255, 106, 0, .55)
+    }
+
+    .ov {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      background: radial-gradient(circle at top, #2b0a3d, #07030a 70%);
+      overflow-y: auto;
+      display: none
+    }
+
+    .ov.on {
+      display: block
+    }
+
+    .fld {
+      display: block;
+      width: 100%;
+      background: #000;
+      border: 1px solid #4a2a66;
+      padding: 12px;
+      color: #fff;
+      font-size: 16px
+    }
+
+    .lb {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #ff8c1a;
+      margin-bottom: 4px
+    }
+
+    .btn,
+    .btn2 {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 13px;
+      background: #ff6a00;
+      color: #000
+    }
+
+    .btn2 {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #4a2a66
+    }
+
+    .btn:disabled {
+      opacity: .5
+    }
+  </style>
 </head>
+
 <body class="antialiased flex flex-col relative">
 
-    <div class="bg-noise"></div>
+  <div class="bg-noise"></div>
 
-    <!-- Modal Relacionadores -->
-    <div id="relacionadores-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 modal-bg transition-opacity duration-300">
-        <div class="bg-white text-black w-full max-w-sm p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300 relative" id="modal-content">
-            <div class="absolute top-0 left-0 w-full h-2 bg-preludio-blue"></div>
-            <div class="flex justify-between items-center mb-6 border-b-2 border-black pb-2">
-                <h3 class="text-xl font-display uppercase tracking-wide">Contactar Staff</h3>
-                <button onclick="closeModal()" class="text-black font-bold text-2xl hover:text-preludio-blue">&times;</button>
+  <!-- Modal Relacionadores -->
+  <div id="relacionadores-modal"
+    class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 modal-bg transition-opacity duration-300">
+    <div
+      class="bg-white text-black w-full max-w-sm p-6 shadow-2xl transform scale-95 opacity-0 transition-all duration-300 relative"
+      id="modal-content">
+      <div class="absolute top-0 left-0 w-full h-2 bg-preludio-blue"></div>
+      <div class="flex justify-between items-center mb-6 border-b-2 border-black pb-2">
+        <h3 class="text-xl font-display uppercase tracking-wide">Contactar Staff</h3>
+        <button onclick="closeModal()" class="text-black font-bold text-2xl hover:text-preludio-blue">&times;</button>
+      </div>
+      <div class="overflow-y-auto max-h-[50vh] space-y-1 pr-1 custom-scroll" id="relacionadores-list"></div>
+    </div>
+  </div>
+
+  <!-- Navegación -->
+  <nav class="fixed top-0 w-full z-50 nav-bar py-3 shadow-lg backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+
+      <div class="flex items-center gap-3 md:gap-4 flex-shrink-0">
+        <!-- Logo Multipagos -->
+        <div class="flex items-center gap-2 group cursor-pointer hover:scale-105 transition-transform duration-300">
+          <div
+            class="relative w-9 h-9 md:w-10 md:h-10 flex items-center justify-center bg-white rounded-lg overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.3)] flex-shrink-0">
+            <div class="absolute inset-0 bg-gradient-to-tr from-preludio-blue to-purple-600 opacity-20"></div>
+            <span class="text-black font-black text-lg md:text-xl italic tracking-tighter relative z-10">M</span>
+            <div
+              class="absolute bottom-0 right-0 w-2 h-2 md:w-3 md:h-3 bg-preludio-blue transform rotate-45 translate-x-1.5 translate-y-1.5">
             </div>
-            <div class="overflow-y-auto max-h-[50vh] space-y-1 pr-1 custom-scroll" id="relacionadores-list"></div>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xs md:text-sm font-black text-white italic tracking-wide leading-none">MULTIPAGOS</span>
+            <span class="text-[8px] md:text-[9px] text-gray-400 font-bold tracking-[0.3em] uppercase">Events</span>
+          </div>
         </div>
+
+        <!-- Separador y Preludio (PC) -->
+        <div class="hidden md:block h-8 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+        <div class="hidden md:flex flex-col justify-center">
+          <span class="text-[9px] text-preludio-blue font-bold tracking-widest uppercase leading-tight">Presenta</span>
+          <span
+            class="text-xl font-black italic tracking-tighter text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] leading-none">PRELUDIO</span>
+        </div>
+      </div>
+
+      <!-- Botones Sociales -->
+      <div class="flex items-center gap-3">
+        <button onclick="Staff.open('rel')"
+          class="flex items-center justify-center gap-2 bg-preludio-blue text-black w-9 h-9 rounded-full md:w-auto md:h-auto md:px-4 md:py-2 md:rounded-sm font-bold text-xs uppercase tracking-wider">🎃<span
+            class="hidden md:inline">Relacionador</span></button>
+        <button onclick="Staff.open('gate')"
+          class="flex items-center justify-center gap-2 bg-purple-700 text-white w-9 h-9 rounded-full md:w-auto md:h-auto md:px-4 md:py-2 md:rounded-sm font-bold text-xs uppercase tracking-wider">🚪<span
+            class="hidden md:inline">Puerta</span></button>
+        <a href="https://chat.whatsapp.com/H3JbNW6LzYCAtrpuHzlImA?mode=gi_t" target="_blank"
+          class="flex items-center justify-center bg-whatsapp-green text-black w-9 h-9 rounded-full md:w-auto md:h-auto md:px-4 md:py-2 md:rounded-sm hover:bg-white hover:text-green-600 transition-all shadow-lg group md:gap-2">
+          <svg class="w-5 h-5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+          </svg>
+          <span class="hidden md:inline font-bold text-xs uppercase tracking-wider">GRUPO WA</span>
+        </a>
+        <a href="https://www.instagram.com/preludio.bo" target="_blank"
+          class="flex items-center justify-center bg-white text-black w-9 h-9 rounded-full md:w-auto md:h-auto md:px-4 md:py-2 md:rounded-sm hover:bg-preludio-blue hover:text-white transition-all shadow-lg group md:gap-2">
+          <svg class="w-5 h-5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+          <span class="hidden md:inline font-bold text-xs uppercase tracking-wider">INSTAGRAM</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="relative w-full pt-32 pb-24 px-4 overflow-hidden"
+    style="background-image:url('fondo.png');background-size:cover;background-position:center">
+    <div class="absolute inset-0 opacity-20 bg-paper-texture"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <h1 class="title-last-break text-7xl md:text-[10rem] text-white mb-2 leading-none">
+        LAST<br>BREAK
+      </h1>
+      <div
+        class="bg-white text-preludio-blue font-bold text-xl md:text-3xl inline-block px-8 py-2 transform -rotate-1 shadow-lg mb-8"
+        id="ev-date"></div>
+
+      <!-- COUNTDOWN TIMER -->
+      <div id="countdown-container" class="flex justify-center gap-4 mb-8">
+        <div class="countdown-item">
+          <span class="countdown-val" id="h">00</span>
+          <span class="countdown-label">HORAS</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-val" id="m">00</span>
+          <span class="countdown-label">MIN</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-val" id="s">00</span>
+          <span class="countdown-label">SEG</span>
+        </div>
+      </div>
+      <p id="banner" class="text-alert-red font-bold uppercase tracking-widest text-xs animate-pulse mb-6">⚠️ Siguiente
+        Lote a las 18:00</p>
+
+      <!-- LOCATION BUTTON -->
+      <a id="map-link" href="https://maps.app.goo.gl/4XemLvxxDCRcvDxj9?g_st=awb" target="_blank"
+        class="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all group">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z">
+          </path>
+        </svg>
+        VER UBICACIÓN EN MAPA
+      </a>
+      <div class="relative z-10 max-w-md mx-auto mt-8">
+        <div class="border-2 border-preludio-blue shadow-[0_0_25px_rgba(255,106,0,.35)] overflow-hidden"><iframe
+            id="map-f" class="w-full h-56 block" style="filter:invert(92%) hue-rotate(180deg) saturate(.8)"
+            loading="lazy" title="Mapa"></iframe></div>
+      </div>
     </div>
 
-    <!-- Navegación -->
-    <nav class="fixed top-0 w-full z-50 nav-bar py-3 shadow-lg backdrop-blur-md">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-            
-            <div class="flex items-center gap-3 md:gap-4 flex-shrink-0">
-                <!-- Logo Multipagos -->
-                <div class="flex items-center gap-2 group cursor-pointer hover:scale-105 transition-transform duration-300">
-                    <div class="relative w-9 h-9 md:w-10 md:h-10 flex items-center justify-center bg-white rounded-lg overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.3)] flex-shrink-0">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-preludio-blue to-purple-600 opacity-20"></div>
-                        <span class="text-black font-black text-lg md:text-xl italic tracking-tighter relative z-10">M</span>
-                        <div class="absolute bottom-0 right-0 w-2 h-2 md:w-3 md:h-3 bg-preludio-blue transform rotate-45 translate-x-1.5 translate-y-1.5"></div>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-xs md:text-sm font-black text-white italic tracking-wide leading-none">MULTIPAGOS</span>
-                        <span class="text-[8px] md:text-[9px] text-gray-400 font-bold tracking-[0.3em] uppercase">Events</span>
-                    </div>
-                </div>
+    <div class="absolute bottom-0 left-0 w-full h-12 bg-dark-bg"
+      style="clip-path: polygon(0 50%, 5% 0, 10% 50%, 15% 0, 20% 50%, 25% 0, 30% 50%, 35% 0, 40% 50%, 45% 0, 50% 50%, 55% 0, 60% 50%, 65% 0, 70% 50%, 75% 0, 80% 50%, 85% 0, 90% 50%, 95% 0, 100% 50%, 100% 100%, 0% 100%); height: 30px;">
+    </div>
+  </header>
 
-                <!-- Separador y Preludio (PC) -->
-                <div class="hidden md:block h-8 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
-                <div class="hidden md:flex flex-col justify-center">
-                    <span class="text-[9px] text-preludio-blue font-bold tracking-widest uppercase leading-tight">Presenta</span>
-                    <span class="text-xl font-black italic tracking-tighter text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] leading-none">PRELUDIO</span>
-                </div>
+  <main class="max-w-6xl mx-auto px-4 md:px-6 -mt-12 relative z-20 pb-20">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+      <!-- IZQUIERDA: CONTENIDO -->
+      <div class="lg:col-span-8">
+
+        <!-- GALERÍA -->
+        <div class="mb-16">
+          <!-- Desktop -->
+          <div class="hidden md:grid grid-cols-2 gap-6">
+            <div class="ig-feed-container rotate-2">
+              <img src="image1.png" alt="Vibe 1" loading="lazy">
             </div>
-            
-            <!-- Botones Sociales -->
-            <div class="flex items-center gap-3">
-                <button onclick="Staff.open('rel')" class="flex items-center justify-center gap-2 bg-preludio-blue text-black w-9 h-9 rounded-full md:w-auto md:h-auto md:px-4 md:py-2 md:rounded-sm font-bold text-xs uppercase tracking-wider">🎃<span class="hidden md:inline">Relacionador</span></button>
-                <button onclick="Staff.open('gate')" class="flex items-center justify-center gap-2 bg-purple-700 text-white w-9 h-9 rounded-full md:w-auto md:h-auto md:px-4 md:py-2 md:rounded-sm font-bold text-xs uppercase tracking-wider">🚪<span class="hidden md:inline">Puerta</span></button>
-                <a href="https://chat.whatsapp.com/H3JbNW6LzYCAtrpuHzlImA?mode=gi_t" target="_blank" class="flex items-center justify-center bg-whatsapp-green text-black w-9 h-9 rounded-full md:w-auto md:h-auto md:px-4 md:py-2 md:rounded-sm hover:bg-white hover:text-green-600 transition-all shadow-lg group md:gap-2">
-                    <svg class="w-5 h-5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                    <span class="hidden md:inline font-bold text-xs uppercase tracking-wider">GRUPO WA</span>
-                </a>
-                <a href="https://www.instagram.com/preludio.bo" target="_blank" class="flex items-center justify-center bg-white text-black w-9 h-9 rounded-full md:w-auto md:h-auto md:px-4 md:py-2 md:rounded-sm hover:bg-preludio-blue hover:text-white transition-all shadow-lg group md:gap-2">
-                    <svg class="w-5 h-5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    <span class="hidden md:inline font-bold text-xs uppercase tracking-wider">INSTAGRAM</span>
-                </a>
+            <div class="ig-feed-container -rotate-1">
+              <img src="image2.png" alt="Vibe 2" loading="lazy">
             </div>
+          </div>
+          <!-- Mobile -->
+          <div class="md:hidden mobile-carousel">
+            <div class="mobile-slide active">
+              <img src="image1.png" alt="1">
+            </div>
+            <div class="mobile-slide">
+              <img src="image2.png" alt="2">
+            </div>
+          </div>
         </div>
-    </nav>
 
-    <!-- HERO SECTION -->
-    <header class="relative w-full pt-32 pb-24 px-4 bg-gradient-to-b from-preludio-blue via-[#2b0a3d] to-dark-bg overflow-hidden">
-        <div class="absolute inset-0 opacity-20 bg-paper-texture"></div>
-        
-        <div class="relative z-10 max-w-4xl mx-auto text-center">
-            <div class="text-5xl md:text-6xl mb-3 animate-pulse-slow">🎃 🦇 👻</div>
-            <h1 class="title-last-break text-7xl md:text-[10rem] text-white mb-2 leading-none">
-                LAST<br>BREAK
-            </h1>
-            <div class="bg-white text-preludio-blue font-bold text-xl md:text-3xl inline-block px-8 py-2 transform -rotate-1 shadow-lg mb-8" id="ev-date"></div>
-            
-            <!-- COUNTDOWN TIMER -->
-            <div id="countdown-container" class="flex justify-center gap-4 mb-8">
-                <div class="countdown-item">
-                    <span class="countdown-val" id="h">00</span>
-                    <span class="countdown-label">HORAS</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-val" id="m">00</span>
-                    <span class="countdown-label">MIN</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-val" id="s">00</span>
-                    <span class="countdown-label">SEG</span>
-                </div>
-            </div>
-            <p id="banner" class="text-alert-red font-bold uppercase tracking-widest text-xs animate-pulse mb-6">⚠️ Siguiente Lote a las 18:00</p>
+        <!-- TICKETS -->
+        <div class="bg-[#0a0a0a] border border-gray-800 p-8 relative">
+          <div
+            class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-preludio-blue text-white px-4 py-1 text-xs font-bold uppercase tracking-widest">
+            Tickets Access
+          </div>
 
-            <!-- LOCATION BUTTON -->
-            <a id="map-link" href="https://maps.app.goo.gl/4XemLvxxDCRcvDxj9?g_st=awb" target="_blank" class="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all group">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                VER UBICACIÓN EN MAPA
-            </a>
-        <div class="relative z-10 max-w-md mx-auto mt-8">
-            <div class="border-2 border-preludio-blue shadow-[0_0_25px_rgba(255,106,0,.35)] overflow-hidden"><iframe id="map-f" class="w-full h-56 block" style="filter:invert(92%) hue-rotate(180deg) saturate(.8)" loading="lazy" title="Mapa"></iframe></div>
+          <!-- ALERTA URGENTE -->
+          <div id="urgent-alert" class="hidden text-center mb-6 mt-2">
+            <p class="urgent-notice text-xs font-bold uppercase tracking-widest text-alert-red">⚠️ Últimas entradas TIER
+              1 - ¡Corre!</p>
+          </div>
+
+          <div id="tiers" class="mt-4"></div>
         </div>
+      </div>
+
+      <!-- DERECHA: RESUMEN -->
+      <div class="lg:col-span-4 relative">
+        <div class="sticky top-24 bg-white text-black p-6 shadow-2xl transform rotate-1">
+          <div
+            class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-8 h-12 border-4 border-gray-400 rounded-full z-10 bg-transparent"
+            style="clip-path: inset(0 0 50% 0);"></div>
+          <h3 class="text-2xl font-display uppercase border-b-2 border-black pb-2 mb-4 text-center">Tu Pedido</h3>
+          <div id="empty-cart" class="text-center py-8 text-gray-400 text-sm uppercase font-bold tracking-wider">
+            Selecciona entradas</div>
+          <div id="cart-content" class="hidden flex flex-col gap-4">
+            <div id="cart-items" class="space-y-2 max-h-[200px] overflow-y-auto pr-1 custom-scroll text-sm"></div>
+            <div class="border-t-2 border-black pt-4">
+              <div class="flex justify-between items-end">
+                <span class="text-xs font-bold uppercase">Total a Pagar</span>
+                <span class="text-3xl font-display text-preludio-blue" id="total">0 Bs</span>
+              </div>
+            </div>
+            <button onclick="openModal()"
+              class="w-full bg-preludio-blue hover:bg-black text-white py-4 font-bold uppercase tracking-widest text-sm transition-colors mt-2">Continuar
+              Compra</button>
+          </div>
         </div>
-        
-        <div class="absolute bottom-0 left-0 w-full h-12 bg-dark-bg" style="clip-path: polygon(0 50%, 5% 0, 10% 50%, 15% 0, 20% 50%, 25% 0, 30% 50%, 35% 0, 40% 50%, 45% 0, 50% 50%, 55% 0, 60% 50%, 65% 0, 70% 50%, 75% 0, 80% 50%, 85% 0, 90% 50%, 95% 0, 100% 50%, 100% 100%, 0% 100%); height: 30px;"></div>
-    </header>
+      </div>
+    </div>
+  </main>
 
-    <main class="max-w-6xl mx-auto px-4 md:px-6 -mt-12 relative z-20 pb-20">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
-            <!-- IZQUIERDA: CONTENIDO -->
-            <div class="lg:col-span-8">
-                
-                <!-- GALERÍA -->
-                <div class="mb-16">
-                    <!-- Desktop -->
-                    <div class="hidden md:grid grid-cols-2 gap-6">
-                        <div class="ig-feed-container rotate-2">
-                            <img src="image1.png" alt="Vibe 1" loading="lazy">
-                        </div>
-                        <div class="ig-feed-container -rotate-1">
-                            <img src="image2.png" alt="Vibe 2" loading="lazy">
-                        </div>
-                    </div>
-                    <!-- Mobile -->
-                    <div class="md:hidden mobile-carousel">
-                        <div class="mobile-slide active">
-                            <img src="image1.png" alt="1">
-                        </div>
-                        <div class="mobile-slide">
-                            <img src="image2.png" alt="2">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TICKETS -->
-                <div class="bg-[#0a0a0a] border border-gray-800 p-8 relative">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-preludio-blue text-white px-4 py-1 text-xs font-bold uppercase tracking-widest">
-                        Tickets Access
-                    </div>
-                    
-                    <!-- ALERTA URGENTE -->
-                    <div id="urgent-alert" class="hidden text-center mb-6 mt-2">
-                        <p class="urgent-notice text-xs font-bold uppercase tracking-widest text-alert-red">⚠️ Últimas entradas TIER 1 - ¡Corre!</p>
-                    </div>
-
-                    <div id="tiers" class="mt-4"></div>
-                </div>
-            </div>
-
-            <!-- DERECHA: RESUMEN -->
-            <div class="lg:col-span-4 relative">
-                <div class="sticky top-24 bg-white text-black p-6 shadow-2xl transform rotate-1">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-8 h-12 border-4 border-gray-400 rounded-full z-10 bg-transparent" style="clip-path: inset(0 0 50% 0);"></div>
-                    <h3 class="text-2xl font-display uppercase border-b-2 border-black pb-2 mb-4 text-center">Tu Pedido</h3>
-                    <div id="empty-cart" class="text-center py-8 text-gray-400 text-sm uppercase font-bold tracking-wider">Selecciona entradas</div>
-                    <div id="cart-content" class="hidden flex flex-col gap-4">
-                        <div id="cart-items" class="space-y-2 max-h-[200px] overflow-y-auto pr-1 custom-scroll text-sm"></div>
-                        <div class="border-t-2 border-black pt-4">
-                            <div class="flex justify-between items-end">
-                                <span class="text-xs font-bold uppercase">Total a Pagar</span>
-                                <span class="text-3xl font-display text-preludio-blue" id="total">0 Bs</span>
-                            </div>
-                        </div>
-                        <button onclick="openModal()" class="w-full bg-preludio-blue hover:bg-black text-white py-4 font-bold uppercase tracking-widest text-sm transition-colors mt-2">Continuar Compra</button>
-                    </div>
-                </div>
-            </div>
+  <!-- FOOTER -->
+  <footer class="bg-[#020205] border-t-4 border-preludio-blue pt-16 pb-8 relative z-10">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div class="col-span-1 md:col-span-1">
+          <h3 class="text-2xl font-black italic text-white mb-6">MULTIPAGOS</h3>
+          <p class="text-xs text-gray-500 leading-relaxed font-mono mb-4">PLATAFORMA OFICIAL.<br>SEGURIDAD
+            GARANTIZADA.<br>EST. 2026</p>
+          <div class="border-t border-gray-800 pt-4 mt-4">
+            <p class="text-[10px] text-preludio-blue font-bold uppercase tracking-wider mb-2">¿Necesitas una web así?
+            </p>
+            <p class="text-[10px] text-gray-400 leading-relaxed">Diseño profesional y venta online. <br><a
+                href="#contacto-dev"
+                class="text-white hover:text-preludio-blue transition underline decoration-preludio-blue/50">Cotiza tu
+                proyecto aquí</a></p>
+          </div>
         </div>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="bg-[#020205] border-t-4 border-preludio-blue pt-16 pb-8 relative z-10">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-1">
-                    <h3 class="text-2xl font-black italic text-white mb-6">MULTIPAGOS</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed font-mono mb-4">PLATAFORMA OFICIAL.<br>SEGURIDAD GARANTIZADA.<br>EST. 2026</p>
-                    <div class="border-t border-gray-800 pt-4 mt-4">
-                        <p class="text-[10px] text-preludio-blue font-bold uppercase tracking-wider mb-2">¿Necesitas una web así?</p>
-                        <p class="text-[10px] text-gray-400 leading-relaxed">Diseño profesional y venta online. <br><a href="#contacto-dev" class="text-white hover:text-preludio-blue transition underline decoration-preludio-blue/50">Cotiza tu proyecto aquí</a></p>
-                    </div>
-                </div>
-                <div class="col-span-1 md:col-span-1" id="contacto-dev">
-                    <h4 class="text-xs font-bold text-preludio-blue uppercase tracking-widest mb-6">Contacto Directo</h4>
-                    <ul class="space-y-4 text-xs text-gray-400">
-                        <li><a href="https://wa.me/59169246105?text=Hola,%20me%20interesa%20el%20servicio%20de%20p%C3%A1ginas%20web%20de%20este%20estilo" target="_blank" class="flex items-center gap-3 hover:text-white transition group"><span class="w-2 h-2 bg-preludio-blue group-hover:bg-white transition"></span>+591 69246105</a></li>
-                        <li><a href="mailto:hugorafelzuniga03@gmail.com?subject=Interés%20en%20Servicio%20Web&body=Hola,%20me%20interesa%20el%20servicio%20de%20p%C3%A1ginas%20web%20de%20este%20estilo." class="flex items-center gap-3 hover:text-white transition group"><span class="w-2 h-2 bg-preludio-blue group-hover:bg-white transition"></span>hugorafelzuniga03@gmail.com</a></li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-preludio-blue"></span>Santa Cruz, Bolivia</li>
-                    </ul>
-                </div>
-                <div class="col-span-1 md:col-span-1">
-                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Social</h4>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-preludio-blue transition-colors"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-                        <a href="https://www.instagram.com/preludio.bo" target="_blank" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-preludio-blue transition-colors"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-                    </div>
-                </div>
-                <div class="col-span-1 md:col-span-1">
-                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Legal</h4>
-                    <ul class="space-y-2 text-[10px] text-gray-600 uppercase">
-                        <li><a href="#" class="hover:text-white transition">Términos y Condiciones</a></li>
-                        <li><a href="#" class="hover:text-white transition">Política de Privacidad</a></li>
-                        <li><a href="#" class="hover:text-white transition">Reembolsos</a></li>
-                        <li><a href="#" onclick="Staff.open('admin');return false" class="hover:text-white transition">Administración</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-900 pt-8 flex flex-col items-center gap-2 text-[10px] text-gray-700 uppercase tracking-widest">
-                <p>&copy; 2026 Multipagos Events.</p>
-                <p>Desarrollado con ❤️ en Bolivia</p>
-            </div>
+        <div class="col-span-1 md:col-span-1" id="contacto-dev">
+          <h4 class="text-xs font-bold text-preludio-blue uppercase tracking-widest mb-6">Contacto Directo</h4>
+          <ul class="space-y-4 text-xs text-gray-400">
+            <li><a
+                href="https://wa.me/59169246105?text=Hola,%20me%20interesa%20el%20servicio%20de%20p%C3%A1ginas%20web%20de%20este%20estilo"
+                target="_blank" class="flex items-center gap-3 hover:text-white transition group"><span
+                  class="w-2 h-2 bg-preludio-blue group-hover:bg-white transition"></span>+591 69246105</a></li>
+            <li><a
+                href="mailto:hugorafelzuniga03@gmail.com?subject=Interés%20en%20Servicio%20Web&body=Hola,%20me%20interesa%20el%20servicio%20de%20p%C3%A1ginas%20web%20de%20este%20estilo."
+                class="flex items-center gap-3 hover:text-white transition group"><span
+                  class="w-2 h-2 bg-preludio-blue group-hover:bg-white transition"></span>hugorafelzuniga03@gmail.com</a>
+            </li>
+            <li class="flex items-center gap-3"><span class="w-2 h-2 bg-preludio-blue"></span>Santa Cruz, Bolivia</li>
+          </ul>
         </div>
-    </footer>
+        <div class="col-span-1 md:col-span-1">
+          <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Social</h4>
+          <div class="flex gap-4">
+            <a href="#"
+              class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-preludio-blue transition-colors"><svg
+                class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg></a>
+            <a href="https://www.instagram.com/preludio.bo" target="_blank"
+              class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-preludio-blue transition-colors"><svg
+                class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="col-span-1 md:col-span-1">
+          <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Legal</h4>
+          <ul class="space-y-2 text-[10px] text-gray-600 uppercase">
+            <li><a href="#" class="hover:text-white transition">Términos y Condiciones</a></li>
+            <li><a href="#" class="hover:text-white transition">Política de Privacidad</a></li>
+            <li><a href="#" class="hover:text-white transition">Reembolsos</a></li>
+            <li><a href="#" onclick="Staff.open('admin');return false"
+                class="hover:text-white transition">Administración</a></li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="border-t border-gray-900 pt-8 flex flex-col items-center gap-2 text-[10px] text-gray-700 uppercase tracking-widest">
+        <p>&copy; 2026 Multipagos Events.</p>
+        <p>Desarrollado con ❤️ en Bolivia</p>
+      </div>
+    </div>
+  </footer>
 
-    <script>
-        const sectors = { man:{name:'',price:0,qty:0}, woman:{name:'',price:0,qty:0}, couple:{name:'',price:0,qty:0} };
+  <script>
+    const sectors = { man: { name: '', price: 0, qty: 0 }, woman: { name: '', price: 0, qty: 0 }, couple: { name: '', price: 0, qty: 0 } };
 
-        // --- MOBILE CAROUSEL ---
-        let currentMobileSlide = 0;
-        const mobileSlides = document.querySelectorAll('.mobile-slide');
-        
-        if (mobileSlides.length > 0) {
-            setInterval(() => {
-                mobileSlides[currentMobileSlide].classList.remove('active');
-                currentMobileSlide = (currentMobileSlide + 1) % mobileSlides.length;
-                mobileSlides[currentMobileSlide].classList.add('active');
-            }, 3000);
-        }
+    // --- MOBILE CAROUSEL ---
+    let currentMobileSlide = 0;
+    const mobileSlides = document.querySelectorAll('.mobile-slide');
 
-        // DATA
-        let relacionadores = [
-            { name: "Luigi Céspedes", phone: "69287516" },
-            { name: "Angelica Bravo", phone: "69046445" },
-            { name: "Aylin Ardaya", phone: "69083133" },
-            { name: "Fabio Aparicio", phone: "78427311" },
-            { name: "Matias Flores", phone: "61365550" },
-            { name: "Lucas Leibovich", phone: "71096488" },
-            { name: "Santiago Guzman", phone: "67741931" },
-            { name: "Hugo Zúñiga", phone: "69246105" },
-            { name: "Andres Paniagua", phone: "71643866" },
-            { name: "Alejandro Unzueta", phone: "69262727" },
-            { name: "Mia Constanza", phone: "61626905" },
-            { name: "César Justiniano", phone: "76051808" },
-            { name: "Juan David Solís", phone: "63449456" },
-            { name: "Janine Solís", phone: "73612425" },
-            { name: "Bruno Rossini", phone: "77645850" },
-            { name: "Gabriel Saucedo", phone: "76347086" }
-        ];
+    if (mobileSlides.length > 0) {
+      setInterval(() => {
+        mobileSlides[currentMobileSlide].classList.remove('active');
+        currentMobileSlide = (currentMobileSlide + 1) % mobileSlides.length;
+        mobileSlides[currentMobileSlide].classList.add('active');
+      }, 3000);
+    }
 
-        function changeQty(id, delta) {
-            const sector = sectors[id];
-            if (!sector) return;
-            sector.qty = Math.max(0, sector.qty + delta);
-            document.getElementById(`qty-${id}`).innerText = sector.qty;
-            updateCart();
-        }
+    // DATA
+    let relacionadores = [
+      { name: "Luigi Céspedes", phone: "69287516" },
+      { name: "Angelica Bravo", phone: "69046445" },
+      { name: "Aylin Ardaya", phone: "69083133" },
+      { name: "Fabio Aparicio", phone: "78427311" },
+      { name: "Matias Flores", phone: "61365550" },
+      { name: "Lucas Leibovich", phone: "71096488" },
+      { name: "Santiago Guzman", phone: "67741931" },
+      { name: "Hugo Zúñiga", phone: "69246105" },
+      { name: "Andres Paniagua", phone: "71643866" },
+      { name: "Alejandro Unzueta", phone: "69262727" },
+      { name: "Mia Constanza", phone: "61626905" },
+      { name: "César Justiniano", phone: "76051808" },
+      { name: "Juan David Solís", phone: "63449456" },
+      { name: "Janine Solís", phone: "73612425" },
+      { name: "Bruno Rossini", phone: "77645850" },
+      { name: "Gabriel Saucedo", phone: "76347086" }
+    ];
 
-        function updateCart() {
-            const cartContent = document.getElementById('cart-content');
-            const emptyCart = document.getElementById('empty-cart');
-            const cartItems = document.getElementById('cart-items');
-            let total = 0, totalItems = 0;
-            cartItems.innerHTML = '';
+    function changeQty(id, delta) {
+      const sector = sectors[id];
+      if (!sector) return;
+      sector.qty = Math.max(0, sector.qty + delta);
+      document.getElementById(`qty-${id}`).innerText = sector.qty;
+      updateCart();
+    }
 
-            for (const key in sectors) {
-                const s = sectors[key];
-                if (s.qty > 0) {
-                    totalItems += s.qty;
-                    total += s.qty * s.price;
-                    cartItems.innerHTML += `
+    function updateCart() {
+      const cartContent = document.getElementById('cart-content');
+      const emptyCart = document.getElementById('empty-cart');
+      const cartItems = document.getElementById('cart-items');
+      let total = 0, totalItems = 0;
+      cartItems.innerHTML = '';
+
+      for (const key in sectors) {
+        const s = sectors[key];
+        if (s.qty > 0) {
+          totalItems += s.qty;
+          total += s.qty * s.price;
+          cartItems.innerHTML += `
                         <div class="flex justify-between items-center border-b border-gray-200 pb-2 mb-2">
                             <div>
                                 <p class="font-bold uppercase">${s.name}</p>
@@ -474,628 +646,636 @@
                             </div>
                             <p class="font-bold text-preludio-blue">${s.qty * s.price} Bs</p>
                         </div>`;
-                }
-            }
-
-            if (totalItems > 0) {
-                cartContent.classList.remove('hidden');
-                emptyCart.classList.add('hidden');
-                document.getElementById('total').innerText = `${total} Bs`;
-            } else {
-                cartContent.classList.add('hidden');
-                emptyCart.classList.remove('hidden');
-            }
         }
+      }
 
-        function openModal() {
-            const modal = document.getElementById('relacionadores-modal');
-            const content = document.getElementById('modal-content');
-            const list = document.getElementById('relacionadores-list');
-            list.innerHTML = '';
-            relacionadores.forEach((rel) => {
-                const btn = document.createElement('button');
-                btn.className = `w-full p-3 flex items-center justify-between group text-left border-b border-gray-100 hover:bg-preludio-blue hover:text-white transition-colors`;
-                btn.innerHTML = `
+      if (totalItems > 0) {
+        cartContent.classList.remove('hidden');
+        emptyCart.classList.add('hidden');
+        document.getElementById('total').innerText = `${total} Bs`;
+      } else {
+        cartContent.classList.add('hidden');
+        emptyCart.classList.remove('hidden');
+      }
+    }
+
+    function openModal() {
+      const modal = document.getElementById('relacionadores-modal');
+      const content = document.getElementById('modal-content');
+      const list = document.getElementById('relacionadores-list');
+      list.innerHTML = '';
+      relacionadores.forEach((rel) => {
+        const btn = document.createElement('button');
+        btn.className = `w-full p-3 flex items-center justify-between group text-left border-b border-gray-100 hover:bg-preludio-blue hover:text-white transition-colors`;
+        btn.innerHTML = `
                     <span class="font-bold text-sm uppercase">${rel.name}</span>
                     <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 `;
-                btn.onclick = () => sendToWhatsapp(rel.phone, rel.name, rel.id);
-                list.appendChild(btn);
-            });
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                content.classList.remove('scale-95', 'opacity-0');
-                content.classList.add('scale-100', 'opacity-100');
-            }, 10);
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('relacionadores-modal');
-            const content = document.getElementById('modal-content');
-            content.classList.remove('scale-100', 'opacity-100');
-            content.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }, 300);
-        }
-
-        function sendToWhatsapp(phone, name, relId) {
-            const items = [];
-            let total = 0;
-            for (const key in sectors) {
-                const s = sectors[key];
-                if (s.qty > 0) { items.push({ k: key, label: s.name, qty: s.qty, price: s.price }); total += s.qty * s.price; }
-            }
-            if (!items.length) return;
-            let text = `Hola ${name}, quiero comprar entradas para *PRELUDIO - LAST BREAK*:\n\n`;
-            items.forEach(i => { text += `▫️ ${i.qty} x ${i.label} (${i.qty * i.price} Bs)\n`; });
-            text += `\n*TOTAL: ${total} Bs*`;
-            /* Venta pendiente: se registra en Firebase para el relacionador elegido */
-            if (window.Pending && relId) {
-                const pid = Pending.newId();
-                text += `\n_Pedido #${pid}_`;
-                Pending.create({ id: pid, relId, rel: name, items, total });
-            }
-            window.open(`https://wa.me/591${phone}?text=${encodeURIComponent(text)}`, '_blank');
-            closeModal();
-        }
-    </script>
-
-<!-- ============ PANEL STAFF (relacionador · puerta · administración) ============ -->
-<div id="ov" class="ov"><div id="ov-c" class="max-w-md mx-auto p-4 pt-6 pb-16">
-<div class="flex justify-between items-center mb-5"><h2 id="ov-t" class="font-display text-3xl text-preludio-blue uppercase"></h2><button onclick="Staff.close()" class="text-4xl leading-none">&times;</button></div>
-<div id="ov-b"></div></div></div>
-
-<!-- Firebase SDK (ya incluido: no hace falta agregar nada más) -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-
-<script>
-(() => {
-'use strict';
-
-/* ======================================================================
-   1. CONFIGURACIÓN  (lo único que normalmente se edita)
-   ====================================================================== */
-const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyAkgEZl0nrQB8GZkikZcDLhxty2MTcUCIA",
-  authDomain: "halloweenfest.firebaseapp.com",
-  projectId: "halloweenfest",
-  storageBucket: "halloweenfest.firebasestorage.app",
-  messagingSenderId: "781666009211",
-  appId: "1:781666009211:web:e6a51b236a21746bdfe2de"
-};
-const QR_BACKGROUND = 'qr-fondo.png';        // foto de fondo del QR (junto al index.html)
-const EVENT_NAME    = 'PRELUDIO · LAST BREAK';
-const DEFAULT_PIN   = '1234';                 // PIN inicial de relacionadores y puerta
-const DEFAULT_ADMIN = 'admin123';             // PIN inicial de administración
-const TICKET_TYPES  = {                       // field = columna de precio dentro de cada tier
-  man:   { label: 'Hombre', seats: 1, field: 'm' },
-  woman: { label: 'Mujer',  seats: 1, field: 'w' },
-  couple:{ label: 'Pareja', seats: 2, field: 'c' }
-};
-/* Valores iniciales (se guardan en Firestore la primera vez; luego se editan desde Administración) */
-const defaultSettings = () => ({
-  dateLabel: '31 DE OCTUBRE',
-  banner: '⚠️ Siguiente Lote a las 18:00',
-  mapUrl: 'https://maps.app.goo.gl/4XemLvxxDCRcvDxj9?g_st=awb',
-  mapQ: 'Santa Cruz de la Sierra, Bolivia',
-  apin: hashPin(DEFAULT_ADMIN),
-  dpin: hashPin(DEFAULT_PIN),
-  tiers: [
-    { n: 'HOT SALE', m: 80,  w: 40, c: 0,   end: '', sold: true },
-    { n: 'TIER 1',   m: 90,  w: 50, c: 130, end: '2026-10-31T18:00', sold: false },
-    { n: 'TIER 2',   m: 100, w: 70, c: 150, end: '', sold: false }
-  ]
-});
-
-/* ======================================================================
-   2. UTILIDADES
-   ====================================================================== */
-const $ = id => document.getElementById(id);
-const ov = $('ov'), body = $('ov-b');
-const esc = s => String(s ?? '').replace(/[&<>"']/g, c => '&#' + c.charCodeAt(0) + ';');
-const fmtDate = ts => new Date(ts).toLocaleString('es-BO', { dateStyle: 'short', timeStyle: 'short' });
-const uid = () => Array.from(crypto.getRandomValues(new Uint8Array(3)), b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
-function download(blob, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click(); }
-
-/* Hash simple (cyrb53) para PINs y para detectar imágenes repetidas */
-function hash(str) {
-  let a = 0xdeadbeef, b = 0x41c6ce57;
-  for (let i = 0; i < str.length; i++) { const c = str.charCodeAt(i); a = Math.imul(a ^ c, 2654435761); b = Math.imul(b ^ c, 1597334677); }
-  a = Math.imul(a ^ (a >>> 16), 2246822507) ^ Math.imul(b ^ (b >>> 13), 3266489909);
-  b = Math.imul(b ^ (b >>> 16), 2246822507) ^ Math.imul(a ^ (a >>> 13), 3266489909);
-  return (4294967296 * (2097151 & b) + (a >>> 0)).toString(16);
-}
-/* PIN: se quitan TODOS los espacios y se ignoran mayúsculas antes de comparar o guardar */
-const cleanPin = s => String(s ?? '').replace(/\s+/g, '').toLowerCase();
-function hashPin(s) { return hash('p' + cleanPin(s)); }
-
-const loaded = {};   // carga perezosa de librerías pesadas (OCR, QR, lector de QR)
-const loadScript = src => loaded[src] ??= new Promise((ok, fail) => {
-  const e = document.createElement('script'); e.src = src; e.onload = ok; e.onerror = fail; document.head.appendChild(e);
-});
-
-/* ======================================================================
-   3. BASE DE DATOS (Firebase: Auth anónimo + Firestore)
-      kv/cfg · kv/rels · tickets/{id} · receipts/r{comprobante} · receipts/h{hash imagen}
-   ====================================================================== */
-const DB = {
-  fs: null,
-  async init() {
-    firebase.initializeApp(FIREBASE_CONFIG);
-    await firebase.auth().signInAnonymously();
-    DB.fs = firebase.firestore();
-  },
-  async getKV(k) { const d = await DB.fs.doc('kv/' + k).get(); return d.exists ? d.data().v : null; },
-  setKV: (k, v) => DB.fs.doc('kv/' + k).set({ v }),
-  async listTickets() {
-    const q = await DB.fs.collection('tickets').get();
-    return q.docs.map(d => d.data()).sort((a, b) => b.ts - a.ts);
-  },
-  /* Crea las entradas de UNA compra SOLO si ni el N° de comprobante ni la imagen se usaron antes (transacción atómica).
-     Si viene de un pedido pendiente, lo marca como concretado en la misma transacción. */
-  createTickets(tickets, img, pendingId) {
-    const { rid, hash } = tickets[0];
-    return DB.fs.runTransaction(async tx => {
-      const byId = DB.fs.doc('receipts/r' + rid), byImg = DB.fs.doc('receipts/h' + hash);
-      const [a, b] = await Promise.all([tx.get(byId), tx.get(byImg)]);
-      if (a.exists || b.exists) throw new Error('DUP');
-      tx.set(byId, { id: tickets[0].id, img }); tx.set(byImg, { id: tickets[0].id });
-      tickets.forEach(t => tx.set(DB.fs.doc('tickets/' + t.id), t));
-      if (pendingId) tx.update(DB.fs.doc('pending/' + pendingId), { status: 'done', doneTs: Date.now() });
-    });
-  },
-  /* Ventas pendientes (llegan desde la página pública) */
-  createPending: p => DB.fs.doc('pending/' + p.id).set(p),
-  watchPending(relId, cb) {   // tiempo real: devuelve la función para dejar de escuchar
-    return DB.fs.collection('pending').where('relId', '==', relId).onSnapshot(
-      q => cb(q.docs.map(d => d.data()).filter(p => p.status === 'pending').sort((a, b) => b.ts - a.ts)), e => console.error(e));
-  },
-  /* Marca un ingreso en puerta. Devuelve {r:'ok'|'used'|'none', t} */
-  useTicket(id) {
-    return DB.fs.runTransaction(async tx => {
-      const ref = DB.fs.doc('tickets/' + id), d = await tx.get(ref);
-      if (!d.exists) return { r: 'none' };
-      const t = d.data();
-      if (t.used >= t.max) return { r: 'used', t };
-      t.used++; t.scans = [...(t.scans || []), Date.now()];
-      tx.update(ref, { used: t.used, scans: t.scans });
-      return { r: 'ok', t };
-    });
-  },
-  async getReceipt(rid) { const d = await DB.fs.doc('receipts/r' + rid).get(); return d.exists ? d.data() : null; },
-  /* Anula una entrada; si era la última de su comprobante, libera el comprobante y la imagen */
-  async deleteTicket(id) {
-    const d = await DB.fs.doc('tickets/' + id).get(); if (!d.exists) return;
-    const { rid, hash } = d.data();
-    await DB.fs.doc('tickets/' + id).delete();
-    if ((await DB.fs.collection('tickets').where('rid', '==', rid).get()).empty) {
-      await DB.fs.doc('receipts/r' + rid).delete(); await DB.fs.doc('receipts/h' + hash).delete();
+        btn.onclick = () => sendToWhatsapp(rel.phone, rel.name, rel.id);
+        list.appendChild(btn);
+      });
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+      }, 10);
+      document.body.style.overflow = 'hidden';
     }
-  }
-};
 
-/* ======================================================================
-   4. ESTADO GLOBAL (configuración + relacionadores) y arranque
-   ====================================================================== */
-const State = { cfg: null, rels: [], error: null };
-const saveCfg  = async () => { await DB.setKV('cfg', State.cfg); renderStore(); };
-const saveRels = () => DB.setKV('rels', State.rels);
+    function closeModal() {
+      const modal = document.getElementById('relacionadores-modal');
+      const content = document.getElementById('modal-content');
+      content.classList.remove('scale-100', 'opacity-100');
+      content.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
 
-async function loadState() {
-  State.cfg = { ...defaultSettings(), ...(await DB.getKV('cfg') || {}) };
-  let rels = await DB.getKV('rels');
-  if (!rels) {   // primera vez: se siembran los relacionadores originales con PIN inicial
-    rels = relacionadores.map(r => ({ ...r, id: uid(), pin: hashPin(DEFAULT_PIN) }));
-    await DB.setKV('rels', rels);
-  }
-  State.rels = relacionadores = rels;   // `relacionadores` es la lista que usa el modal original
-  renderStore();
-}
-const ready = DB.init().then(loadState).catch(e => {
-  console.error(e); State.error = e; State.cfg = State.cfg || defaultSettings(); renderStore();
-});
+    function sendToWhatsapp(phone, name, relId) {
+      const items = [];
+      let total = 0;
+      for (const key in sectors) {
+        const s = sectors[key];
+        if (s.qty > 0) { items.push({ k: key, label: s.name, qty: s.qty, price: s.price }); total += s.qty * s.price; }
+      }
+      if (!items.length) return;
+      let text = `Hola ${name}, quiero comprar entradas para *PRELUDIO - LAST BREAK*:\n\n`;
+      items.forEach(i => { text += `▫️ ${i.qty} x ${i.label} (${i.qty * i.price} Bs)\n`; });
+      text += `\n*TOTAL: ${total} Bs*`;
+      /* Venta pendiente: se registra en Firebase para el relacionador elegido */
+      if (window.Pending && relId) {
+        const pid = Pending.newId();
+        text += `\n_Pedido #${pid}_`;
+        Pending.create({ id: pid, relId, rel: name, items, total });
+      }
+      window.open(`https://wa.me/591${phone}?text=${encodeURIComponent(text)}`, '_blank');
+      closeModal();
+    }
+  </script>
 
-/* Puente con la página pública: registra el pedido pendiente sin frenar el envío a WhatsApp */
-window.Pending = {
-  newId: uid,
-  async create(p) {
-    try { await ready; if (!State.error) await DB.createPending({ ...p, ts: Date.now(), status: 'pending' }); }
-    catch (e) { console.error('No se pudo registrar el pedido', e); }
-  }
-};
+  <!-- ============ PANEL STAFF (relacionador · puerta · administración) ============ -->
+  <div id="ov" class="ov">
+    <div id="ov-c" class="max-w-md mx-auto p-4 pt-6 pb-16">
+      <div class="flex justify-between items-center mb-5">
+        <h2 id="ov-t" class="font-display text-3xl text-preludio-blue uppercase"></h2><button onclick="Staff.close()"
+          class="text-4xl leading-none">&times;</button>
+      </div>
+      <div id="ov-b"></div>
+    </div>
+  </div>
 
-/* ======================================================================
-   5. TIENDA PÚBLICA (tiers, cuenta regresiva, aviso, mapa)
-   ====================================================================== */
-let activeTier = null;
-const soldCard = (t, price) => `<div class="ticket-card sold-out p-4 flex justify-between items-center"><div><span class="bg-red-600 text-white text-[10px] font-bold px-1 uppercase">Agotado</span><div class="font-bold text-gray-500">${esc(t.n)}</div></div><div class="text-xl font-bold text-gray-600">${price} Bs</div></div>`;
-const qtyControls = k => `<div class="flex items-center gap-4"><button onclick="changeQty('${k}',-1)" class="qty-btn">-</button><span class="font-bold w-4 text-center" id="qty-${k}">${sectors[k].qty}</span><button onclick="changeQty('${k}',1)" class="qty-btn">+</button></div>`;
-const buyCard = (k, t, price, badge) => `<div class="ticket-card p-4 flex flex-col gap-3"><div class="flex justify-between items-start"><div><span class="${badge} text-[10px] font-bold px-1 uppercase">Disponible</span><div class="font-display text-2xl text-white">${esc(t.n)}</div></div><div class="text-2xl font-bold text-white">${price} Bs</div></div><div class="flex items-center justify-between bg-black p-2 border border-gray-800"><span class="text-xs text-gray-500 uppercase">Cantidad</span>${qtyControls(k)}</div></div>`;
+  <!-- Firebase SDK (ya incluido: no hace falta agregar nada más) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
-function renderStore() {
-  const cfg = State.cfg, now = Date.now();
-  /* tier activo = primero que no esté agotado ni vencido */
-  activeTier = cfg.tiers.find(t => !t.sold && !(t.end && now > new Date(t.end)));
-  const visible = activeTier ? cfg.tiers.slice(0, cfg.tiers.indexOf(activeTier) + 1) : cfg.tiers;
+  <script>
+    (() => {
+      'use strict';
 
-  /* sincroniza precios con el carrito original (objeto global `sectors`) */
-  for (const [k, T] of Object.entries(TICKET_TYPES)) {
-    const price = activeTier ? Number(activeTier[T.field]) || 0 : 0;
-    sectors[k].price = price; if (!price) sectors[k].qty = 0;
-    sectors[k].name = k === 'couple' ? 'PAREJA' : `${activeTier ? activeTier.n : ''} (${k === 'man' ? 'H' : 'M'})`;
-  }
-  const column = (k, title, badge, color) => `<div class="space-y-4"><h3 class="${color} font-display text-2xl uppercase border-b border-gray-800 pb-2">${title}</h3>${
-    visible.filter(t => +t[TICKET_TYPES[k].field]).map(t => t === activeTier ? buyCard(k, t, t[TICKET_TYPES[k].field], badge) : soldCard(t, t[TICKET_TYPES[k].field])).join('')}</div>`;
-  const couple = activeTier && +activeTier.c ? `<div class="mt-8 border-t border-gray-800 pt-6"><div class="ticket-card p-4 flex flex-col sm:flex-row items-center justify-between gap-4"><div class="flex items-center gap-4"><div class="bg-white text-black p-2 font-bold text-xl">2x</div><div><div class="font-display text-2xl text-white">PAREJA</div><div class="text-xs text-gray-500 uppercase">Acceso doble</div></div></div><div class="flex items-center gap-6 w-full sm:w-auto justify-between"><div class="text-2xl font-bold text-white">${activeTier.c} Bs</div>${qtyControls('couple')}</div></div></div>` : '';
-  $('tiers').innerHTML = (activeTier ? '' : '<p class="text-center text-alert-red font-bold uppercase tracking-widest text-sm mb-6">Entradas agotadas</p>') +
-    `<div class="grid grid-cols-1 md:grid-cols-2 gap-8">${column('man', 'Hombres', 'bg-preludio-blue text-white', 'text-preludio-light')}${column('woman', 'Mujeres', 'bg-white text-black', 'text-white')}</div>` + couple;
+      /* ======================================================================
+         1. CONFIGURACIÓN  (lo único que normalmente se edita)
+         ====================================================================== */
+      const FIREBASE_CONFIG = {
+        apiKey: "AIzaSyAkgEZl0nrQB8GZkikZcDLhxty2MTcUCIA",
+        authDomain: "halloweenfest.firebaseapp.com",
+        projectId: "halloweenfest",
+        storageBucket: "halloweenfest.firebasestorage.app",
+        messagingSenderId: "781666009211",
+        appId: "1:781666009211:web:e6a51b236a21746bdfe2de"
+      };
+      const QR_BACKGROUND = 'qr-fondo.png';        // foto de fondo del QR (junto al index.html)
+      const EVENT_NAME = 'PRELUDIO · LAST BREAK';
+      const DEFAULT_PIN = '1234';                 // PIN inicial de relacionadores y puerta
+      const DEFAULT_ADMIN = 'admin123';             // PIN inicial de administración
+      const TICKET_TYPES = {                       // field = columna de precio dentro de cada tier
+        man: { label: 'Hombre', seats: 1, field: 'm' },
+        woman: { label: 'Mujer', seats: 1, field: 'w' },
+        couple: { label: 'Pareja', seats: 2, field: 'c' }
+      };
+      /* Valores iniciales (se guardan en Firestore la primera vez; luego se editan desde Administración) */
+      const defaultSettings = () => ({
+        dateLabel: '31 DE OCTUBRE',
+        banner: '⚠️ Siguiente Lote a las 18:00',
+        mapUrl: 'https://maps.app.goo.gl/4XemLvxxDCRcvDxj9?g_st=awb',
+        mapQ: 'Santa Cruz de la Sierra, Bolivia',
+        apin: hashPin(DEFAULT_ADMIN),
+        dpin: hashPin(DEFAULT_PIN),
+        tiers: [
+          { n: 'HOT SALE', m: 80, w: 40, c: 0, end: '', sold: true },
+          { n: 'TIER 1', m: 90, w: 50, c: 130, end: '2026-10-31T18:00', sold: false },
+          { n: 'TIER 2', m: 100, w: 70, c: 150, end: '', sold: false }
+        ]
+      });
 
-  const alert = $('urgent-alert');
-  alert.classList.toggle('hidden', !(activeTier && activeTier.end));
-  alert.firstElementChild.textContent = activeTier ? `⚠️ Últimas entradas ${activeTier.n} - ¡Corre!` : '';
-  $('ev-date').textContent = cfg.dateLabel;
-  $('banner').textContent = cfg.banner; $('banner').style.display = cfg.banner ? '' : 'none';
-  $('map-link').href = cfg.mapUrl;
-  const frame = $('map-f');
-  if (frame.dataset.q !== cfg.mapQ) { frame.dataset.q = cfg.mapQ; frame.src = 'https://maps.google.com/maps?q=' + encodeURIComponent(cfg.mapQ) + '&z=16&output=embed'; }
-  updateCart();
-  tickCountdown();
-}
-function tickCountdown() {
-  const left = activeTier && activeTier.end ? new Date(activeTier.end) - Date.now() : 0;
-  $('countdown-container').style.display = left > 0 ? '' : 'none';
-  if (left > 0) {
-    $('h').innerText = String(Math.floor(left / 36e5)).padStart(2, '0');
-    $('m').innerText = String(Math.floor(left % 36e5 / 6e4)).padStart(2, '0');
-    $('s').innerText = String(Math.floor(left % 6e4 / 1e3)).padStart(2, '0');
-  }
-}
-setInterval(tickCountdown, 1000);
-/* cada minuto: relee la configuración (si el panel no está abierto) para que todos vean los cambios */
-setInterval(() => { if (!State.cfg) return; (!State.error && !ov.classList.contains('on')) ? loadState().catch(console.error) : renderStore(); }, 60000);
+      /* ======================================================================
+         2. UTILIDADES
+         ====================================================================== */
+      const $ = id => document.getElementById(id);
+      const ov = $('ov'), body = $('ov-b');
+      const esc = s => String(s ?? '').replace(/[&<>"']/g, c => '&#' + c.charCodeAt(0) + ';');
+      const fmtDate = ts => new Date(ts).toLocaleString('es-BO', { dateStyle: 'short', timeStyle: 'short' });
+      const uid = () => Array.from(crypto.getRandomValues(new Uint8Array(3)), b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+      function download(blob, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click(); }
 
-/* ======================================================================
-   6. LECTURA DEL COMPROBANTE (OCR + validaciones)
-   ====================================================================== */
-const loadImage = file => new Promise((ok, fail) => { const i = new Image(); i.onload = () => ok(i); i.onerror = fail; i.src = URL.createObjectURL(file); });
-function scaleImage(img, maxW) {
-  const k = Math.min(1, maxW / img.width), c = document.createElement('canvas');
-  c.width = img.width * k; c.height = img.height * k; c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); return c;
-}
-async function ocr(canvas) {
-  await loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');
-  return (await Tesseract.recognize(canvas, 'spa+eng')).data.text;
-}
-/* Busca montos (junto a Bs/monto/importe/total) y el N° de comprobante en el texto leído */
-function parseReceipt(text, expected) {
-  const amounts = [...text.matchAll(/(?:bs\.?|bob|monto|importe|total)\D{0,12}?(\d{1,6}(?:[.,]\d{1,2})?)|(\d{1,6}[.,]\d{2})\s*(?:bs|bob)/gi)]
-    .map(m => parseFloat((m[1] || m[2]).replace(',', '.')));
-  const id = text.match(/(?:comprobante|transacci[oó]n|operaci[oó]n|referencia|\bnro\.?|n[°º]|\bid\b)\D{0,12}?((?=[A-Z0-9]*\d)[A-Z0-9]{6,})/i);
-  return { amountOk: amounts.some(n => Math.abs(n - expected) < 0.01), amounts: [...new Set(amounts)], receiptId: id ? id[1].toUpperCase() : '' };
-}
+      /* Hash simple (cyrb53) para PINs y para detectar imágenes repetidas */
+      function hash(str) {
+        let a = 0xdeadbeef, b = 0x41c6ce57;
+        for (let i = 0; i < str.length; i++) { const c = str.charCodeAt(i); a = Math.imul(a ^ c, 2654435761); b = Math.imul(b ^ c, 1597334677); }
+        a = Math.imul(a ^ (a >>> 16), 2246822507) ^ Math.imul(b ^ (b >>> 13), 3266489909);
+        b = Math.imul(b ^ (b >>> 16), 2246822507) ^ Math.imul(a ^ (a >>> 13), 3266489909);
+        return (4294967296 * (2097151 & b) + (a >>> 0)).toString(16);
+      }
+      /* PIN: se quitan TODOS los espacios y se ignoran mayúsculas antes de comparar o guardar */
+      const cleanPin = s => String(s ?? '').replace(/\s+/g, '').toLowerCase();
+      function hashPin(s) { return hash('p' + cleanPin(s)); }
 
-/* Fecha/hora impresa en el comprobante: dd/mm/aaaa, aaaa-mm-dd o "12 oct 2026", con hora hh:mm. Devuelve null si no la entiende */
-const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-function parseReceiptDate(text) {
-  const t = text.toLowerCase().replace(/,/g, ' ');
-  const forms = [
-    [/(\d{1,2})\s*[\/\-.]\s*(\d{1,2})\s*[\/\-.]\s*(\d{4}|\d{2})\b/, r => [+r[1], +r[2], +r[3]]],
-    [/(\d{4})-(\d{1,2})-(\d{1,2})/, r => [+r[3], +r[2], +r[1]]],
-    [/(\d{1,2})\s*(?:de\s+)?(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)[a-z]*\.?\s*(?:de\s+)?(\d{4})/, r => [+r[1], MONTHS.indexOf(r[2]) + 1, +r[3]]]
-  ];
-  for (const [re, pick] of forms) {
-    const r = t.match(re); if (!r) continue;
-    let [d, m, y] = pick(r); if (y < 100) y += 2000;
-    if (m < 1 || m > 12 || d < 1 || d > 31) continue;
-    const near = t.slice(Math.max(0, r.index - 40), r.index + r[0].length + 40);   // la hora suele estar junto a la fecha
-    const hm = near.match(/(\d{1,2}):(\d{2})(?::\d{2})?\s*(a\.?m\.?|p\.?m\.?)?/);
-    let h = hm ? +hm[1] : 0; const min = hm ? +hm[2] : 0;
-    if (hm && hm[3]) { if (/^p/.test(hm[3]) && h < 12) h += 12; if (/^a/.test(hm[3]) && h === 12) h = 0; }
-    return { ts: new Date(y, m - 1, d, h, min).getTime(), hasTime: !!hm };
-  }
-  return null;
-}
-/* Compara con la hora del pedido. NUNCA bloquea: devuelve un texto de advertencia ('' si todo bien).
-   Tolerancia de 10 min porque el reloj del celular del comprador puede no coincidir con el del banco. */
-function dateWarning(text, pendingTs) {
-  const f = parseReceiptDate(text), tol = 10 * 60e3;
-  if (!f) return `⚠️ No pude leer la fecha del comprobante: revísala a ojo (el pedido llegó ${fmtDate(pendingTs)}).`;
-  const ok = f.hasTime ? f.ts >= pendingTs - tol : f.ts + 864e5 >= pendingTs - tol;   // sin hora: se compara por día
-  return ok ? '' : `⚠️ Parece que la fecha del comprobante (${fmtDate(f.ts)}) es ANTERIOR al pedido (${fmtDate(pendingTs)}). Verifica que sea el pago correcto.`;
-}
+      const loaded = {};   // carga perezosa de librerías pesadas (OCR, QR, lector de QR)
+      const loadScript = src => loaded[src] ??= new Promise((ok, fail) => {
+        const e = document.createElement('script'); e.src = src; e.onload = ok; e.onerror = fail; document.head.appendChild(e);
+      });
 
-/* ======================================================================
-   7. ENTRADA CON QR (imagen para compartir)
-   ====================================================================== */
-async function drawTicket(t) {
-  await document.fonts.load('80px Anton');
-  await loadScript('https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js');
-  const W = 720, H = 1280, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
-  const x = cv.getContext('2d');
-  /* fondo: tu imagen (qr-fondo.png) o un degradado si no existe */
-  const bg = await new Promise(r => { const i = new Image(); i.onload = () => r(i); i.onerror = () => r(null); i.src = QR_BACKGROUND; });
-  if (bg) { const k = Math.max(W / bg.width, H / bg.height); x.drawImage(bg, (W - bg.width * k) / 2, (H - bg.height * k) / 2, bg.width * k, bg.height * k); }
-  else { const g = x.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#1a0526'); g.addColorStop(1, '#a63d00'); x.fillStyle = g; x.fillRect(0, 0, W, H); }
-  x.fillStyle = 'rgba(0,0,0,.35)'; x.fillRect(0, 0, W, H);
-  x.textAlign = 'center'; x.font = '90px serif'; x.fillText('🎃', W / 2, 170);
-  /* tarjeta blanca con QR e ID */
-  x.fillStyle = '#fff'; x.beginPath(); x.roundRect(170, 250, 380, 470, 32); x.fill();
-  const qr = qrcode(0, 'M'); qr.addData('PRELUDIO:' + t.id); qr.make();
-  const n = qr.getModuleCount(), m = Math.floor(320 / n), left = (W - m * n) / 2;
-  x.fillStyle = '#000';
-  for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (qr.isDark(r, c)) x.fillRect(left + c * m, 280 + r * m, m, m);
-  x.font = '800 44px Inter,sans-serif'; x.fillText('#' + t.id, W / 2, 675);
-  /* textos */
-  x.fillStyle = '#fff'; x.font = '600 32px Inter,sans-serif'; x.fillText(t.name, W / 2, 790, 620);
-  x.fillStyle = '#ff8c1a'; x.font = '130px Anton'; x.fillText('PRELUDIO', W / 2, 960, 640);
-  x.fillStyle = '#fff'; x.font = '64px Anton'; x.fillText('LAST BREAK', W / 2, 1040);
-  x.font = '600 26px Inter,sans-serif';
-  x.fillText(`${State.cfg.dateLabel} · ${t.type.toUpperCase()}`, W / 2, 1110);
-  x.fillText(`Válida para ${t.max > 1 ? t.max + ' ingresos' : '1 solo ingreso'}`, W / 2, 1150);
-  return cv;
-}
-const toBlob = cv => new Promise(r => cv.toBlob(r, 'image/png'));
-const saveImage = async (cv, t) => download(await toBlob(cv), `entrada-${t.id}.png`);
-async function shareTicket(cv, t) {
-  const file = new File([await toBlob(cv)], `entrada-${t.id}.png`, { type: 'image/png' });
-  const text = `🎟️ Entrada ${EVENT_NAME} — ${State.cfg.dateLabel}\n${t.name}\nVálida para ${t.max > 1 ? t.max + ' ingresos' : '1 solo ingreso'}. Presentá este QR en puerta.`;
-  if (navigator.canShare && navigator.canShare({ files: [file] })) {   // celular: menú de compartir (WhatsApp)
-    try { await navigator.share({ files: [file], text }); return; } catch (e) { if (e.name === 'AbortError') return; }
-  }
-  await saveImage(cv, t);                                              // computadora: descarga + abre WhatsApp
-  window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
-}
-const warnBox = w => w ? `<p class="border border-yellow-500 text-yellow-300 text-sm p-3 mb-3">${esc(w)}</p>` : '';
-function ticketRow(t) {
-  const b = document.createElement('button'); b.className = 'w-full text-left border border-purple-900 p-3 mb-2 flex justify-between gap-2 text-sm';
-  b.innerHTML = `<span><b>${esc(t.name)}</b> · ${esc(t.type)}<br><span class="text-gray-400">#${t.id} · ${fmtDate(t.ts)}</span></span><span>${t.used >= t.max ? '✅ usada' : '🎟️ ver QR'}</span>`;
-  b.onclick = () => ticketView(t); return b;
-}
-async function ticketView(t) {
-  setTitle('🎟️ Entrada lista'); body.innerHTML = '<p class="text-center text-gray-400">Generando…</p>';
-  const cv = await drawTicket(t); cv.className = 'w-full max-w-xs mx-auto border-2 border-preludio-blue';
-  body.innerHTML = warnBox(t.warn) + '<div id="t-c"></div><button id="t-s" class="btn mt-4" style="background:#25D366">📲 Compartir por WhatsApp</button><button id="t-d" class="btn2 mt-2">⬇️ Descargar imagen</button><button id="t-n" class="btn2 mt-2">← Volver</button>';
-  $('t-c').appendChild(cv);
-  $('t-s').onclick = () => shareTicket(cv, t); $('t-d').onclick = () => saveImage(cv, t);$('t-n').onclick = relView;
-}
-/* Compra con varias entradas: una lista; cada una abre su propio QR para compartir */
-function ticketsView(list) {
-  setTitle('🎟️ ' + list.length + ' entradas');
-  body.innerHTML = warnBox(list[0].warn) + '<p class="text-sm text-gray-300 mb-3">Toca cada entrada para compartir su QR.</p><div id="t-l"></div><button id="t-n" class="btn2 mt-3">← Volver</button>';
-  list.forEach(t => $('t-l').appendChild(ticketRow(t)));
-  $('t-n').onclick = relView;
-}
+      /* ======================================================================
+         3. BASE DE DATOS (Firebase: Auth anónimo + Firestore)
+            kv/cfg · kv/rels · tickets/{id} · receipts/r{comprobante} · receipts/h{hash imagen}
+         ====================================================================== */
+      const DB = {
+        fs: null,
+        async init() {
+          firebase.initializeApp(FIREBASE_CONFIG);
+          await firebase.auth().signInAnonymously();
+          DB.fs = firebase.firestore();
+        },
+        async getKV(k) { const d = await DB.fs.doc('kv/' + k).get(); return d.exists ? d.data().v : null; },
+        setKV: (k, v) => DB.fs.doc('kv/' + k).set({ v }),
+        async listTickets() {
+          const q = await DB.fs.collection('tickets').get();
+          return q.docs.map(d => d.data()).sort((a, b) => b.ts - a.ts);
+        },
+        /* Crea las entradas de UNA compra SOLO si ni el N° de comprobante ni la imagen se usaron antes (transacción atómica).
+           Si viene de un pedido pendiente, lo marca como concretado en la misma transacción. */
+        createTickets(tickets, img, pendingId) {
+          const { rid, hash } = tickets[0];
+          return DB.fs.runTransaction(async tx => {
+            const byId = DB.fs.doc('receipts/r' + rid), byImg = DB.fs.doc('receipts/h' + hash);
+            const [a, b] = await Promise.all([tx.get(byId), tx.get(byImg)]);
+            if (a.exists || b.exists) throw new Error('DUP');
+            tx.set(byId, { id: tickets[0].id, img }); tx.set(byImg, { id: tickets[0].id });
+            tickets.forEach(t => tx.set(DB.fs.doc('tickets/' + t.id), t));
+            if (pendingId) tx.update(DB.fs.doc('pending/' + pendingId), { status: 'done', doneTs: Date.now() });
+          });
+        },
+        /* Ventas pendientes (llegan desde la página pública) */
+        createPending: p => DB.fs.doc('pending/' + p.id).set(p),
+        watchPending(relId, cb) {   // tiempo real: devuelve la función para dejar de escuchar
+          return DB.fs.collection('pending').where('relId', '==', relId).onSnapshot(
+            q => cb(q.docs.map(d => d.data()).filter(p => p.status === 'pending').sort((a, b) => b.ts - a.ts)), e => console.error(e));
+        },
+        /* Marca un ingreso en puerta. Devuelve {r:'ok'|'used'|'none', t} */
+        useTicket(id) {
+          return DB.fs.runTransaction(async tx => {
+            const ref = DB.fs.doc('tickets/' + id), d = await tx.get(ref);
+            if (!d.exists) return { r: 'none' };
+            const t = d.data();
+            if (t.used >= t.max) return { r: 'used', t };
+            t.used++; t.scans = [...(t.scans || []), Date.now()];
+            tx.update(ref, { used: t.used, scans: t.scans });
+            return { r: 'ok', t };
+          });
+        },
+        async getReceipt(rid) { const d = await DB.fs.doc('receipts/r' + rid).get(); return d.exists ? d.data() : null; },
+        /* Anula una entrada; si era la última de su comprobante, libera el comprobante y la imagen */
+        async deleteTicket(id) {
+          const d = await DB.fs.doc('tickets/' + id).get(); if (!d.exists) return;
+          const { rid, hash } = d.data();
+          await DB.fs.doc('tickets/' + id).delete();
+          if ((await DB.fs.collection('tickets').where('rid', '==', rid).get()).empty) {
+            await DB.fs.doc('receipts/r' + rid).delete(); await DB.fs.doc('receipts/h' + hash).delete();
+          }
+        }
+      };
 
-/* ======================================================================
-   8. PANEL: acceso y vista del RELACIONADOR
-   ====================================================================== */
-const setTitle = (t, wide) => { $('ov-t').textContent = t; $('ov-c').className = (wide ? 'max-w-3xl' : 'max-w-md') + ' mx-auto p-4 pt-6 pb-16'; };
+      /* ======================================================================
+         4. ESTADO GLOBAL (configuración + relacionadores) y arranque
+         ====================================================================== */
+      const State = { cfg: null, rels: [], error: null };
+      const saveCfg = async () => { await DB.setKV('cfg', State.cfg); renderStore(); };
+      const saveRels = () => DB.setKV('rels', State.rels);
 
-function loginView(view, tab) {
-  setTitle({ rel: '🎃 Relacionador', gate: '🚪 Puerta', admin: '⚙️ Administración' }[view]);
-  body.innerHTML = (view === 'rel' ? `<label class="lb">Tu nombre</label><select id="l-n" class="fld mb-3">${State.rels.map(r => `<option value="${r.id}">${esc(r.name)}</option>`).join('')}</select>` : '') +
-    '<label class="lb">PIN</label><input id="pin" type="password" autocomplete="off" autocapitalize="off" class="fld mb-1"><label class="text-xs text-gray-400 block mb-3"><input id="pin-s" type="checkbox"> Mostrar PIN</label><button id="pin-b" class="btn">Entrar</button><p id="pin-e" class="text-red-400 text-sm mt-2"></p>';
-  $('pin-b').onclick = () => {
-    const pin = hashPin($('pin').value); let ok = false;
-    if (view === 'rel') { const r = State.rels.find(r => r.id === $('l-n').value); ok = !!r && r.pin === pin; if (ok) sessionStorage.setItem('rel', r.id); }
-    else { ok = pin === (view === 'gate' ? State.cfg.dpin : State.cfg.apin); if (ok) sessionStorage.setItem(view, '1'); }
-    ok ? route(view, tab) : $('pin-e').textContent = 'PIN incorrecto';
-  };
-  $('pin').onkeydown = e => e.key === 'Enter' && $('pin-b').click();
-  $('pin-s').onchange = e => { $('pin').type = e.target.checked ? 'text' : 'password'; };
-}
+      async function loadState() {
+        State.cfg = { ...defaultSettings(), ...(await DB.getKV('cfg') || {}) };
+        let rels = await DB.getKV('rels');
+        if (!rels) {   // primera vez: se siembran los relacionadores originales con PIN inicial
+          rels = relacionadores.map(r => ({ ...r, id: uid(), pin: hashPin(DEFAULT_PIN) }));
+          await DB.setKV('rels', rels);
+        }
+        State.rels = relacionadores = rels;   // `relacionadores` es la lista que usa el modal original
+        renderStore();
+      }
+      const ready = DB.init().then(loadState).catch(e => {
+        console.error(e); State.error = e; State.cfg = State.cfg || defaultSettings(); renderStore();
+      });
 
-let me = null, lastReceipt = null, pendingSel = null, pendingList = [], unsubPending = null;
-const stopPendingWatch = () => { if (unsubPending) { unsubPending(); unsubPending = null; } };
+      /* Puente con la página pública: registra el pedido pendiente sin frenar el envío a WhatsApp */
+      window.Pending = {
+        newId: uid,
+        async create(p) {
+          try { await ready; if (!State.error) await DB.createPending({ ...p, ts: Date.now(), status: 'pending' }); }
+          catch (e) { console.error('No se pudo registrar el pedido', e); }
+        }
+      };
 
-function relView() {
-  me = State.rels.find(r => r.id === sessionStorage.getItem('rel'));
-  if (!me) return loginView('rel');
-  stopPendingWatch(); pendingList = []; if (pendingSel && pendingSel.relId !== me.id) pendingSel = null;
-  setTitle('🎃 ' + me.name);
-  body.innerHTML = `<h3 class="font-display text-xl mb-2">📥 Ventas pendientes</h3><div id="r-pend" class="mb-6"></div><div id="r-form"></div>
+      /* ======================================================================
+         5. TIENDA PÚBLICA (tiers, cuenta regresiva, aviso, mapa)
+         ====================================================================== */
+      let activeTier = null;
+      const soldCard = (t, price) => `<div class="ticket-card sold-out p-4 flex justify-between items-center"><div><span class="bg-red-600 text-white text-[10px] font-bold px-1 uppercase">Agotado</span><div class="font-bold text-gray-500">${esc(t.n)}</div></div><div class="text-xl font-bold text-gray-600">${price} Bs</div></div>`;
+      const qtyControls = k => `<div class="flex items-center gap-4"><button onclick="changeQty('${k}',-1)" class="qty-btn">-</button><span class="font-bold w-4 text-center" id="qty-${k}">${sectors[k].qty}</span><button onclick="changeQty('${k}',1)" class="qty-btn">+</button></div>`;
+      const buyCard = (k, t, price, badge) => `<div class="ticket-card p-4 flex flex-col gap-3"><div class="flex justify-between items-start"><div><span class="${badge} text-[10px] font-bold px-1 uppercase">Disponible</span><div class="font-display text-2xl text-white">${esc(t.n)}</div></div><div class="text-2xl font-bold text-white">${price} Bs</div></div><div class="flex items-center justify-between bg-black p-2 border border-gray-800"><span class="text-xs text-gray-500 uppercase">Cantidad</span>${qtyControls(k)}</div></div>`;
+
+      function renderStore() {
+        const cfg = State.cfg, now = Date.now();
+        /* tier activo = primero que no esté agotado ni vencido */
+        activeTier = cfg.tiers.find(t => !t.sold && !(t.end && now > new Date(t.end)));
+        const visible = activeTier ? cfg.tiers.slice(0, cfg.tiers.indexOf(activeTier) + 1) : cfg.tiers;
+
+        /* sincroniza precios con el carrito original (objeto global `sectors`) */
+        for (const [k, T] of Object.entries(TICKET_TYPES)) {
+          const price = activeTier ? Number(activeTier[T.field]) || 0 : 0;
+          sectors[k].price = price; if (!price) sectors[k].qty = 0;
+          sectors[k].name = k === 'couple' ? 'PAREJA' : `${activeTier ? activeTier.n : ''} (${k === 'man' ? 'H' : 'M'})`;
+        }
+        const column = (k, title, badge, color) => `<div class="space-y-4"><h3 class="${color} font-display text-2xl uppercase border-b border-gray-800 pb-2">${title}</h3>${visible.filter(t => +t[TICKET_TYPES[k].field]).map(t => t === activeTier ? buyCard(k, t, t[TICKET_TYPES[k].field], badge) : soldCard(t, t[TICKET_TYPES[k].field])).join('')}</div>`;
+        const couple = activeTier && +activeTier.c ? `<div class="mt-8 border-t border-gray-800 pt-6"><div class="ticket-card p-4 flex flex-col sm:flex-row items-center justify-between gap-4"><div class="flex items-center gap-4"><div class="bg-white text-black p-2 font-bold text-xl">2x</div><div><div class="font-display text-2xl text-white">PAREJA</div><div class="text-xs text-gray-500 uppercase">Acceso doble</div></div></div><div class="flex items-center gap-6 w-full sm:w-auto justify-between"><div class="text-2xl font-bold text-white">${activeTier.c} Bs</div>${qtyControls('couple')}</div></div></div>` : '';
+        $('tiers').innerHTML = (activeTier ? '' : '<p class="text-center text-alert-red font-bold uppercase tracking-widest text-sm mb-6">Entradas agotadas</p>') +
+          `<div class="grid grid-cols-1 md:grid-cols-2 gap-8">${column('man', 'Hombres', 'bg-preludio-blue text-white', 'text-preludio-light')}${column('woman', 'Mujeres', 'bg-white text-black', 'text-white')}</div>` + couple;
+
+        const alert = $('urgent-alert');
+        alert.classList.toggle('hidden', !(activeTier && activeTier.end));
+        alert.firstElementChild.textContent = activeTier ? `⚠️ Últimas entradas ${activeTier.n} - ¡Corre!` : '';
+        $('ev-date').textContent = cfg.dateLabel;
+        $('banner').textContent = cfg.banner; $('banner').style.display = cfg.banner ? '' : 'none';
+        $('map-link').href = cfg.mapUrl;
+        const frame = $('map-f');
+        if (frame.dataset.q !== cfg.mapQ) { frame.dataset.q = cfg.mapQ; frame.src = 'https://maps.google.com/maps?q=' + encodeURIComponent(cfg.mapQ) + '&z=16&output=embed'; }
+        updateCart();
+        tickCountdown();
+      }
+      function tickCountdown() {
+        const left = activeTier && activeTier.end ? new Date(activeTier.end) - Date.now() : 0;
+        $('countdown-container').style.display = left > 0 ? '' : 'none';
+        if (left > 0) {
+          $('h').innerText = String(Math.floor(left / 36e5)).padStart(2, '0');
+          $('m').innerText = String(Math.floor(left % 36e5 / 6e4)).padStart(2, '0');
+          $('s').innerText = String(Math.floor(left % 6e4 / 1e3)).padStart(2, '0');
+        }
+      }
+      setInterval(tickCountdown, 1000);
+      /* cada minuto: relee la configuración (si el panel no está abierto) para que todos vean los cambios */
+      setInterval(() => { if (!State.cfg) return; (!State.error && !ov.classList.contains('on')) ? loadState().catch(console.error) : renderStore(); }, 60000);
+
+      /* ======================================================================
+         6. LECTURA DEL COMPROBANTE (OCR + validaciones)
+         ====================================================================== */
+      const loadImage = file => new Promise((ok, fail) => { const i = new Image(); i.onload = () => ok(i); i.onerror = fail; i.src = URL.createObjectURL(file); });
+      function scaleImage(img, maxW) {
+        const k = Math.min(1, maxW / img.width), c = document.createElement('canvas');
+        c.width = img.width * k; c.height = img.height * k; c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); return c;
+      }
+      async function ocr(canvas) {
+        await loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');
+        return (await Tesseract.recognize(canvas, 'spa+eng')).data.text;
+      }
+      /* Busca montos (junto a Bs/monto/importe/total) y el N° de comprobante en el texto leído */
+      function parseReceipt(text, expected) {
+        const amounts = [...text.matchAll(/(?:bs\.?|bob|monto|importe|total)\D{0,12}?(\d{1,6}(?:[.,]\d{1,2})?)|(\d{1,6}[.,]\d{2})\s*(?:bs|bob)/gi)]
+          .map(m => parseFloat((m[1] || m[2]).replace(',', '.')));
+        const id = text.match(/(?:comprobante|transacci[oó]n|operaci[oó]n|referencia|\bnro\.?|n[°º]|\bid\b)\D{0,12}?((?=[A-Z0-9]*\d)[A-Z0-9]{6,})/i);
+        return { amountOk: amounts.some(n => Math.abs(n - expected) < 0.01), amounts: [...new Set(amounts)], receiptId: id ? id[1].toUpperCase() : '' };
+      }
+
+      /* Fecha/hora impresa en el comprobante: dd/mm/aaaa, aaaa-mm-dd o "12 oct 2026", con hora hh:mm. Devuelve null si no la entiende */
+      const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+      function parseReceiptDate(text) {
+        const t = text.toLowerCase().replace(/,/g, ' ');
+        const forms = [
+          [/(\d{1,2})\s*[\/\-.]\s*(\d{1,2})\s*[\/\-.]\s*(\d{4}|\d{2})\b/, r => [+r[1], +r[2], +r[3]]],
+          [/(\d{4})-(\d{1,2})-(\d{1,2})/, r => [+r[3], +r[2], +r[1]]],
+          [/(\d{1,2})\s*(?:de\s+)?(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)[a-z]*\.?\s*(?:de\s+)?(\d{4})/, r => [+r[1], MONTHS.indexOf(r[2]) + 1, +r[3]]]
+        ];
+        for (const [re, pick] of forms) {
+          const r = t.match(re); if (!r) continue;
+          let [d, m, y] = pick(r); if (y < 100) y += 2000;
+          if (m < 1 || m > 12 || d < 1 || d > 31) continue;
+          const near = t.slice(Math.max(0, r.index - 40), r.index + r[0].length + 40);   // la hora suele estar junto a la fecha
+          const hm = near.match(/(\d{1,2}):(\d{2})(?::\d{2})?\s*(a\.?m\.?|p\.?m\.?)?/);
+          let h = hm ? +hm[1] : 0; const min = hm ? +hm[2] : 0;
+          if (hm && hm[3]) { if (/^p/.test(hm[3]) && h < 12) h += 12; if (/^a/.test(hm[3]) && h === 12) h = 0; }
+          return { ts: new Date(y, m - 1, d, h, min).getTime(), hasTime: !!hm };
+        }
+        return null;
+      }
+      /* Compara con la hora del pedido. NUNCA bloquea: devuelve un texto de advertencia ('' si todo bien).
+         Tolerancia de 10 min porque el reloj del celular del comprador puede no coincidir con el del banco. */
+      function dateWarning(text, pendingTs) {
+        const f = parseReceiptDate(text), tol = 10 * 60e3;
+        if (!f) return `⚠️ No pude leer la fecha del comprobante: revísala a ojo (el pedido llegó ${fmtDate(pendingTs)}).`;
+        const ok = f.hasTime ? f.ts >= pendingTs - tol : f.ts + 864e5 >= pendingTs - tol;   // sin hora: se compara por día
+        return ok ? '' : `⚠️ Parece que la fecha del comprobante (${fmtDate(f.ts)}) es ANTERIOR al pedido (${fmtDate(pendingTs)}). Verifica que sea el pago correcto.`;
+      }
+
+      /* ======================================================================
+         7. ENTRADA CON QR (imagen para compartir)
+         ====================================================================== */
+      async function drawTicket(t) {
+        await document.fonts.load('80px Anton');
+        await loadScript('https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js');
+        const W = 720, H = 1280, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+        const x = cv.getContext('2d');
+        /* fondo: tu imagen (qr-fondo.png) o un degradado si no existe */
+        const bg = await new Promise(r => { const i = new Image(); i.onload = () => r(i); i.onerror = () => r(null); i.src = QR_BACKGROUND; });
+        if (bg) { const k = Math.max(W / bg.width, H / bg.height); x.drawImage(bg, (W - bg.width * k) / 2, (H - bg.height * k) / 2, bg.width * k, bg.height * k); }
+        else { const g = x.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#1a0526'); g.addColorStop(1, '#a63d00'); x.fillStyle = g; x.fillRect(0, 0, W, H); }
+        x.fillStyle = 'rgba(0,0,0,.35)'; x.fillRect(0, 0, W, H);
+        x.textAlign = 'center'; x.font = '90px serif'; x.fillText('🎃', W / 2, 170);
+        /* tarjeta blanca con QR e ID */
+        x.fillStyle = '#fff'; x.beginPath(); x.roundRect(170, 250, 380, 470, 32); x.fill();
+        const qr = qrcode(0, 'M'); qr.addData('PRELUDIO:' + t.id); qr.make();
+        const n = qr.getModuleCount(), m = Math.floor(320 / n), left = (W - m * n) / 2;
+        x.fillStyle = '#000';
+        for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (qr.isDark(r, c)) x.fillRect(left + c * m, 280 + r * m, m, m);
+        x.font = '800 44px Inter,sans-serif'; x.fillText('#' + t.id, W / 2, 675);
+        /* textos */
+        x.fillStyle = '#fff'; x.font = '600 32px Inter,sans-serif'; x.fillText(t.name, W / 2, 790, 620);
+        x.fillStyle = '#ff8c1a'; x.font = '130px Anton'; x.fillText('PRELUDIO', W / 2, 960, 640);
+        x.fillStyle = '#fff'; x.font = '64px Anton'; x.fillText('LAST BREAK', W / 2, 1040);
+        x.font = '600 26px Inter,sans-serif';
+        x.fillText(`${State.cfg.dateLabel} · ${t.type.toUpperCase()}`, W / 2, 1110);
+        x.fillText(`Válida para ${t.max > 1 ? t.max + ' ingresos' : '1 solo ingreso'}`, W / 2, 1150);
+        return cv;
+      }
+      const toBlob = cv => new Promise(r => cv.toBlob(r, 'image/png'));
+      const saveImage = async (cv, t) => download(await toBlob(cv), `entrada-${t.id}.png`);
+      async function shareTicket(cv, t) {
+        const file = new File([await toBlob(cv)], `entrada-${t.id}.png`, { type: 'image/png' });
+        const text = `🎟️ Entrada ${EVENT_NAME} — ${State.cfg.dateLabel}\n${t.name}\nVálida para ${t.max > 1 ? t.max + ' ingresos' : '1 solo ingreso'}. Presentá este QR en puerta.`;
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {   // celular: menú de compartir (WhatsApp)
+          try { await navigator.share({ files: [file], text }); return; } catch (e) { if (e.name === 'AbortError') return; }
+        }
+        await saveImage(cv, t);                                              // computadora: descarga + abre WhatsApp
+        window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+      }
+      const warnBox = w => w ? `<p class="border border-yellow-500 text-yellow-300 text-sm p-3 mb-3">${esc(w)}</p>` : '';
+      function ticketRow(t) {
+        const b = document.createElement('button'); b.className = 'w-full text-left border border-purple-900 p-3 mb-2 flex justify-between gap-2 text-sm';
+        b.innerHTML = `<span><b>${esc(t.name)}</b> · ${esc(t.type)}<br><span class="text-gray-400">#${t.id} · ${fmtDate(t.ts)}</span></span><span>${t.used >= t.max ? '✅ usada' : '🎟️ ver QR'}</span>`;
+        b.onclick = () => ticketView(t); return b;
+      }
+      async function ticketView(t) {
+        setTitle('🎟️ Entrada lista'); body.innerHTML = '<p class="text-center text-gray-400">Generando…</p>';
+        const cv = await drawTicket(t); cv.className = 'w-full max-w-xs mx-auto border-2 border-preludio-blue';
+        body.innerHTML = warnBox(t.warn) + '<div id="t-c"></div><button id="t-s" class="btn mt-4" style="background:#25D366">📲 Compartir por WhatsApp</button><button id="t-d" class="btn2 mt-2">⬇️ Descargar imagen</button><button id="t-n" class="btn2 mt-2">← Volver</button>';
+        $('t-c').appendChild(cv);
+        $('t-s').onclick = () => shareTicket(cv, t); $('t-d').onclick = () => saveImage(cv, t); $('t-n').onclick = relView;
+      }
+      /* Compra con varias entradas: una lista; cada una abre su propio QR para compartir */
+      function ticketsView(list) {
+        setTitle('🎟️ ' + list.length + ' entradas');
+        body.innerHTML = warnBox(list[0].warn) + '<p class="text-sm text-gray-300 mb-3">Toca cada entrada para compartir su QR.</p><div id="t-l"></div><button id="t-n" class="btn2 mt-3">← Volver</button>';
+        list.forEach(t => $('t-l').appendChild(ticketRow(t)));
+        $('t-n').onclick = relView;
+      }
+
+      /* ======================================================================
+         8. PANEL: acceso y vista del RELACIONADOR
+         ====================================================================== */
+      const setTitle = (t, wide) => { $('ov-t').textContent = t; $('ov-c').className = (wide ? 'max-w-3xl' : 'max-w-md') + ' mx-auto p-4 pt-6 pb-16'; };
+
+      function loginView(view, tab) {
+        setTitle({ rel: '🎃 Relacionador', gate: '🚪 Puerta', admin: '⚙️ Administración' }[view]);
+        body.innerHTML = (view === 'rel' ? `<label class="lb">Tu nombre</label><select id="l-n" class="fld mb-3">${State.rels.map(r => `<option value="${r.id}">${esc(r.name)}</option>`).join('')}</select>` : '') +
+          '<label class="lb">PIN</label><input id="pin" type="password" autocomplete="off" autocapitalize="off" class="fld mb-1"><label class="text-xs text-gray-400 block mb-3"><input id="pin-s" type="checkbox"> Mostrar PIN</label><button id="pin-b" class="btn">Entrar</button><p id="pin-e" class="text-red-400 text-sm mt-2"></p>';
+        $('pin-b').onclick = () => {
+          const pin = hashPin($('pin').value); let ok = false;
+          if (view === 'rel') { const r = State.rels.find(r => r.id === $('l-n').value); ok = !!r && r.pin === pin; if (ok) sessionStorage.setItem('rel', r.id); }
+          else { ok = pin === (view === 'gate' ? State.cfg.dpin : State.cfg.apin); if (ok) sessionStorage.setItem(view, '1'); }
+          ok ? route(view, tab) : $('pin-e').textContent = 'PIN incorrecto';
+        };
+        $('pin').onkeydown = e => e.key === 'Enter' && $('pin-b').click();
+        $('pin-s').onchange = e => { $('pin').type = e.target.checked ? 'text' : 'password'; };
+      }
+
+      let me = null, lastReceipt = null, pendingSel = null, pendingList = [], unsubPending = null;
+      const stopPendingWatch = () => { if (unsubPending) { unsubPending(); unsubPending = null; } };
+
+      function relView() {
+        me = State.rels.find(r => r.id === sessionStorage.getItem('rel'));
+        if (!me) return loginView('rel');
+        stopPendingWatch(); pendingList = []; if (pendingSel && pendingSel.relId !== me.id) pendingSel = null;
+        setTitle('🎃 ' + me.name);
+        body.innerHTML = `<h3 class="font-display text-xl mb-2">📥 Ventas pendientes</h3><div id="r-pend" class="mb-6"></div><div id="r-form"></div>
     <h3 class="font-display text-xl mt-6 mb-2">Mis entradas</h3><div id="r-list"></div>
     <details class="mt-6 border border-purple-900 p-3"><summary class="lb cursor-pointer">Cambiar mi PIN</summary><input id="o-p" type="password" class="fld my-2" placeholder="PIN actual"><input id="n-p" type="password" class="fld mb-2" placeholder="Nuevo PIN (mín. 4)"><button id="p-go" class="btn2">Guardar PIN</button></details>
     <button class="btn2 mt-4" onclick="Staff.logout()">Cerrar sesión</button>`;
-  renderForm(); renderPending();
-  unsubPending = DB.watchPending(me.id, list => { pendingList = list; renderPending(); });   // llegan en vivo
-  $('p-go').onclick = async () => {
-    if (hashPin($('o-p').value) !== me.pin) return alert('PIN actual incorrecto');
-    if (cleanPin($('n-p').value).length < 4) return alert('Mínimo 4 caracteres');
-    me.pin = hashPin($('n-p').value); await saveRels(); alert('PIN cambiado ✔'); relView();
-  };
-  DB.listTickets().then(all => {   // solo se muestran SUS entradas
-    const box = $('r-list'); if (!box) return;
-    const mine = all.filter(t => t.relId === me.id);
-    box.innerHTML = mine.length ? '' : '<p class="text-gray-500 text-sm">Aún no hay entradas.</p>';
-    mine.forEach(t => box.appendChild(ticketRow(t)));
-  });
-}
-const itemsText = items => items.map(i => `${i.qty}× ${esc(i.label)}`).join(' · ');
+        renderForm(); renderPending();
+        unsubPending = DB.watchPending(me.id, list => { pendingList = list; renderPending(); });   // llegan en vivo
+        $('p-go').onclick = async () => {
+          if (hashPin($('o-p').value) !== me.pin) return alert('PIN actual incorrecto');
+          if (cleanPin($('n-p').value).length < 4) return alert('Mínimo 4 caracteres');
+          me.pin = hashPin($('n-p').value); await saveRels(); alert('PIN cambiado ✔'); relView();
+        };
+        DB.listTickets().then(all => {   // solo se muestran SUS entradas
+          const box = $('r-list'); if (!box) return;
+          const mine = all.filter(t => t.relId === me.id);
+          box.innerHTML = mine.length ? '' : '<p class="text-gray-500 text-sm">Aún no hay entradas.</p>';
+          mine.forEach(t => box.appendChild(ticketRow(t)));
+        });
+      }
+      const itemsText = items => items.map(i => `${i.qty}× ${esc(i.label)}`).join(' · ');
 
-/* Lista de pedidos pendientes de este relacionador */
-function renderPending() {
-  const box = $('r-pend'); if (!box) return;
-  if (pendingSel && !pendingList.some(p => p.id === pendingSel.id)) { pendingSel = null; renderForm(); }   // ya se concretó
-  box.innerHTML = pendingList.length ? '' : '<p class="text-gray-500 text-sm">No hay pedidos nuevos.</p>';
-  pendingList.forEach(p => {
-    const b = document.createElement('button');
-    b.className = 'w-full text-left border p-3 mb-2 text-sm ' + (pendingSel && pendingSel.id === p.id ? 'border-preludio-blue bg-black' : 'border-purple-900');
-    b.innerHTML = `<b class="text-preludio-blue">#${p.id}</b> · ${fmtDate(p.ts)} · <b>${p.total} Bs</b><br><span class="text-gray-300">${itemsText(p.items)}</span>`;
-    b.onclick = () => { pendingSel = p; lastReceipt = null; renderForm(); renderPending(); };
-    box.appendChild(b);
-  });
-}
-/* Formulario: concretar el pedido elegido, o venta directa (sin pedido previo) */
-function renderForm() {
-  const f = $('r-form'); if (!f) return;
-  const options = Object.entries(TICKET_TYPES).filter(([k]) => sectors[k].price).map(([k, T]) => `<option value="${k}">${T.label} · ${sectors[k].price} Bs</option>`).join('');
-  const what = pendingSel
-    ? `<div class="border border-preludio-blue p-3 mb-3 text-sm"><b>Pedido #${pendingSel.id}</b> · ${pendingSel.total} Bs<br>${itemsText(pendingSel.items)}<br><a href="#" id="r-cancel" class="text-xs text-gray-400 underline">Cancelar y hacer venta directa</a></div>`
-    : `<label class="lb">Venta directa · tipo de entrada</label><select id="r-type" class="fld mb-3">${options}</select>`;
-  f.innerHTML = (pendingSel || options) ? what + `
+      /* Lista de pedidos pendientes de este relacionador */
+      function renderPending() {
+        const box = $('r-pend'); if (!box) return;
+        if (pendingSel && !pendingList.some(p => p.id === pendingSel.id)) { pendingSel = null; renderForm(); }   // ya se concretó
+        box.innerHTML = pendingList.length ? '' : '<p class="text-gray-500 text-sm">No hay pedidos nuevos.</p>';
+        pendingList.forEach(p => {
+          const b = document.createElement('button');
+          b.className = 'w-full text-left border p-3 mb-2 text-sm ' + (pendingSel && pendingSel.id === p.id ? 'border-preludio-blue bg-black' : 'border-purple-900');
+          b.innerHTML = `<b class="text-preludio-blue">#${p.id}</b> · ${fmtDate(p.ts)} · <b>${p.total} Bs</b><br><span class="text-gray-300">${itemsText(p.items)}</span>`;
+          b.onclick = () => { pendingSel = p; lastReceipt = null; renderForm(); renderPending(); };
+          box.appendChild(b);
+        });
+      }
+      /* Formulario: concretar el pedido elegido, o venta directa (sin pedido previo) */
+      function renderForm() {
+        const f = $('r-form'); if (!f) return;
+        const options = Object.entries(TICKET_TYPES).filter(([k]) => sectors[k].price).map(([k, T]) => `<option value="${k}">${T.label} · ${sectors[k].price} Bs</option>`).join('');
+        const what = pendingSel
+          ? `<div class="border border-preludio-blue p-3 mb-3 text-sm"><b>Pedido #${pendingSel.id}</b> · ${pendingSel.total} Bs<br>${itemsText(pendingSel.items)}<br><a href="#" id="r-cancel" class="text-xs text-gray-400 underline">Cancelar y hacer venta directa</a></div>`
+          : `<label class="lb">Venta directa · tipo de entrada</label><select id="r-type" class="fld mb-3">${options}</select>`;
+        f.innerHTML = (pendingSel || options) ? what + `
     <label class="lb">Nombre completo del comprador</label><input id="r-name" class="fld mb-3" placeholder="Ej: María José Sarabia">
     <label class="lb">Comprobante de pago</label><input id="r-file" type="file" accept="image/*" class="fld mb-3">
     <div id="r-rid-w" class="hidden"><label class="lb">N° de comprobante (no se pudo leer)</label><input id="r-rid" class="fld mb-3"></div>
     <button id="r-go" class="btn">Comprobar y generar QR</button><p id="r-msg" class="text-sm mt-3"></p>` : '<p class="text-alert-red font-bold">Entradas agotadas.</p>';
-  if ($('r-go')) $('r-go').onclick = submitReceipt;
-  if ($('r-cancel')) $('r-cancel').onclick = e => { e.preventDefault(); pendingSel = null; lastReceipt = null; renderForm(); renderPending(); };
-}
+        if ($('r-go')) $('r-go').onclick = submitReceipt;
+        if ($('r-cancel')) $('r-cancel').onclick = e => { e.preventDefault(); pendingSel = null; lastReceipt = null; renderForm(); renderPending(); };
+      }
 
-/* Flujo: validar datos → leer comprobante → comprobar monto → comprobar duplicados → (aviso de fecha) → crear entradas */
-async function submitReceipt() {
-  const msg = html => $('r-msg').innerHTML = html;
-  const name = $('r-name').value.trim().replace(/\s+/g, ' '), file = $('r-file').files[0];
-  let sale;   // qué se está cobrando: el pedido pendiente elegido o una venta directa
-  if (pendingSel) sale = { pid: pendingSel.id, ts: pendingSel.ts, expected: pendingSel.total, units: pendingSel.items.flatMap(i => Array(i.qty).fill({ k: i.k, price: i.price })) };
-  else { const k = $('r-type').value; sale = { expected: sectors[k].price, units: [{ k, price: sectors[k].price }] }; }
-  if (name.split(' ').length < 2) return msg('⚠️ Escribe nombre y apellido.');
-  if (!file) return msg('⚠️ Sube el comprobante.');
-  $('r-go').disabled = true;
-  try {
-    msg('⏳ Leyendo comprobante… (puede tardar unos segundos)');
-    const img = await loadImage(file), small = scaleImage(img, 720).toDataURL('image/jpeg', .6);
-    if (!lastReceipt || lastReceipt.file !== file || lastReceipt.expected !== sale.expected) {
-      const text = await ocr(scaleImage(img, 1600));
-      lastReceipt = { file, expected: sale.expected, text, parsed: parseReceipt(text, sale.expected) };
-    }
-    const p = lastReceipt.parsed;
-    if (!p.amountOk) return msg(`❌ El monto no coincide. Se esperan <b>${sale.expected} Bs</b>. Leído: ${p.amounts.join(', ') || 'ningún monto'}. Prueba con una captura más clara.`);
-    const rid = ($('r-rid').value || p.receiptId).replace(/[^A-Z0-9]/gi, '').toUpperCase();
-    if (!rid) { $('r-rid-w').classList.remove('hidden'); return msg('✍️ Monto correcto ✔. Escribe el N° de comprobante y toca de nuevo el botón.'); }
-    const warn = sale.pid ? dateWarning(lastReceipt.text, sale.ts) : '';   // solo advertencia, no bloquea
-    const now = Date.now(), imgHash = hash(small);
-    const tickets = sale.units.map(u => ({ id: uid(), name, relId: me.id, rel: me.name, type: TICKET_TYPES[u.k].label, max: TICKET_TYPES[u.k].seats,
-      used: 0, amount: u.price, rid, hash: imgHash, ts: now, ...(sale.pid && { pid: sale.pid }), ...(warn && { warn }) }));
-    await DB.createTickets(tickets, small, sale.pid);
-    pendingSel = null;
-    tickets.length === 1 ? ticketView(tickets[0]) : ticketsView(tickets);
-  } catch (e) {
-    msg(e.message === 'DUP' ? '❌ Este comprobante ya fue utilizado.' : '⚠️ Error: ' + esc(e.message));
-  } finally { if ($('r-go')) $('r-go').disabled = false; }
-}
+      /* Flujo: validar datos → leer comprobante → comprobar monto → comprobar duplicados → (aviso de fecha) → crear entradas */
+      async function submitReceipt() {
+        const msg = html => $('r-msg').innerHTML = html;
+        const name = $('r-name').value.trim().replace(/\s+/g, ' '), file = $('r-file').files[0];
+        let sale;   // qué se está cobrando: el pedido pendiente elegido o una venta directa
+        if (pendingSel) sale = { pid: pendingSel.id, ts: pendingSel.ts, expected: pendingSel.total, units: pendingSel.items.flatMap(i => Array(i.qty).fill({ k: i.k, price: i.price })) };
+        else { const k = $('r-type').value; sale = { expected: sectors[k].price, units: [{ k, price: sectors[k].price }] }; }
+        if (name.split(' ').length < 2) return msg('⚠️ Escribe nombre y apellido.');
+        if (!file) return msg('⚠️ Sube el comprobante.');
+        $('r-go').disabled = true;
+        try {
+          msg('⏳ Leyendo comprobante… (puede tardar unos segundos)');
+          const img = await loadImage(file), small = scaleImage(img, 720).toDataURL('image/jpeg', .6);
+          if (!lastReceipt || lastReceipt.file !== file || lastReceipt.expected !== sale.expected) {
+            const text = await ocr(scaleImage(img, 1600));
+            lastReceipt = { file, expected: sale.expected, text, parsed: parseReceipt(text, sale.expected) };
+          }
+          const p = lastReceipt.parsed;
+          if (!p.amountOk) return msg(`❌ El monto no coincide. Se esperan <b>${sale.expected} Bs</b>. Leído: ${p.amounts.join(', ') || 'ningún monto'}. Prueba con una captura más clara.`);
+          const rid = ($('r-rid').value || p.receiptId).replace(/[^A-Z0-9]/gi, '').toUpperCase();
+          if (!rid) { $('r-rid-w').classList.remove('hidden'); return msg('✍️ Monto correcto ✔. Escribe el N° de comprobante y toca de nuevo el botón.'); }
+          const warn = sale.pid ? dateWarning(lastReceipt.text, sale.ts) : '';   // solo advertencia, no bloquea
+          const now = Date.now(), imgHash = hash(small);
+          const tickets = sale.units.map(u => ({
+            id: uid(), name, relId: me.id, rel: me.name, type: TICKET_TYPES[u.k].label, max: TICKET_TYPES[u.k].seats,
+            used: 0, amount: u.price, rid, hash: imgHash, ts: now, ...(sale.pid && { pid: sale.pid }), ...(warn && { warn })
+          }));
+          await DB.createTickets(tickets, small, sale.pid);
+          pendingSel = null;
+          tickets.length === 1 ? ticketView(tickets[0]) : ticketsView(tickets);
+        } catch (e) {
+          msg(e.message === 'DUP' ? '❌ Este comprobante ya fue utilizado.' : '⚠️ Error: ' + esc(e.message));
+        } finally { if ($('r-go')) $('r-go').disabled = false; }
+      }
 
-/* ======================================================================
-   9. PUERTA (cámara + verificación contra Firestore)
-   ====================================================================== */
-let stream = null, rafId = 0, scanLocked = false;
-function stopCamera() { cancelAnimationFrame(rafId); if (stream) stream.getTracks().forEach(t => t.stop()); stream = null; }
-function scanResult(ok, title, detail) {
-  const r = $('g-r'); r.className = 'mt-3 p-5 text-center font-bold ' + (ok ? 'bg-green-700' : 'bg-red-700');
-  r.innerHTML = `<div class="text-2xl">${title}</div><div class="text-base font-normal mt-1">${detail}</div>`;
-  if (navigator.vibrate) navigator.vibrate(ok ? 120 : [200, 80, 200]);
-}
-async function checkTicket(raw) {
-  const id = raw.replace(/^PRELUDIO:/i, '').replace(/[^A-Fa-f0-9]/g, '').toUpperCase();
-  if (!id) return scanResult(false, '❌ QR NO REGISTRADO', 'Código inválido');
-  try {
-    const res = await DB.useTicket(id);
-    if (res.r === 'ok') scanResult(true, '✅ ENTRADA VÁLIDA', `${esc(res.t.name)}<br>Ingreso ${res.t.used} de ${res.t.max}`);
-    else if (res.r === 'used') scanResult(false, '⛔ YA UTILIZADA', `${esc(res.t.name)}<br>Último ingreso: ${fmtDate(res.t.scans[res.t.scans.length - 1])}`);
-    else scanResult(false, '❌ QR NO REGISTRADO', 'No existe en la base de datos');
-  } catch (e) { scanResult(false, '⚠️ Error', esc(e.message)); }
-}
-async function startCamera() {
-  if (!navigator.mediaDevices) return scanResult(false, '📷 Sin cámara', 'La cámara requiere https (Netlify lo da) o localhost');
-  try { stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }); }
-  catch (e) { return scanResult(false, '📷 Sin cámara', 'Permite el acceso a la cámara en el navegador'); }
-  const video = $('g-v'); video.srcObject = stream; await video.play();
-  await loadScript('https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js');
-  const cv = document.createElement('canvas'), x = cv.getContext('2d', { willReadFrequently: true });
-  const loop = () => {
-    if (!stream) return;
-    if (!scanLocked && video.videoWidth) {
-      const k = Math.min(1, 640 / video.videoWidth); cv.width = video.videoWidth * k; cv.height = video.videoHeight * k;
-      x.drawImage(video, 0, 0, cv.width, cv.height);
-      const code = jsQR(x.getImageData(0, 0, cv.width, cv.height).data, cv.width, cv.height, { inversionAttempts: 'dontInvert' });
-      if (code && code.data.startsWith('PRELUDIO:')) { scanLocked = true; checkTicket(code.data).then(() => setTimeout(() => scanLocked = false, 2500)); }
-    }
-    rafId = requestAnimationFrame(loop);
-  };
-  loop();
-}
-function gateView() {
-  setTitle('🚪 Puerta');
-  body.innerHTML = '<video id="g-v" playsinline muted class="w-full bg-black aspect-square object-cover border-2 border-preludio-blue"></video><button id="g-b" class="btn mt-3">📷 Activar cámara</button><div id="g-r" class="mt-3 p-5 text-center hidden"></div><div class="mt-4 flex gap-2"><input id="g-m" class="fld" placeholder="o escribe el ID (ej: 3C5AE2)"><button id="g-mb" class="btn2" style="width:auto;padding:0 18px">OK</button></div><button class="btn2 mt-4" onclick="Staff.logout()">Cerrar sesión</button>';
-  $('g-b').onclick = startCamera; $('g-mb').onclick = () => checkTicket($('g-m').value);
-}
+      /* ======================================================================
+         9. PUERTA (cámara + verificación contra Firestore)
+         ====================================================================== */
+      let stream = null, rafId = 0, scanLocked = false;
+      function stopCamera() { cancelAnimationFrame(rafId); if (stream) stream.getTracks().forEach(t => t.stop()); stream = null; }
+      function scanResult(ok, title, detail) {
+        const r = $('g-r'); r.className = 'mt-3 p-5 text-center font-bold ' + (ok ? 'bg-green-700' : 'bg-red-700');
+        r.innerHTML = `<div class="text-2xl">${title}</div><div class="text-base font-normal mt-1">${detail}</div>`;
+        if (navigator.vibrate) navigator.vibrate(ok ? 120 : [200, 80, 200]);
+      }
+      async function checkTicket(raw) {
+        const id = raw.replace(/^PRELUDIO:/i, '').replace(/[^A-Fa-f0-9]/g, '').toUpperCase();
+        if (!id) return scanResult(false, '❌ QR NO REGISTRADO', 'Código inválido');
+        try {
+          const res = await DB.useTicket(id);
+          if (res.r === 'ok') scanResult(true, '✅ ENTRADA VÁLIDA', `${esc(res.t.name)}<br>Ingreso ${res.t.used} de ${res.t.max}`);
+          else if (res.r === 'used') scanResult(false, '⛔ YA UTILIZADA', `${esc(res.t.name)}<br>Último ingreso: ${fmtDate(res.t.scans[res.t.scans.length - 1])}`);
+          else scanResult(false, '❌ QR NO REGISTRADO', 'No existe en la base de datos');
+        } catch (e) { scanResult(false, '⚠️ Error', esc(e.message)); }
+      }
+      async function startCamera() {
+        if (!navigator.mediaDevices) return scanResult(false, '📷 Sin cámara', 'La cámara requiere https (Netlify lo da) o localhost');
+        try { stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }); }
+        catch (e) { return scanResult(false, '📷 Sin cámara', 'Permite el acceso a la cámara en el navegador'); }
+        const video = $('g-v'); video.srcObject = stream; await video.play();
+        await loadScript('https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js');
+        const cv = document.createElement('canvas'), x = cv.getContext('2d', { willReadFrequently: true });
+        const loop = () => {
+          if (!stream) return;
+          if (!scanLocked && video.videoWidth) {
+            const k = Math.min(1, 640 / video.videoWidth); cv.width = video.videoWidth * k; cv.height = video.videoHeight * k;
+            x.drawImage(video, 0, 0, cv.width, cv.height);
+            const code = jsQR(x.getImageData(0, 0, cv.width, cv.height).data, cv.width, cv.height, { inversionAttempts: 'dontInvert' });
+            if (code && code.data.startsWith('PRELUDIO:')) { scanLocked = true; checkTicket(code.data).then(() => setTimeout(() => scanLocked = false, 2500)); }
+          }
+          rafId = requestAnimationFrame(loop);
+        };
+        loop();
+      }
+      function gateView() {
+        setTitle('🚪 Puerta');
+        body.innerHTML = '<video id="g-v" playsinline muted class="w-full bg-black aspect-square object-cover border-2 border-preludio-blue"></video><button id="g-b" class="btn mt-3">📷 Activar cámara</button><div id="g-r" class="mt-3 p-5 text-center hidden"></div><div class="mt-4 flex gap-2"><input id="g-m" class="fld" placeholder="o escribe el ID (ej: 3C5AE2)"><button id="g-mb" class="btn2" style="width:auto;padding:0 18px">OK</button></div><button class="btn2 mt-4" onclick="Staff.logout()">Cerrar sesión</button>';
+        $('g-b').onclick = startCamera; $('g-mb').onclick = () => checkTicket($('g-m').value);
+      }
 
-/* ======================================================================
-   10. ADMINISTRACIÓN (pestañas: relacionadores · entradas · precios · ubicación · seguridad)
-   ====================================================================== */
-let adminTab = 'rel';
-const ADMIN_TABS = [['rel', 'Relacionadores'], ['tk', 'Entradas'], ['pr', 'Precios y lotes'], ['map', 'Ubicación'], ['sec', 'Seguridad']];
-async function adminView(tab) {
-  adminTab = tab || adminTab; setTitle('⚙️ Administración', true);
-  body.innerHTML = `<div class="flex flex-wrap gap-2 mb-4">${ADMIN_TABS.map(([k, n]) => `<button class="${k === adminTab ? 'btn' : 'btn2'}" style="width:auto;padding:8px 12px" onclick="A.go('${k}')">${n}</button>`).join('')}<button class="btn2" style="width:auto;padding:8px 12px" onclick="Staff.logout()">Salir</button></div><div id="ab"></div>`;
-  $('ab').innerHTML = await ({ rel: tabRels, tk: tabTickets, pr: tabPrices, map: tabMap, sec: tabSecurity }[adminTab])();
-}
-const tabRels = () => `<div id="ar">${State.rels.map((r, i) => `<div class="border border-purple-900 p-2 mb-2"><input class="fld mb-1" data-i="${i}" data-f="name" value="${esc(r.name)}"><input class="fld mb-2" data-i="${i}" data-f="phone" value="${esc(r.phone)}" placeholder="Teléfono"><div class="flex gap-2"><button class="btn2" onclick="A.relReset(${i})">Reset PIN → 1234</button><button class="btn2" onclick="A.relDel(${i})">🗑 Quitar</button></div></div>`).join('')}</div><button class="btn2 mb-2" onclick="A.relAdd()">+ Añadir relacionador</button><button class="btn" onclick="A.relSave()">Guardar cambios</button>`;
-async function tabTickets() {
-  const all = await DB.listTickets();
-  return `<p class="text-sm text-gray-400 mb-3">${all.length} entradas · ${all.reduce((s, t) => s + t.amount, 0)} Bs</p>` + (all.map(t => `<div class="border border-purple-900 p-3 mb-2 text-sm"><b class="text-preludio-blue">#${t.id}</b> · ${esc(t.type)} · ${t.amount} Bs<br>Comprador: <b>${esc(t.name)}</b><br>Vendió: ${esc(t.rel)}<br><span class="text-gray-400">${fmtDate(t.ts)} · ingresos ${t.used}/${t.max}</span>${t.warn ? `<br><span class="text-yellow-300">${esc(t.warn)}</span>` : ''}<div class="flex gap-2 mt-2"><button class="btn2" onclick="A.tkImg('${t.rid}')">Ver comprobante</button><button class="btn2" onclick="A.tkDel('${t.id}')">Anular</button></div></div>`).join('') || '<p class="text-gray-500">Aún no hay entradas.</p>');
-}
-const tabPrices = () => `<label class="lb">Fecha del evento (texto)</label><input id="p-d" class="fld mb-3" value="${esc(State.cfg.dateLabel)}"><label class="lb">Aviso del lote (vacío = oculto)</label><input id="p-b" class="fld mb-3" value="${esc(State.cfg.banner)}">
+      /* ======================================================================
+         10. ADMINISTRACIÓN (pestañas: relacionadores · entradas · precios · ubicación · seguridad)
+         ====================================================================== */
+      let adminTab = 'rel';
+      const ADMIN_TABS = [['rel', 'Relacionadores'], ['tk', 'Entradas'], ['pr', 'Precios y lotes'], ['map', 'Ubicación'], ['sec', 'Seguridad']];
+      async function adminView(tab) {
+        adminTab = tab || adminTab; setTitle('⚙️ Administración', true);
+        body.innerHTML = `<div class="flex flex-wrap gap-2 mb-4">${ADMIN_TABS.map(([k, n]) => `<button class="${k === adminTab ? 'btn' : 'btn2'}" style="width:auto;padding:8px 12px" onclick="A.go('${k}')">${n}</button>`).join('')}<button class="btn2" style="width:auto;padding:8px 12px" onclick="Staff.logout()">Salir</button></div><div id="ab"></div>`;
+        $('ab').innerHTML = await ({ rel: tabRels, tk: tabTickets, pr: tabPrices, map: tabMap, sec: tabSecurity }[adminTab])();
+      }
+      const tabRels = () => `<div id="ar">${State.rels.map((r, i) => `<div class="border border-purple-900 p-2 mb-2"><input class="fld mb-1" data-i="${i}" data-f="name" value="${esc(r.name)}"><input class="fld mb-2" data-i="${i}" data-f="phone" value="${esc(r.phone)}" placeholder="Teléfono"><div class="flex gap-2"><button class="btn2" onclick="A.relReset(${i})">Reset PIN → 1234</button><button class="btn2" onclick="A.relDel(${i})">🗑 Quitar</button></div></div>`).join('')}</div><button class="btn2 mb-2" onclick="A.relAdd()">+ Añadir relacionador</button><button class="btn" onclick="A.relSave()">Guardar cambios</button>`;
+      async function tabTickets() {
+        const all = await DB.listTickets();
+        return `<p class="text-sm text-gray-400 mb-3">${all.length} entradas · ${all.reduce((s, t) => s + t.amount, 0)} Bs</p>` + (all.map(t => `<div class="border border-purple-900 p-3 mb-2 text-sm"><b class="text-preludio-blue">#${t.id}</b> · ${esc(t.type)} · ${t.amount} Bs<br>Comprador: <b>${esc(t.name)}</b><br>Vendió: ${esc(t.rel)}<br><span class="text-gray-400">${fmtDate(t.ts)} · ingresos ${t.used}/${t.max}</span>${t.warn ? `<br><span class="text-yellow-300">${esc(t.warn)}</span>` : ''}<div class="flex gap-2 mt-2"><button class="btn2" onclick="A.tkImg('${t.rid}')">Ver comprobante</button><button class="btn2" onclick="A.tkDel('${t.id}')">Anular</button></div></div>`).join('') || '<p class="text-gray-500">Aún no hay entradas.</p>');
+      }
+      const tabPrices = () => `<label class="lb">Fecha del evento (texto)</label><input id="p-d" class="fld mb-3" value="${esc(State.cfg.dateLabel)}"><label class="lb">Aviso del lote (vacío = oculto)</label><input id="p-b" class="fld mb-3" value="${esc(State.cfg.banner)}">
 <p class="text-xs text-gray-400 mb-2">La entrada activa es el primer tier que no esté agotado ni vencido. Al marcar "Agotado" o pasar su fecha, pasa al siguiente.</p><div>${State.cfg.tiers.map((t, i) => `<div class="border border-purple-900 p-2 mb-2 grid grid-cols-2 gap-2" data-t="${i}"><input class="fld col-span-2" data-f="n" value="${esc(t.n)}" placeholder="Nombre (TIER 1)"><div><span class="lb">Hombre Bs</span><input class="fld" type="number" data-f="m" value="${t.m}"></div><div><span class="lb">Mujer Bs</span><input class="fld" type="number" data-f="w" value="${t.w}"></div><div><span class="lb">Pareja Bs</span><input class="fld" type="number" data-f="c" value="${t.c}"></div><div><span class="lb">Termina</span><input class="fld" type="datetime-local" data-f="end" value="${t.end}"></div><label class="text-sm"><input type="checkbox" data-f="sold" ${t.sold ? 'checked' : ''}> Agotado</label><button class="btn2" onclick="A.tierDel(${i})">🗑 Quitar</button></div>`).join('')}</div><button class="btn2 mb-2" onclick="A.tierAdd()">+ Añadir tier / lote</button><button class="btn" onclick="A.tierSave()">Guardar</button>`;
-const tabMap = () => `<label class="lb">Link del botón "Ver ubicación"</label><input id="m-u" class="fld mb-3" value="${esc(State.cfg.mapUrl)}"><label class="lb">Dirección o coordenadas del mini mapa</label><input id="m-q" class="fld mb-3" value="${esc(State.cfg.mapQ)}" placeholder="Ej: -17.7833,-63.1821 o nombre del lugar"><button class="btn" onclick="A.mapSave()">Guardar</button>`;
-const tabSecurity = () => `<label class="lb">Nuevo PIN de administración</label><input id="s-a" type="password" class="fld mb-3" placeholder="(vacío = no cambiar)"><label class="lb">Nuevo PIN de puerta</label><input id="s-d" type="password" class="fld mb-3" placeholder="(vacío = no cambiar)"><button class="btn" onclick="A.pinSave()">Guardar PINs</button><p class="text-xs text-green-400 mt-4">✅ Datos en línea (Firebase): se comparten entre todos los dispositivos.</p>`;
+      const tabMap = () => `<label class="lb">Link del botón "Ver ubicación"</label><input id="m-u" class="fld mb-3" value="${esc(State.cfg.mapUrl)}"><label class="lb">Dirección o coordenadas del mini mapa</label><input id="m-q" class="fld mb-3" value="${esc(State.cfg.mapQ)}" placeholder="Ej: -17.7833,-63.1821 o nombre del lugar"><button class="btn" onclick="A.mapSave()">Guardar</button>`;
+      const tabSecurity = () => `<label class="lb">Nuevo PIN de administración</label><input id="s-a" type="password" class="fld mb-3" placeholder="(vacío = no cambiar)"><label class="lb">Nuevo PIN de puerta</label><input id="s-d" type="password" class="fld mb-3" placeholder="(vacío = no cambiar)"><button class="btn" onclick="A.pinSave()">Guardar PINs</button><p class="text-xs text-green-400 mt-4">✅ Datos en línea (Firebase): se comparten entre todos los dispositivos.</p>`;
 
-/* Acciones de los botones del panel (se llaman desde onclick="A.xxx()") */
-const A = window.A = {
-  go: tab => adminView(tab),
-  /* relacionadores */
-  readRels() { document.querySelectorAll('#ar [data-i]').forEach(e => { State.rels[e.dataset.i][e.dataset.f] = e.value.trim(); }); },
-  relAdd() { A.readRels(); State.rels.push({ id: uid(), name: 'Nuevo relacionador', phone: '', pin: hashPin(DEFAULT_PIN) }); adminView(); },
-  relDel(i) { A.readRels(); if (confirm('¿Quitar a ' + State.rels[i].name + '?')) { State.rels.splice(i, 1); adminView(); } },
-  async relReset(i) { A.readRels(); State.rels[i].pin = hashPin(DEFAULT_PIN); await saveRels(); alert('PIN restablecido a ' + DEFAULT_PIN); },
-  async relSave() { A.readRels(); await saveRels(); alert('Guardado ✔'); },
-  /* precios y lotes */
-  readTiers() {
-    State.cfg.dateLabel = $('p-d').value; State.cfg.banner = $('p-b').value;
-    State.cfg.tiers = [...document.querySelectorAll('[data-t]')].map(row => { const o = {}; row.querySelectorAll('[data-f]').forEach(e => { o[e.dataset.f] = e.type === 'checkbox' ? e.checked : e.value; }); return o; });
-  },
-  tierAdd() { A.readTiers(); State.cfg.tiers.push({ n: 'TIER ' + State.cfg.tiers.length, m: 0, w: 0, c: 0, end: '', sold: false }); adminView(); },
-  tierDel(i) { A.readTiers(); State.cfg.tiers.splice(i, 1); adminView(); },
-  async tierSave() { A.readTiers(); await saveCfg(); alert('Guardado ✔'); },
-  /* ubicación y PINs */
-  async mapSave() { State.cfg.mapUrl = $('m-u').value.trim(); State.cfg.mapQ = $('m-q').value.trim(); await saveCfg(); alert('Guardado ✔'); },
-  async pinSave() {
-    if (cleanPin($('s-a').value)) State.cfg.apin = hashPin($('s-a').value);
-    if (cleanPin($('s-d').value)) State.cfg.dpin = hashPin($('s-d').value);
-    await saveCfg(); alert('PINs guardados ✔');
-  },
-  /* entradas */
-  async tkImg(rid) {
-    const r = await DB.getReceipt(rid);
-    if (!r || !r.img) return alert('Sin comprobante');
-    window.open('').document.write(`<img src="${r.img}" style="max-width:100%">`);
-  },
-  async tkDel(id) { if (confirm('¿Anular la entrada #' + id + '? Se libera su comprobante.')) { await DB.deleteTicket(id); adminView(); } }
-};
+      /* Acciones de los botones del panel (se llaman desde onclick="A.xxx()") */
+      const A = window.A = {
+        go: tab => adminView(tab),
+        /* relacionadores */
+        readRels() { document.querySelectorAll('#ar [data-i]').forEach(e => { State.rels[e.dataset.i][e.dataset.f] = e.value.trim(); }); },
+        relAdd() { A.readRels(); State.rels.push({ id: uid(), name: 'Nuevo relacionador', phone: '', pin: hashPin(DEFAULT_PIN) }); adminView(); },
+        relDel(i) { A.readRels(); if (confirm('¿Quitar a ' + State.rels[i].name + '?')) { State.rels.splice(i, 1); adminView(); } },
+        async relReset(i) { A.readRels(); State.rels[i].pin = hashPin(DEFAULT_PIN); await saveRels(); alert('PIN restablecido a ' + DEFAULT_PIN); },
+        async relSave() { A.readRels(); await saveRels(); alert('Guardado ✔'); },
+        /* precios y lotes */
+        readTiers() {
+          State.cfg.dateLabel = $('p-d').value; State.cfg.banner = $('p-b').value;
+          State.cfg.tiers = [...document.querySelectorAll('[data-t]')].map(row => { const o = {}; row.querySelectorAll('[data-f]').forEach(e => { o[e.dataset.f] = e.type === 'checkbox' ? e.checked : e.value; }); return o; });
+        },
+        tierAdd() { A.readTiers(); State.cfg.tiers.push({ n: 'TIER ' + State.cfg.tiers.length, m: 0, w: 0, c: 0, end: '', sold: false }); adminView(); },
+        tierDel(i) { A.readTiers(); State.cfg.tiers.splice(i, 1); adminView(); },
+        async tierSave() { A.readTiers(); await saveCfg(); alert('Guardado ✔'); },
+        /* ubicación y PINs */
+        async mapSave() { State.cfg.mapUrl = $('m-u').value.trim(); State.cfg.mapQ = $('m-q').value.trim(); await saveCfg(); alert('Guardado ✔'); },
+        async pinSave() {
+          if (cleanPin($('s-a').value)) State.cfg.apin = hashPin($('s-a').value);
+          if (cleanPin($('s-d').value)) State.cfg.dpin = hashPin($('s-d').value);
+          await saveCfg(); alert('PINs guardados ✔');
+        },
+        /* entradas */
+        async tkImg(rid) {
+          const r = await DB.getReceipt(rid);
+          if (!r || !r.img) return alert('Sin comprobante');
+          window.open('').document.write(`<img src="${r.img}" style="max-width:100%">`);
+        },
+        async tkDel(id) { if (confirm('¿Anular la entrada #' + id + '? Se libera su comprobante.')) { await DB.deleteTicket(id); adminView(); } }
+      };
 
-/* ======================================================================
-   11. ROUTER DEL PANEL (abrir / cerrar / sesión)
-   ====================================================================== */
-function route(view, tab) { stopCamera(); stopPendingWatch(); ({ rel: relView, gate: gateView, admin: adminView })[view](tab); }
-function connectionError() {
-  setTitle('⚠️ Sin conexión');
-  body.innerHTML = `<p class="text-red-400 mb-3">No se pudo conectar con la base de datos.</p><p class="text-sm text-gray-400">Revisa que <b>Authentication → Anónimo</b> esté activado y que las reglas de Firestore estén publicadas.<br><br><code>${esc(State.error && State.error.message)}</code></p>`;
-}
-window.Staff = {
-  async open(view, tab) {
-    await ready; ov.classList.add('on'); document.body.style.overflow = 'hidden';
-    if (State.error) return connectionError();
-    sessionStorage.getItem(view) ? route(view, tab) : loginView(view, tab);
-  },
-  close() { stopCamera(); stopPendingWatch(); ov.classList.remove('on'); document.body.style.overflow = ''; },
-  logout() { sessionStorage.clear(); Staff.close(); }
-};
-})();
-</script>
+      /* ======================================================================
+         11. ROUTER DEL PANEL (abrir / cerrar / sesión)
+         ====================================================================== */
+      function route(view, tab) { stopCamera(); stopPendingWatch(); ({ rel: relView, gate: gateView, admin: adminView })[view](tab); }
+      function connectionError() {
+        setTitle('⚠️ Sin conexión');
+        body.innerHTML = `<p class="text-red-400 mb-3">No se pudo conectar con la base de datos.</p><p class="text-sm text-gray-400">Revisa que <b>Authentication → Anónimo</b> esté activado y que las reglas de Firestore estén publicadas.<br><br><code>${esc(State.error && State.error.message)}</code></p>`;
+      }
+      window.Staff = {
+        async open(view, tab) {
+          await ready; ov.classList.add('on'); document.body.style.overflow = 'hidden';
+          if (State.error) return connectionError();
+          sessionStorage.getItem(view) ? route(view, tab) : loginView(view, tab);
+        },
+        close() { stopCamera(); stopPendingWatch(); ov.classList.remove('on'); document.body.style.overflow = ''; },
+        logout() { sessionStorage.clear(); Staff.close(); }
+      };
+    })();
+  </script>
 </body>
+
 </html>
