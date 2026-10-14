@@ -392,56 +392,56 @@
   <!-- HERO SECTION -->
   <header class="relative w-full pt-32 pb-40 px-4 overflow-hidden"
     style="background-image:url('fondo.png');background-size:cover;background-position:center">
-  <div class="absolute inset-0 opacity-20 bg-paper-texture"></div>
+    <div class="absolute inset-0 opacity-20 bg-paper-texture"></div>
 
-  <div class="relative z-10 max-w-4xl mx-auto text-center">
-    <div class="text-5xl md:text-6xl mb-3 animate-pulse-slow">🎃 🦇 👻</div>
-    <h1 class="title-last-break text-7xl md:text-[10rem] text-white mb-2 leading-none">
-      LAST<br>BREAK
-    </h1>
-    <div
-      class="bg-white text-preludio-blue font-bold text-xl md:text-3xl inline-block px-8 py-2 transform -rotate-1 shadow-lg mb-8"
-      id="ev-date"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div class="text-5xl md:text-6xl mb-3 animate-pulse-slow">🎃 🦇 👻</div>
+      <h1 class="title-last-break text-7xl md:text-[10rem] text-white mb-2 leading-none">
+        LAST<br>BREAK
+      </h1>
+      <div
+        class="bg-white text-preludio-blue font-bold text-xl md:text-3xl inline-block px-8 py-2 transform -rotate-1 shadow-lg mb-8"
+        id="ev-date"></div>
 
-    <!-- COUNTDOWN TIMER -->
-    <div id="countdown-container" class="flex justify-center gap-4 mb-8">
-      <div class="countdown-item">
-        <span class="countdown-val" id="h">00</span>
-        <span class="countdown-label">HORAS</span>
+      <!-- COUNTDOWN TIMER -->
+      <div id="countdown-container" class="flex justify-center gap-4 mb-8">
+        <div class="countdown-item">
+          <span class="countdown-val" id="h">00</span>
+          <span class="countdown-label">HORAS</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-val" id="m">00</span>
+          <span class="countdown-label">MIN</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-val" id="s">00</span>
+          <span class="countdown-label">SEG</span>
+        </div>
       </div>
-      <div class="countdown-item">
-        <span class="countdown-val" id="m">00</span>
-        <span class="countdown-label">MIN</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-val" id="s">00</span>
-        <span class="countdown-label">SEG</span>
+      <p id="banner" class="text-alert-red font-bold uppercase tracking-widest text-xs animate-pulse mb-6">⚠️ Siguiente
+        Lote a las 18:00</p>
+
+      <!-- LOCATION BUTTON -->
+      <a id="map-link" href="https://maps.app.goo.gl/4XemLvxxDCRcvDxj9?g_st=awb" target="_blank"
+        class="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all group">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z">
+          </path>
+        </svg>
+        VER UBICACIÓN EN MAPA
+      </a>
+      <div class="relative z-10 max-w-md mx-auto mt-8">
+        <div class="border-2 border-preludio-blue shadow-[0_0_25px_rgba(255,106,0,.35)] overflow-hidden"><iframe
+            id="map-f" class="w-full h-56 block" style="filter:invert(92%) hue-rotate(180deg) saturate(.8)"
+            loading="lazy" title="Mapa"></iframe></div>
       </div>
     </div>
-    <p id="banner" class="text-alert-red font-bold uppercase tracking-widest text-xs animate-pulse mb-6">⚠️ Siguiente
-      Lote a las 18:00</p>
 
-    <!-- LOCATION BUTTON -->
-    <a id="map-link" href="https://maps.app.goo.gl/4XemLvxxDCRcvDxj9?g_st=awb" target="_blank"
-      class="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all group">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z">
-        </path>
-      </svg>
-      VER UBICACIÓN EN MAPA
-    </a>
-    <div class="relative z-10 max-w-md mx-auto mt-8">
-      <div class="border-2 border-preludio-blue shadow-[0_0_25px_rgba(255,106,0,.35)] overflow-hidden"><iframe
-          id="map-f" class="w-full h-56 block" style="filter:invert(92%) hue-rotate(180deg) saturate(.8)" loading="lazy"
-          title="Mapa"></iframe></div>
+    <div class="absolute bottom-0 left-0 w-full h-12 bg-dark-bg"
+      style="clip-path: polygon(0 50%, 5% 0, 10% 50%, 15% 0, 20% 50%, 25% 0, 30% 50%, 35% 0, 40% 50%, 45% 0, 50% 50%, 55% 0, 60% 50%, 65% 0, 70% 50%, 75% 0, 80% 50%, 85% 0, 90% 50%, 95% 0, 100% 50%, 100% 100%, 0% 100%); height: 30px;">
     </div>
-  </div>
-
-  <div class="absolute bottom-0 left-0 w-full h-12 bg-dark-bg"
-    style="clip-path: polygon(0 50%, 5% 0, 10% 50%, 15% 0, 20% 50%, 25% 0, 30% 50%, 35% 0, 40% 50%, 45% 0, 50% 50%, 55% 0, 60% 50%, 65% 0, 70% 50%, 75% 0, 80% 50%, 85% 0, 90% 50%, 95% 0, 100% 50%, 100% 100%, 0% 100%); height: 30px;">
-  </div>
   </header>
 
   <main class="max-w-6xl mx-auto px-4 md:px-6 -mt-12 relative z-20 pb-20">
@@ -747,7 +747,7 @@
         messagingSenderId: "781666009211",
         appId: "1:781666009211:web:e6a51b236a21746bdfe2de"
       };
-      const APP_VERSION   = 'v7 · 13-oct-2026';    // se muestra en la pantalla de PIN: sirve para comprobar que Netlify ya publicó la última versión
+      const APP_VERSION = 'v7 · 13-oct-2026';    // se muestra en la pantalla de PIN: sirve para comprobar que Netlify ya publicó la última versión
       const QR_BACKGROUND = 'qr-fondo.png';        // foto de fondo del QR (junto al index.html)
       const EVENT_NAME = 'PRELUDIO · LAST BREAK';
       const DEFAULT_PIN = '1234';                 // PIN inicial de relacionadores y puerta
@@ -1118,7 +1118,7 @@
           ? `<div class="border border-preludio-blue p-3 mb-3 text-sm"><b>Pedido #${pendingSel.id}</b> · ${pendingSel.total} Bs<br>${itemsText(pendingSel.items)}<br><a href="#" id="r-cancel" class="text-xs text-gray-400 underline">Cancelar y hacer venta directa</a></div>`
           : `<label class="lb">Venta directa · tipo de entrada</label><select id="r-type" class="fld mb-3">${options}</select>`;
         f.innerHTML = (pendingSel || options) ? what + `
-    <label class="lb">Nombre completo del comprador</label><input id="r-name" class="fld mb-3" placeholder="Ej: María José Sarabia">
+    <label class="lb">Nombre completo del comprador</label><input id="r-name" class="fld mb-3" placeholder="Ej: Jose Mario Soliz">
     <label class="lb">Comprobante de pago</label><input id="r-file" type="file" accept="image/*" class="fld mb-3">
     <div id="r-rid-w" class="hidden"><label class="lb">N° de comprobante (no se pudo leer)</label><input id="r-rid" class="fld mb-3"></div>
     <button id="r-go" class="btn">Comprobar y generar QR</button><p id="r-msg" class="text-sm mt-3"></p>` : '<p class="text-alert-red font-bold">Entradas agotadas.</p>';
