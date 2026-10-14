@@ -390,57 +390,58 @@
   </nav>
 
   <!-- HERO SECTION -->
-  <header class="relative w-full pt-32 pb-24 px-4 overflow-hidden"
+  <header class="relative w-full pt-32 pb-40 px-4 overflow-hidden"
     style="background-image:url('fondo.png');background-size:cover;background-position:center">
-    <div class="absolute inset-0 opacity-20 bg-paper-texture"></div>
+  <div class="absolute inset-0 opacity-20 bg-paper-texture"></div>
 
-    <div class="relative z-10 max-w-4xl mx-auto text-center">
-      <h1 class="title-last-break text-7xl md:text-[10rem] text-white mb-2 leading-none">
-        LAST<br>BREAK
-      </h1>
-      <div
-        class="bg-white text-preludio-blue font-bold text-xl md:text-3xl inline-block px-8 py-2 transform -rotate-1 shadow-lg mb-8"
-        id="ev-date"></div>
+  <div class="relative z-10 max-w-4xl mx-auto text-center">
+    <div class="text-5xl md:text-6xl mb-3 animate-pulse-slow">🎃 🦇 👻</div>
+    <h1 class="title-last-break text-7xl md:text-[10rem] text-white mb-2 leading-none">
+      LAST<br>BREAK
+    </h1>
+    <div
+      class="bg-white text-preludio-blue font-bold text-xl md:text-3xl inline-block px-8 py-2 transform -rotate-1 shadow-lg mb-8"
+      id="ev-date"></div>
 
-      <!-- COUNTDOWN TIMER -->
-      <div id="countdown-container" class="flex justify-center gap-4 mb-8">
-        <div class="countdown-item">
-          <span class="countdown-val" id="h">00</span>
-          <span class="countdown-label">HORAS</span>
-        </div>
-        <div class="countdown-item">
-          <span class="countdown-val" id="m">00</span>
-          <span class="countdown-label">MIN</span>
-        </div>
-        <div class="countdown-item">
-          <span class="countdown-val" id="s">00</span>
-          <span class="countdown-label">SEG</span>
-        </div>
+    <!-- COUNTDOWN TIMER -->
+    <div id="countdown-container" class="flex justify-center gap-4 mb-8">
+      <div class="countdown-item">
+        <span class="countdown-val" id="h">00</span>
+        <span class="countdown-label">HORAS</span>
       </div>
-      <p id="banner" class="text-alert-red font-bold uppercase tracking-widest text-xs animate-pulse mb-6">⚠️ Siguiente
-        Lote a las 18:00</p>
-
-      <!-- LOCATION BUTTON -->
-      <a id="map-link" href="https://maps.app.goo.gl/4XemLvxxDCRcvDxj9?g_st=awb" target="_blank"
-        class="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all group">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z">
-          </path>
-        </svg>
-        VER UBICACIÓN EN MAPA
-      </a>
-      <div class="relative z-10 max-w-md mx-auto mt-8">
-        <div class="border-2 border-preludio-blue shadow-[0_0_25px_rgba(255,106,0,.35)] overflow-hidden"><iframe
-            id="map-f" class="w-full h-56 block" style="filter:invert(92%) hue-rotate(180deg) saturate(.8)"
-            loading="lazy" title="Mapa"></iframe></div>
+      <div class="countdown-item">
+        <span class="countdown-val" id="m">00</span>
+        <span class="countdown-label">MIN</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-val" id="s">00</span>
+        <span class="countdown-label">SEG</span>
       </div>
     </div>
+    <p id="banner" class="text-alert-red font-bold uppercase tracking-widest text-xs animate-pulse mb-6">⚠️ Siguiente
+      Lote a las 18:00</p>
 
-    <div class="absolute bottom-0 left-0 w-full h-12 bg-dark-bg"
-      style="clip-path: polygon(0 50%, 5% 0, 10% 50%, 15% 0, 20% 50%, 25% 0, 30% 50%, 35% 0, 40% 50%, 45% 0, 50% 50%, 55% 0, 60% 50%, 65% 0, 70% 50%, 75% 0, 80% 50%, 85% 0, 90% 50%, 95% 0, 100% 50%, 100% 100%, 0% 100%); height: 30px;">
+    <!-- LOCATION BUTTON -->
+    <a id="map-link" href="https://maps.app.goo.gl/4XemLvxxDCRcvDxj9?g_st=awb" target="_blank"
+      class="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all group">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z">
+        </path>
+      </svg>
+      VER UBICACIÓN EN MAPA
+    </a>
+    <div class="relative z-10 max-w-md mx-auto mt-8">
+      <div class="border-2 border-preludio-blue shadow-[0_0_25px_rgba(255,106,0,.35)] overflow-hidden"><iframe
+          id="map-f" class="w-full h-56 block" style="filter:invert(92%) hue-rotate(180deg) saturate(.8)" loading="lazy"
+          title="Mapa"></iframe></div>
     </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 w-full h-12 bg-dark-bg"
+    style="clip-path: polygon(0 50%, 5% 0, 10% 50%, 15% 0, 20% 50%, 25% 0, 30% 50%, 35% 0, 40% 50%, 45% 0, 50% 50%, 55% 0, 60% 50%, 65% 0, 70% 50%, 75% 0, 80% 50%, 85% 0, 90% 50%, 95% 0, 100% 50%, 100% 100%, 0% 100%); height: 30px;">
+  </div>
   </header>
 
   <main class="max-w-6xl mx-auto px-4 md:px-6 -mt-12 relative z-20 pb-20">
@@ -746,6 +747,7 @@
         messagingSenderId: "781666009211",
         appId: "1:781666009211:web:e6a51b236a21746bdfe2de"
       };
+      const APP_VERSION   = 'v7 · 13-oct-2026';    // se muestra en la pantalla de PIN: sirve para comprobar que Netlify ya publicó la última versión
       const QR_BACKGROUND = 'qr-fondo.png';        // foto de fondo del QR (junto al index.html)
       const EVENT_NAME = 'PRELUDIO · LAST BREAK';
       const DEFAULT_PIN = '1234';                 // PIN inicial de relacionadores y puerta
@@ -1056,14 +1058,14 @@
       function loginView(view, tab) {
         setTitle({ rel: '🎃 Relacionador', gate: '🚪 Puerta', admin: '⚙️ Administración' }[view]);
         body.innerHTML = (view === 'rel' ? `<label class="lb">Tu nombre</label><select id="l-n" class="fld mb-3">${State.rels.map(r => `<option value="${r.id}">${esc(r.name)}</option>`).join('')}</select>` : '') +
-          '<label class="lb">PIN</label><input id="pin" type="password" autocomplete="off" autocapitalize="off" class="fld mb-1"><label class="text-xs text-gray-400 block mb-3"><input id="pin-s" type="checkbox"> Mostrar PIN</label><button id="pin-b" class="btn">Entrar</button><p id="pin-e" class="text-red-400 text-sm mt-2"></p>';
+          '<label class="lb">PIN</label><input id="pin" type="password" autocomplete="off" autocapitalize="off" class="fld mb-1"><label class="text-xs text-gray-400 block mb-3"><input id="pin-s" type="checkbox"> Mostrar PIN</label><button id="pin-b" class="btn">Entrar</button><p id="pin-e" class="text-red-400 text-sm mt-2"></p><p class="text-[10px] text-gray-600 mt-8">Versión ' + APP_VERSION + '</p>';
         $('pin-b').onclick = () => {
           const pin = hashPin($('pin').value); let ok = false;
           if (view === 'rel') { const r = State.rels.find(r => r.id === $('l-n').value); ok = !!r && r.pin === pin; if (ok) sessionStorage.setItem('rel', r.id); }
           else { ok = pin === (view === 'gate' ? State.cfg.dpin : State.cfg.apin); if (ok) sessionStorage.setItem(view, '1'); }
           ok ? route(view, tab) : $('pin-e').textContent = 'PIN incorrecto';
         };
-        $('pin').onkeydown = e => e.key === 'Enter' && $('pin-b').click();
+        $('pin').onkeydown = e => { if (e.key === 'Enter') $('pin-b').click(); };   // sin 'return false': eso bloqueaba las teclas
         $('pin-s').onchange = e => { $('pin').type = e.target.checked ? 'text' : 'password'; };
       }
 
@@ -1213,6 +1215,7 @@
         adminTab = tab || adminTab; setTitle('⚙️ Administración', true);
         body.innerHTML = `<div class="flex flex-wrap gap-2 mb-4">${ADMIN_TABS.map(([k, n]) => `<button class="${k === adminTab ? 'btn' : 'btn2'}" style="width:auto;padding:8px 12px" onclick="A.go('${k}')">${n}</button>`).join('')}<button class="btn2" style="width:auto;padding:8px 12px" onclick="Staff.logout()">Salir</button></div><div id="ab"></div>`;
         $('ab').innerHTML = await ({ rel: tabRels, tk: tabTickets, pr: tabPrices, map: tabMap, sec: tabSecurity }[adminTab])();
+        if (State.cfg.apin === hashPin(DEFAULT_ADMIN)) $('ab').insertAdjacentHTML('afterbegin', '<p class="border border-yellow-500 text-yellow-300 text-sm p-3 mb-3">⚠️ Sigues usando el PIN de fábrica. Cámbialo en la pestaña <b>Seguridad</b>.</p>');
       }
       const tabRels = () => `<div id="ar">${State.rels.map((r, i) => `<div class="border border-purple-900 p-2 mb-2"><input class="fld mb-1" data-i="${i}" data-f="name" value="${esc(r.name)}"><input class="fld mb-2" data-i="${i}" data-f="phone" value="${esc(r.phone)}" placeholder="Teléfono"><div class="flex gap-2"><button class="btn2" onclick="A.relReset(${i})">Reset PIN → 1234</button><button class="btn2" onclick="A.relDel(${i})">🗑 Quitar</button></div></div>`).join('')}</div><button class="btn2 mb-2" onclick="A.relAdd()">+ Añadir relacionador</button><button class="btn" onclick="A.relSave()">Guardar cambios</button>`;
       async function tabTickets() {
@@ -1222,7 +1225,17 @@
       const tabPrices = () => `<label class="lb">Fecha del evento (texto)</label><input id="p-d" class="fld mb-3" value="${esc(State.cfg.dateLabel)}"><label class="lb">Aviso del lote (vacío = oculto)</label><input id="p-b" class="fld mb-3" value="${esc(State.cfg.banner)}">
 <p class="text-xs text-gray-400 mb-2">La entrada activa es el primer tier que no esté agotado ni vencido. Al marcar "Agotado" o pasar su fecha, pasa al siguiente.</p><div>${State.cfg.tiers.map((t, i) => `<div class="border border-purple-900 p-2 mb-2 grid grid-cols-2 gap-2" data-t="${i}"><input class="fld col-span-2" data-f="n" value="${esc(t.n)}" placeholder="Nombre (TIER 1)"><div><span class="lb">Hombre Bs</span><input class="fld" type="number" data-f="m" value="${t.m}"></div><div><span class="lb">Mujer Bs</span><input class="fld" type="number" data-f="w" value="${t.w}"></div><div><span class="lb">Pareja Bs</span><input class="fld" type="number" data-f="c" value="${t.c}"></div><div><span class="lb">Termina</span><input class="fld" type="datetime-local" data-f="end" value="${t.end}"></div><label class="text-sm"><input type="checkbox" data-f="sold" ${t.sold ? 'checked' : ''}> Agotado</label><button class="btn2" onclick="A.tierDel(${i})">🗑 Quitar</button></div>`).join('')}</div><button class="btn2 mb-2" onclick="A.tierAdd()">+ Añadir tier / lote</button><button class="btn" onclick="A.tierSave()">Guardar</button>`;
       const tabMap = () => `<label class="lb">Link del botón "Ver ubicación"</label><input id="m-u" class="fld mb-3" value="${esc(State.cfg.mapUrl)}"><label class="lb">Dirección o coordenadas del mini mapa</label><input id="m-q" class="fld mb-3" value="${esc(State.cfg.mapQ)}" placeholder="Ej: -17.7833,-63.1821 o nombre del lugar"><button class="btn" onclick="A.mapSave()">Guardar</button>`;
-      const tabSecurity = () => `<label class="lb">Nuevo PIN de administración</label><input id="s-a" type="password" class="fld mb-3" placeholder="(vacío = no cambiar)"><label class="lb">Nuevo PIN de puerta</label><input id="s-d" type="password" class="fld mb-3" placeholder="(vacío = no cambiar)"><button class="btn" onclick="A.pinSave()">Guardar PINs</button><p class="text-xs text-green-400 mt-4">✅ Datos en línea (Firebase): se comparten entre todos los dispositivos.</p>`;
+      const tabSecurity = () => `
+        <h3 class="font-display text-xl mb-2">🔑 PIN de administrador</h3>
+        <input id="s-oa" type="password" class="fld mb-2" placeholder="PIN actual">
+        <input id="s-a" type="password" class="fld mb-2" placeholder="Nuevo PIN (mín. 4)">
+        <input id="s-a2" type="password" class="fld mb-3" placeholder="Repite el nuevo PIN">
+        <button class="btn mb-8" onclick="A.adminPinSave()">Cambiar PIN de administrador</button>
+        <h3 class="font-display text-xl mb-2">🚪 PIN de la puerta</h3>
+        <input id="s-d" type="password" class="fld mb-3" placeholder="Nuevo PIN de puerta (mín. 4)">
+        <button class="btn" onclick="A.gatePinSave()">Guardar PIN de puerta</button>
+        <p class="text-xs text-green-400 mt-4">✅ Los PINs se guardan en Firebase (no en texto plano), igual que los de los relacionadores. Los relacionadores cambian el suyo desde su panel; aquí puedes resetearlos a 1234 (pestaña Relacionadores).</p>
+        <p class="text-[10px] text-gray-600 mt-6">Versión ${APP_VERSION}</p>`;
 
       /* Acciones de los botones del panel (se llaman desde onclick="A.xxx()") */
       const A = window.A = {
@@ -1243,10 +1256,17 @@
         async tierSave() { A.readTiers(); await saveCfg(); alert('Guardado ✔'); },
         /* ubicación y PINs */
         async mapSave() { State.cfg.mapUrl = $('m-u').value.trim(); State.cfg.mapQ = $('m-q').value.trim(); await saveCfg(); alert('Guardado ✔'); },
-        async pinSave() {
-          if (cleanPin($('s-a').value)) State.cfg.apin = hashPin($('s-a').value);
-          if (cleanPin($('s-d').value)) State.cfg.dpin = hashPin($('s-d').value);
-          await saveCfg(); alert('PINs guardados ✔');
+        async adminPinSave() {
+          if (hashPin($('s-oa').value) !== State.cfg.apin) return alert('El PIN actual no es correcto');
+          const n = cleanPin($('s-a').value);
+          if (n.length < 4) return alert('El nuevo PIN debe tener mínimo 4 caracteres');
+          if (n !== cleanPin($('s-a2').value)) return alert('Los dos PIN nuevos no coinciden');
+          State.cfg.apin = hashPin(n); await saveCfg(); alert('PIN de administrador cambiado y guardado en Firebase ✔'); adminView();
+        },
+        async gatePinSave() {
+          const n = cleanPin($('s-d').value);
+          if (n.length < 4) return alert('Mínimo 4 caracteres');
+          State.cfg.dpin = hashPin(n); await saveCfg(); alert('PIN de puerta guardado en Firebase ✔'); adminView();
         },
         /* entradas */
         async tkImg(rid) {
