@@ -8,9 +8,13 @@
 <meta name="theme-color" content="#050505">
 <meta property="og:title" content="DARK GARDEN | S&amp;N Entertainment"><meta property="og:description" content="Dark Garden · 31 de octubre. Una noche de Halloween entre rosas, velas y sombras. Entradas en S&amp;N Entertainment."><meta property="og:image" content="image1.jpg"><meta property="og:type" content="website">
 <link rel="icon" href="logo-sn.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;800&family=Pirata+One&display=swap" rel="stylesheet">
+<script>try{var t=JSON.parse(localStorage.getItem('sn_theme')||'null');if(t){var r=document.documentElement.style;for(var k in t)r.setProperty(k,t[k])}}catch(e){}</script>
+<link rel="preconnect" href="https://firestore.googleapis.com"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<link rel="preload" as="image" href="image1.jpg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;800&family=Pirata+One&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;800&family=Pirata+One&display=swap"></noscript>
+<script src="config.js"></script>
+<script src="app.js" defer></script>
 </head>
 <body class="antialiased" data-event="dark-garden-31-10-2026">
 <div id="site-nav"></div>
@@ -48,8 +52,9 @@
       <p id="urgent-alert" class="hidden text-[11px] uppercase tracking-widest text-white/60"></p>
       <p id="countdown-container" class="text-xs text-bone/70 mb-1">Cambio de lote en <b class="text-white"><span id="h">00</span>h <span id="m">00</span>m <span id="s">00</span>s</b></p>
       <div id="tiers" class="mb-1"></div>
+      <p id="cart-hint" class="hidden text-sm text-white border border-white/30 p-3 mb-3">Elige al menos una entrada para continuar.</p>
       <div class="trow-total"><span class="eyebrow !text-bone/70">Total</span><b id="total" class="font-serif text-4xl">0 Bs</b></div>
-      <button id="buy-btn" class="cta cta-lg w-full" onclick="buyBar()" disabled>Comprar entradas</button>
+      <button id="buy-btn" class="cta cta-lg w-full" onclick="buyBar()">Comprar entradas</button>
       <p class="text-[11px] text-white/50 mt-3 text-center">Pagas con QR y recibes tu entrada al validar el pago</p>
       <div id="resume" class="hidden mt-4 pt-4 border-t border-white/10"></div>
     </div>
@@ -60,10 +65,10 @@
       <h2 class="h-sec">Detalles</h2>
       <p id="ev-desc" class="text-bone/85 leading-relaxed whitespace-pre-line"></p>
       <p id="ev-age" class="mt-4 inline-block border border-white/35 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest"></p>
-      <div class="mt-6"><p class="lb">Line up</p><div id="ev-lineup"></div></div>
-      <div class="mt-4"><p class="lb">Con el apoyo de</p><div id="ev-sponsors"></div></div>
+      <div class="mt-6" id="blk-lineup"><p class="lb">Line up</p><div id="ev-lineup"></div></div>
+      <div class="mt-4" id="blk-sponsors"><p class="lb">Con el apoyo de</p><div id="ev-sponsors"></div></div>
     </section>
-    <section>
+    <section id="sec-map">
       <h2 class="h-sec">Ubicación</h2>
       <p id="ev-map-addr" class="text-bone/80 mb-3 text-sm"></p>
       <div class="panel overflow-hidden"><iframe id="map-f" class="w-full h-56 block" style="filter:invert(92%) hue-rotate(180deg) saturate(.8)" loading="lazy" title="Mapa"></iframe></div>
@@ -79,11 +84,5 @@
 </div>
 </div>
 <div id="site-footer"></div>
-<!-- Firebase (compat) + lógica compartida -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="app.js"></script>
 </body>
 </html>

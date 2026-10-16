@@ -10,3 +10,13 @@
   Cache-Control: public, max-age=0, must-revalidate
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
+/image1.jpg
+  Cache-Control: public, max-age=86400
+/image2.jpg
+  Cache-Control: public, max-age=86400
+/qr-fondo.jpg
+  Cache-Control: public, max-age=86400
+/logo-sn.svg
+  Cache-Control: public, max-age=86400
+/config.js
+  Cache-Control: public, max-age=0, must-revalidate
