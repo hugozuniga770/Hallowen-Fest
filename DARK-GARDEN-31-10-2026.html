@@ -5,35 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DARK GARDEN | S&amp;N Entertainment</title>
 <meta name="description" content="Dark Garden · 31 de octubre. Una noche de Halloween entre rosas, velas y sombras. Entradas en S&amp;N Entertainment.">
-<meta name="theme-color" content="#060304">
-<meta property="og:title" content="DARK GARDEN | S&amp;N Entertainment"><meta property="og:description" content="Dark Garden · 31 de octubre. Una noche de Halloween entre rosas, velas y sombras. Entradas en S&amp;N Entertainment."><meta property="og:image" content="image1.png"><meta property="og:type" content="website">
+<meta name="theme-color" content="#050505">
+<meta property="og:title" content="DARK GARDEN | S&amp;N Entertainment"><meta property="og:description" content="Dark Garden · 31 de octubre. Una noche de Halloween entre rosas, velas y sombras. Entradas en S&amp;N Entertainment."><meta property="og:image" content="image1.jpg"><meta property="og:type" content="website">
 <link rel="icon" href="logo-sn.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;800&family=Pirata+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="antialiased" data-event="dark-garden-31-10-2026">
-<div class="bg-noise"></div>
 <div id="site-nav"></div>
 
 <div id="ev-missing" class="hidden min-h-screen flex items-center justify-center text-center px-4"><div><h1 class="font-serif text-5xl mb-4">Evento no encontrado</h1><a href="/" class="cta">Volver al inicio</a></div></div>
 
 <div id="ev-main">
 <!-- PORTADA DEL EVENTO -->
-<header class="relative overflow-hidden pt-24 pb-12">
-  <div id="cover-bg" class="cover-bg"></div><div class="cover-fade"></div><div class="fog"></div><div class="embers"></div><div class="fade-b"></div>
+<header class="relative overflow-hidden pt-20 md:pt-24 pb-8 md:pb-12">
+  <div id="cover-bg" class="cover-bg"></div><div class="cover-fade"></div>
   <div class="relative z-10 max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-end">
-    <div class="md:col-span-4 lg:col-span-3"><img id="ev-flyer" class="flyer w-full max-w-[210px] md:max-w-none mx-auto" alt=""></div>
+    <div class="md:col-span-4 lg:col-span-3"><img id="ev-flyer" class="flyer w-full max-w-[170px] md:max-w-none mx-auto" alt=""></div>
     <div class="md:col-span-8 lg:col-span-9">
-      <p class="eyebrow !text-bone/70 mb-2">Presentado por <a href="/" id="ev-org" class="!text-brand-light hover:underline"></a></p>
-      <h1 id="ev-name" class="title-gothic text-6xl md:text-8xl mb-6"></h1>
-      <div class="flex items-center gap-4 mb-4">
+      <p class="eyebrow mb-2 text-center md:text-left">Presentado por <a href="/" id="ev-org" class="underline underline-offset-4"></a></p>
+      <h1 id="ev-name" class="title-gothic text-5xl md:text-8xl mb-5 text-center md:text-left"></h1>
+      <div class="flex items-center justify-center md:justify-start gap-4 mb-4">
         <div class="datebox"><span id="ev-mon"></span><b id="ev-day"></b></div>
         <div><p id="ev-date-long" class="font-semibold text-lg"></p><p id="ev-time" class="text-bone/70 text-sm"></p></div>
       </div>
-      <p class="text-lg font-semibold" id="ev-venue"></p>
-      <p class="text-bone/60 text-sm mb-5" id="ev-address"></p>
-      <div class="flex flex-wrap gap-3">
+      <p class="text-lg font-semibold text-center md:text-left" id="ev-venue"></p>
+      <p class="text-white/60 text-sm mb-5 text-center md:text-left" id="ev-address"></p>
+      <div class="flex flex-wrap gap-3 justify-center md:justify-start">
         <button onclick="shareEvent()" class="cta-ghost">Invitar amigos</button>
         <a id="map-link" href="#" target="_blank" rel="noopener" class="cta-ghost">Ver ubicación</a>
       </div>
@@ -44,14 +43,14 @@
 <main class="relative z-10 max-w-6xl mx-auto px-4 py-10 grid lg:grid-cols-12 gap-10 pb-32 lg:pb-16">
   <!-- ENTRADAS -->
   <aside class="lg:col-span-5 lg:order-last order-first">
-    <div id="panel" class="panel glow p-5 lg:sticky lg:top-24">
-      <div class="flex items-center justify-between gap-3 mb-1"><h2 class="eyebrow">Entradas</h2><span id="banner" class="text-[11px] text-brand-light font-semibold text-right"></span></div>
-      <p id="urgent-alert" class="hidden text-xs font-bold uppercase tracking-widest text-brand-light"></p>
+    <div id="panel" class="panel p-5 lg:sticky lg:top-24">
+      <div class="flex items-center justify-between gap-3 mb-1"><h2 class="eyebrow">Entradas</h2><span id="banner" class="text-[11px] text-white/60 text-right"></span></div>
+      <p id="urgent-alert" class="hidden text-[11px] uppercase tracking-widest text-white/60"></p>
       <p id="countdown-container" class="text-xs text-bone/70 mb-1">Cambio de lote en <b class="text-white"><span id="h">00</span>h <span id="m">00</span>m <span id="s">00</span>s</b></p>
       <div id="tiers" class="mb-1"></div>
       <div class="trow-total"><span class="eyebrow !text-bone/70">Total</span><b id="total" class="font-serif text-4xl">0 Bs</b></div>
-      <button id="buy-btn" class="cta w-full" onclick="buyBar()" disabled>Comprar</button>
-      <p class="text-[11px] text-bone/50 mt-3 text-center">Pagas con QR · recibes tu entrada al instante</p>
+      <button id="buy-btn" class="cta cta-lg w-full" onclick="buyBar()" disabled>Comprar entradas</button>
+      <p class="text-[11px] text-white/50 mt-3 text-center">Pagas con QR y recibes tu entrada al validar el pago</p>
       <div id="resume" class="hidden mt-4 pt-4 border-t border-white/10"></div>
     </div>
   </aside>
@@ -60,7 +59,7 @@
     <section>
       <h2 class="h-sec">Detalles</h2>
       <p id="ev-desc" class="text-bone/85 leading-relaxed whitespace-pre-line"></p>
-      <p id="ev-age" class="mt-4 inline-block border border-brand px-3 py-1.5 text-xs font-bold uppercase tracking-widest"></p>
+      <p id="ev-age" class="mt-4 inline-block border border-white/35 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest"></p>
       <div class="mt-6"><p class="lb">Line up</p><div id="ev-lineup"></div></div>
       <div class="mt-4"><p class="lb">Con el apoyo de</p><div id="ev-sponsors"></div></div>
     </section>
@@ -76,7 +75,7 @@
 <!-- BARRA INFERIOR (celular) -->
 <div id="buybar" class="buybar flex items-center justify-between gap-3">
   <div><p class="text-[10px] uppercase tracking-widest text-bone/60" id="buybar-label">Desde</p><p id="buybar-price" class="font-serif text-2xl leading-none"></p></div>
-  <button id="buybar-btn" class="cta !py-3" onclick="buyBar()">Comprar</button>
+  <button id="buybar-btn" class="cta" onclick="buyBar()">Comprar</button>
 </div>
 </div>
 <div id="site-footer"></div>
