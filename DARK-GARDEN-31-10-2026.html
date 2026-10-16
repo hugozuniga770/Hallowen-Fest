@@ -2,100 +2,87 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DARK GARDEN | S&amp;N Entertainment</title>
 <meta name="description" content="Dark Garden · 31 de octubre. Una noche de Halloween entre rosas, velas y sombras. Entradas en S&amp;N Entertainment.">
+<meta name="theme-color" content="#060304">
 <meta property="og:title" content="DARK GARDEN | S&amp;N Entertainment"><meta property="og:description" content="Dark Garden · 31 de octubre. Una noche de Halloween entre rosas, velas y sombras. Entradas en S&amp;N Entertainment."><meta property="og:image" content="image1.png"><meta property="og:type" content="website">
 <link rel="icon" href="logo-sn.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Cinzel:wght@500;700&family=Pirata+One&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={theme:{extend:{colors:{brand:'#c8102e','brand-light':'#ff3b57',bone:'#eadfce','dark-bg':'#050203'},fontFamily:{sans:['Inter','sans-serif'],display:['Pirata One','serif'],serif:['Cinzel','serif']}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;800&family=Pirata+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="antialiased" data-event="dark-garden-31-10-2026">
 <div class="bg-noise"></div>
 <div id="site-nav"></div>
 
-<div id="ev-missing" class="hidden min-h-screen flex items-center justify-center text-center px-4"><div><h1 class="title-gothic text-5xl mb-4">Evento no encontrado</h1><a href="/" class="cta">Volver al inicio</a></div></div>
+<div id="ev-missing" class="hidden min-h-screen flex items-center justify-center text-center px-4"><div><h1 class="font-serif text-5xl mb-4">Evento no encontrado</h1><a href="/" class="cta">Volver al inicio</a></div></div>
 
 <div id="ev-main">
 <!-- PORTADA DEL EVENTO -->
-<header class="relative overflow-hidden pt-28 pb-14">
+<header class="relative overflow-hidden pt-24 pb-12">
   <div id="cover-bg" class="cover-bg"></div><div class="cover-fade"></div><div class="fog"></div><div class="embers"></div><div class="fade-b"></div>
-  <div class="relative z-10 max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-10 items-center">
-    <div class="md:col-span-5"><img id="ev-flyer" class="flyer w-full max-w-[15rem] sm:max-w-sm md:max-w-md mx-auto" alt=""></div>
-    <div class="md:col-span-7">
-      <p class="font-serif tracking-[.3em] text-[11px] uppercase text-bone/70 mb-2">Presentado por <a href="/" id="ev-org" class="text-brand-light hover:underline"></a></p>
+  <div class="relative z-10 max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-end">
+    <div class="md:col-span-4 lg:col-span-3"><img id="ev-flyer" class="flyer w-full max-w-[210px] md:max-w-none mx-auto" alt=""></div>
+    <div class="md:col-span-8 lg:col-span-9">
+      <p class="eyebrow !text-bone/70 mb-2">Presentado por <a href="/" id="ev-org" class="!text-brand-light hover:underline"></a></p>
       <h1 id="ev-name" class="title-gothic text-6xl md:text-8xl mb-6"></h1>
       <div class="flex items-center gap-4 mb-4">
         <div class="datebox"><span id="ev-mon"></span><b id="ev-day"></b></div>
-        <div><p id="ev-date-long" class="font-bold text-lg"></p><p id="ev-time" class="text-bone/70 text-sm"></p></div>
+        <div><p id="ev-date-long" class="font-semibold text-lg"></p><p id="ev-time" class="text-bone/70 text-sm"></p></div>
       </div>
       <p class="text-lg font-semibold" id="ev-venue"></p>
       <p class="text-bone/60 text-sm mb-5" id="ev-address"></p>
-      <div class="flex flex-wrap gap-3 mb-6">
-        <button onclick="shareEvent()" class="cta-ghost">👥 Invitar amigos</button>
-        <a id="map-link" href="#" target="_blank" class="cta-ghost">📍 Ver ubicación</a>
+      <div class="flex flex-wrap gap-3">
+        <button onclick="shareEvent()" class="cta-ghost">Invitar amigos</button>
+        <a id="map-link" href="#" target="_blank" rel="noopener" class="cta-ghost">Ver ubicación</a>
       </div>
-      <div id="countdown-container" class="flex gap-3 mb-3">
-        <div class="panel w-20 py-2 text-center"><span id="h" class="block font-display text-3xl">00</span><span class="text-[10px] tracking-widest text-bone/60">HORAS</span></div>
-        <div class="panel w-20 py-2 text-center"><span id="m" class="block font-display text-3xl">00</span><span class="text-[10px] tracking-widest text-bone/60">MIN</span></div>
-        <div class="panel w-20 py-2 text-center"><span id="s" class="block font-display text-3xl text-brand-light">00</span><span class="text-[10px] tracking-widest text-bone/60">SEG</span></div>
-      </div>
-      <p id="banner" class="text-brand-light font-bold uppercase tracking-widest text-xs animate-pulse"></p>
     </div>
   </div>
 </header>
 
 <main class="relative z-10 max-w-6xl mx-auto px-4 py-10 grid lg:grid-cols-12 gap-10 pb-32 lg:pb-16">
-  <div class="lg:col-span-8 space-y-14">
+  <!-- ENTRADAS -->
+  <aside class="lg:col-span-5 lg:order-last order-first">
+    <div id="panel" class="panel glow p-5 lg:sticky lg:top-24">
+      <div class="flex items-center justify-between gap-3 mb-1"><h2 class="eyebrow">Entradas</h2><span id="banner" class="text-[11px] text-brand-light font-semibold text-right"></span></div>
+      <p id="urgent-alert" class="hidden text-xs font-bold uppercase tracking-widest text-brand-light"></p>
+      <p id="countdown-container" class="text-xs text-bone/70 mb-1">Cambio de lote en <b class="text-white"><span id="h">00</span>h <span id="m">00</span>m <span id="s">00</span>s</b></p>
+      <div id="tiers" class="mb-1"></div>
+      <div class="trow-total"><span class="eyebrow !text-bone/70">Total</span><b id="total" class="font-serif text-4xl">0 Bs</b></div>
+      <button id="buy-btn" class="cta w-full" onclick="buyBar()" disabled>Comprar</button>
+      <p class="text-[11px] text-bone/50 mt-3 text-center">Pagas con QR · recibes tu entrada al instante</p>
+      <div id="resume" class="hidden mt-4 pt-4 border-t border-white/10"></div>
+    </div>
+  </aside>
+
+  <div class="lg:col-span-7 space-y-12">
     <section>
       <h2 class="h-sec">Detalles</h2>
       <p id="ev-desc" class="text-bone/85 leading-relaxed whitespace-pre-line"></p>
-      <p id="ev-age" class="mt-4 inline-block border border-brand px-3 py-2 text-sm font-bold"></p>
+      <p id="ev-age" class="mt-4 inline-block border border-brand px-3 py-1.5 text-xs font-bold uppercase tracking-widest"></p>
       <div class="mt-6"><p class="lb">Line up</p><div id="ev-lineup"></div></div>
       <div class="mt-4"><p class="lb">Con el apoyo de</p><div id="ev-sponsors"></div></div>
     </section>
-
-    <section id="tickets" class="scroll-mt-24">
-      <h2 class="h-sec">Tickets Access</h2>
-      <div id="urgent-alert" class="hidden mb-5 border border-brand bg-brand/10 p-3 text-center"><p class="font-bold uppercase tracking-widest text-xs text-brand-light"></p></div>
-      <div id="tiers"></div>
-    </section>
-
     <section>
       <h2 class="h-sec">Ubicación</h2>
-      <p id="ev-map-addr" class="text-bone/80 mb-3"></p>
-      <div class="panel glow overflow-hidden"><iframe id="map-f" class="w-full h-72 block" style="filter:invert(92%) hue-rotate(180deg) saturate(.8)" loading="lazy" title="Mapa"></iframe></div>
+      <p id="ev-map-addr" class="text-bone/80 mb-3 text-sm"></p>
+      <div class="panel overflow-hidden"><iframe id="map-f" class="w-full h-56 block" style="filter:invert(92%) hue-rotate(180deg) saturate(.8)" loading="lazy" title="Mapa"></iframe></div>
     </section>
-
-    <section id="sec-gallery"><h2 class="h-sec">Galería</h2><div id="gallery" class="grid sm:grid-cols-2 gap-4"></div></section>
+    <section id="sec-gallery"><h2 class="h-sec">Galería</h2><div id="gallery" class="grid grid-cols-2 gap-3 max-w-md"></div></section>
   </div>
-
-  <!-- RESUMEN DEL PEDIDO -->
-  <aside class="lg:col-span-4">
-    <div class="panel glow p-6 lg:sticky lg:top-24">
-      <h3 class="font-serif font-bold tracking-[.2em] uppercase text-sm mb-4">Tu pedido</h3>
-      <div id="empty-cart" class="text-bone/60 text-sm py-6 text-center">Selecciona entradas</div>
-      <div id="cart-content" class="hidden">
-        <div id="cart-items" class="space-y-2 mb-4"></div>
-        <div class="flex justify-between items-center border-t border-white/10 pt-4 mb-5"><span class="text-bone/70 text-sm uppercase tracking-widest">Total a pagar</span><span id="total" class="font-display text-3xl text-brand-light">0 Bs</span></div>
-        <button onclick="openModal()" class="cta w-full">Continuar compra</button>
-      </div>
-    </div>
-  </aside>
 </main>
 
 <!-- BARRA INFERIOR (celular) -->
 <div id="buybar" class="buybar flex items-center justify-between gap-3">
-  <div><p class="text-[10px] uppercase tracking-widest text-bone/60" id="buybar-label">Desde</p><p id="buybar-price" class="font-display text-2xl"></p></div>
-  <button id="buybar-btn" class="cta !py-3" onclick="buyBar()">Continuar</button>
+  <div><p class="text-[10px] uppercase tracking-widest text-bone/60" id="buybar-label">Desde</p><p id="buybar-price" class="font-serif text-2xl leading-none"></p></div>
+  <button id="buybar-btn" class="cta !py-3" onclick="buyBar()">Comprar</button>
 </div>
 </div>
 <div id="site-footer"></div>
 <!-- Firebase (compat) + lógica compartida -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="app.js"></script>

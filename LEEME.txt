@@ -1,0 +1,69 @@
+S&N ENTERTAINMENT · SITIO WEB (inicio + evento + compra con QR + puerta + administración)
+==========================================================================================
+
+ARCHIVOS (todos en la RAÍZ del repositorio, junto a image1.png, image2.png, qr-fondo.png y qr-entrada.png)
+  index.html                    Inicio de S&N Entertainment (cartelera, nosotros, contacto)
+  DARK-GARDEN-31-10-2026.html   Página del evento (compra de entradas)
+  styles.css                    Diseño (único CSS)
+  app.js                        Lógica: compra, verificación, puerta, administración
+  logo-sn.svg                   Logo
+  _redirects                    Permite abrir /DARK-GARDEN-31-10-2026 sin ".html"
+  _headers                      Cabeceras de seguridad de Netlify
+  firestore.rules               Reglas de seguridad de la base de datos (se pegan en Firebase, NO se suben a GitHub si no quieres)
+
+════════════════════════════════════════════════════════════════
+PASO 1 · FIREBASE (hazlo ANTES de subir la página nueva)
+════════════════════════════════════════════════════════════════
+ 1) Firebase → Authentication → Método de acceso:
+      · "Anónimo": ya lo tienes activado.
+      · Activa también "Correo electrónico/contraseña".
+ 2) Authentication → Usuarios → Agregar usuario (crea estas dos cuentas con contraseñas LARGAS y distintas):
+      · Administrador:  sn.entertainment.bo@gmail.com
+      · Puerta:         puerta@sn-entertainment.bo      (el correo puede ser inventado; solo es un identificador)
+    Si quieres otros correos, cámbialos en app.js (ADMIN_EMAIL / DOOR_EMAIL) Y en firestore.rules (isAdmin / isDoor).
+ 3) Firestore Database → Reglas → borra lo que haya, pega TODO el contenido de firestore.rules → Publicar.
+ 4) Sube los archivos a GitHub (Add file → Upload files → arrastra los archivos sueltos → Commit changes).
+ 5) Abre la página, baja al pie → "Administración" → entra con el correo del administrador.
+    La primera vez se crea solo el evento Dark Garden y los ajustes.
+
+IMPORTANTE: si publicas las reglas nuevas y NO subes la página nueva, la página vieja deja de funcionar (es lo esperado:
+las reglas cierran lo que antes estaba abierto). Haz los pasos 1 a 5 seguidos.
+
+════════════════════════════════════════════════════════════════
+PASO 2 · PROTECCIÓN RECOMENDADA (10 minutos, gratis)
+════════════════════════════════════════════════════════════════
+ · Restringe la clave de API:  console.cloud.google.com → APIs y servicios → Credenciales → "Browser key" →
+   Restricciones de aplicaciones → "Sitios web (referentes HTTP)" → agrega https://TU-SITIO.netlify.app/* (y tu dominio propio si lo tienes).
+ · Firebase App Check (frena bots): Firebase → App Check → registra la app web con reCAPTCHA v3 → copia la "site key"
+   en app.js (APPCHECK_SITE_KEY). Cuando verifiques que todo funciona, activa "Aplicar" (Enforce) para Firestore y Authentication.
+ · Activa la verificación en 2 pasos en GitHub, Netlify, Firebase y en el correo del administrador.
+   Quien controla tu GitHub controla tu sitio (y el QR de pago).
+
+════════════════════════════════════════════════════════════════
+CÓMO FUNCIONA LA SEGURIDAD (léelo, es honesto)
+════════════════════════════════════════════════════════════════
+ · La configuración de Firebase SIEMPRE se ve en F12: una página web no puede esconderla. Lo que protege tus datos son
+   las REGLAS (firestore.rules) y las cuentas reales de administrador y puerta. Con las reglas nuevas, un visitante NO puede:
+   listar pedidos ni compradores, leer entradas o comprobantes, cambiar precios/eventos/ajustes, marcar ingresos,
+   ni modificar compras de otras personas.
+ · El QR de pago es el archivo qr-entrada.png. La página calcula su huella SHA-256 y SOLO lo muestra si coincide con la guardada
+   en app.js (PAYEE.sha256). Si alguien cambia la imagen, no se muestra y el pago se bloquea. Si TÚ cambias el QR, copia la nueva
+   huella (Administración → Ajustes) en app.js.
+ · La verificación del comprobante (monto, titular, fecha posterior al registro, N° único) la hace el navegador del comprador.
+   Una persona técnica podría falsificarla. Por eso: (1) puedes APAGAR la aprobación automática en Administración → Ajustes
+   (todo queda en revisión y solo tú generas las entradas); (2) cada compra muestra su comprobante y datos; (3) puedes
+   desactivar los QR de cualquier compra. Contrasta siempre el total con tu extracto bancario.
+ · La hora de registro de cada compra la pone el servidor de Google (no se puede adelantar).
+
+════════════════════════════════════════════════════════════════
+USO DIARIO
+════════════════════════════════════════════════════════════════
+ · Administración (pie del inicio): Compras (datos, comprobante, aprobar/rechazar, WhatsApp, correo, desactivar QR,
+   sumatoria y "Ganancia de Hugo": 2 Bs por entrada, contada por persona; una pareja cuenta 2),
+   Eventos (crear/editar/eliminar, lotes y precios), Ajustes.
+ · Puerta (botón del menú): entra con la cuenta de puerta, activa la cámara y escanea. Cada QR vale una sola vez.
+ · Evento nuevo: créalo en Administración → Eventos; para su página, duplica DARK-GARDEN-31-10-2026.html, ponle el nombre del
+   enlace y cambia data-event del <body> por el identificador (el enlace en minúsculas). Súbelo a GitHub.
+ · Redes sociales: cambia los enlaces en app.js → SITE (facebook / instagram / tiktok).
+ · Los textos de Términos, Privacidad y Reembolsos son una base: revísalos con tu asesor legal (app.js → LEGAL).
+ · Si cambias el diseño con nuevas clases de Tailwind, hay que recompilar styles.css (pídemelo).

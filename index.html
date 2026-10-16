@@ -2,15 +2,14 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>S&amp;N Entertainment | Eventos y entradas</title>
-<meta name="description" content="Eventos, entradas con QR y noches que se recuerdan. S&amp;N Entertainment, Santa Cruz de la Sierra, Bolivia.">
-<meta property="og:title" content="S&amp;N Entertainment | Eventos y entradas"><meta property="og:description" content="Eventos, entradas con QR y noches que se recuerdan. S&amp;N Entertainment, Santa Cruz de la Sierra, Bolivia."><meta property="og:image" content="image1.png"><meta property="og:type" content="website">
+<meta name="description" content="Grupo de entretenimiento &amp; hospitality. Experiencias exclusivas y acceso oficial. Santa Cruz, Bolivia.">
+<meta name="theme-color" content="#060304">
+<meta property="og:title" content="S&amp;N Entertainment | Eventos y entradas"><meta property="og:description" content="Grupo de entretenimiento &amp; hospitality. Experiencias exclusivas y acceso oficial. Santa Cruz, Bolivia."><meta property="og:image" content="image1.png"><meta property="og:type" content="website">
 <link rel="icon" href="logo-sn.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Cinzel:wght@500;700&family=Pirata+One&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={theme:{extend:{colors:{brand:'#c8102e','brand-light':'#ff3b57',bone:'#eadfce','dark-bg':'#050203'},fontFamily:{sans:['Inter','sans-serif'],display:['Pirata One','serif'],serif:['Cinzel','serif']}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;800&family=Pirata+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="antialiased" data-page="home">
@@ -18,42 +17,49 @@
 <div id="site-nav"></div>
 
 <!-- PORTADA -->
-<header class="relative overflow-hidden pt-32 pb-24 text-center">
+<header class="relative overflow-hidden pt-36 pb-24">
   <div class="fog"></div><div class="embers"></div><div class="fade-b"></div>
-  <div class="relative z-10 max-w-3xl mx-auto px-4">
-    <img src="logo-sn.svg" alt="S&N" class="w-24 h-24 mx-auto mb-6 drop-shadow-[0_0_25px_rgba(200,16,46,.6)]">
-    <p class="font-serif tracking-[.5em] text-xs text-bone/70 uppercase mb-3">Presenta</p>
-    <h1 class="title-gothic text-6xl md:text-8xl">S&amp;N<br>Entertainment</h1>
-    <p class="mt-6 text-bone/80 text-lg">Eventos que se viven. Noches que se recuerdan.</p>
-    <div class="mt-8 flex flex-wrap gap-3 justify-center"><a href="#eventos" class="cta">Ver eventos</a><a href="#contacto" class="cta-ghost">Contacto</a></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+    <p class="eyebrow mb-5">Grupo de entretenimiento &amp; hospitality</p>
+    <h1 class="font-serif text-6xl md:text-8xl leading-[.95]">Experiencias exclusivas.<br><em class="text-brand-light not-italic">Acceso oficial.</em></h1>
+    <p class="mt-6 text-bone/75 text-lg max-w-xl mx-auto">Elige el evento, paga con QR y recibe tu entrada al instante.</p>
+    <div class="mt-9 flex flex-wrap gap-3 justify-center"><a href="#eventos" class="cta">Ver cartelera</a><a href="#nosotros" class="cta-ghost">Conócenos</a></div>
   </div>
-  <div class="divider absolute bottom-0 left-0 right-0"></div>
 </header>
 
 <main class="relative z-10 max-w-6xl mx-auto px-4">
-  <!-- DESTACADO -->
-  <section id="featured" class="-mt-4 mb-16"></section>
+  <section id="featured" class="mb-20"></section>
 
-  <!-- EVENTOS -->
-  <section id="eventos" class="mb-20 scroll-mt-24">
-    <h2 class="h-sec">Eventos</h2>
+  <section id="eventos" class="mb-24 scroll-mt-24">
+    <h2 class="h-sec">La cartelera</h2>
     <div id="chips" class="flex flex-wrap gap-2 mb-8">
       <button class="chip on" data-f="all">Todos</button><button class="chip" data-f="today">Hoy</button>
       <button class="chip" data-f="week">Esta semana</button><button class="chip" data-f="month">Este mes</button>
     </div>
-    <div id="ev-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"><p class="text-bone/60">Cargando eventos…</p></div>
+    <div id="ev-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-9"><p class="text-bone/60 col-span-full">Cargando eventos…</p></div>
   </section>
 
-  <!-- POR QUÉ -->
-  <section class="mb-24 grid md:grid-cols-3 gap-6">
-    <div class="panel p-6"><div class="text-3xl mb-3">🎟️</div><h3 class="font-serif font-bold tracking-widest uppercase text-sm mb-2">Entradas con QR</h3><p class="text-bone/70 text-sm">Cada entrada llega con su código único, listo para compartir por WhatsApp.</p></div>
-    <div class="panel p-6"><div class="text-3xl mb-3">🚪</div><h3 class="font-serif font-bold tracking-widest uppercase text-sm mb-2">Control en puerta</h3><p class="text-bone/70 text-sm">Cada QR se valida una sola vez, en tiempo real, desde cualquier celular.</p></div>
-    <div class="panel p-6"><div class="text-3xl mb-3">🤝</div><h3 class="font-serif font-bold tracking-widest uppercase text-sm mb-2">Atención directa</h3><p class="text-bone/70 text-sm">Compras con tu relacionador de confianza y recibes tu entrada al confirmar el pago.</p></div>
+  <section class="mb-24">
+    <h2 class="h-sec">Cómo funciona</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="step"><p class="font-serif text-5xl text-brand-light">1</p><h3 class="eyebrow !text-bone mt-2 mb-2">Elige tu evento</h3><p class="text-bone/70 text-sm">Selecciona tus entradas y deja tus datos: nombre, correo y teléfono.</p></div>
+      <div class="step"><p class="font-serif text-5xl text-brand-light">2</p><h3 class="eyebrow !text-bone mt-2 mb-2">Paga con QR</h3><p class="text-bone/70 text-sm">Escanea el QR oficial con tu banco y sube la captura del comprobante.</p></div>
+      <div class="step"><p class="font-serif text-5xl text-brand-light">3</p><h3 class="eyebrow !text-bone mt-2 mb-2">Recibe tu entrada</h3><p class="text-bone/70 text-sm">Verificamos tu pago y te entregamos tu QR personal, listo para el ingreso.</p></div>
+    </div>
+  </section>
+
+  <section id="nosotros" class="mb-16 scroll-mt-24 grid md:grid-cols-2 gap-10 items-center">
+    <div><h2 class="h-sec">Acerca de nosotros</h2>
+      <p class="font-serif text-4xl md:text-5xl leading-tight mb-5">S&amp;N Entertainment</p>
+      <p class="text-bone/75 leading-relaxed mb-3">Somos un grupo de entretenimiento &amp; hospitality con base en Santa Cruz de la Sierra. Producimos experiencias exclusivas y operamos el acceso oficial a cada una de ellas.</p>
+      <p class="text-bone/75 leading-relaxed">Detrás de S&amp;N está <b class="text-white">Sol &amp; Nox Hospitality Group</b>: noches pensadas al detalle, con control de ingreso en tiempo real y compra segura.</p></div>
+    <div class="panel glow p-8 text-center"><p class="eyebrow mb-3">Est. 2026</p><p class="font-serif text-6xl leading-none">S&amp;N</p><p class="eyebrow !text-bone mt-2">Entertainment</p><div class="divider my-6"></div><p class="text-xs text-bone/60 uppercase tracking-widest leading-loose">Experiencias exclusivas<br>y acceso oficial</p></div>
   </section>
 </main>
 <div id="site-footer"></div>
 <!-- Firebase (compat) + lógica compartida -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="app.js"></script>
