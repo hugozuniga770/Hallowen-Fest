@@ -14,8 +14,6 @@
   Cache-Control: public, max-age=86400
 /image2.jpg
   Cache-Control: public, max-age=86400
-/qr-fondo.jpg
-  Cache-Control: public, max-age=86400
 /logo-sn.svg
   Cache-Control: public, max-age=86400
 /config.js
