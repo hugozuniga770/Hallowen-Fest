@@ -26,18 +26,18 @@
 <header class="relative overflow-hidden pt-20 md:pt-24 pb-8 md:pb-12">
   <div id="cover-bg" class="cover-bg"></div><div class="cover-fade"></div>
   <div class="relative z-10 max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-end">
-    <div class="md:col-span-4 lg:col-span-3"><img id="ev-flyer" class="flyer w-full max-w-[170px] md:max-w-none mx-auto" alt=""></div>
-    <div class="md:col-span-8 lg:col-span-9">
+    <div id="col-flyer" class="md:col-span-4 lg:col-span-3"><img id="ev-flyer" class="flyer w-full max-w-[170px] md:max-w-none mx-auto" alt=""></div>
+    <div id="col-info" class="md:col-span-8 lg:col-span-9">
       <p class="eyebrow mb-2 text-center md:text-left">Presentado por <a href="/" id="ev-org" class="underline underline-offset-4"></a></p>
       <h1 id="ev-name" class="title-gothic text-5xl md:text-8xl mb-5 text-center md:text-left"></h1>
       <div class="flex items-center justify-center md:justify-start gap-4 mb-4">
-        <div class="datebox"><span id="ev-mon"></span><b id="ev-day"></b></div>
+        <div id="blk-datebox" class="datebox"><span id="ev-mon"></span><b id="ev-day"></b></div>
         <div><p id="ev-date-long" class="font-semibold text-lg"></p><p id="ev-time" class="text-bone/70 text-sm"></p></div>
       </div>
       <p class="text-lg font-semibold text-center md:text-left" id="ev-venue"></p>
       <p class="text-white/60 text-sm mb-5 text-center md:text-left" id="ev-address"></p>
       <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-        <button onclick="shareEvent()" class="cta-ghost">Invitar amigos</button>
+        <button id="btn-share" onclick="shareEvent()" class="cta-ghost">Invitar amigos</button>
         <a id="map-link" href="#" target="_blank" rel="noopener" class="cta-ghost">Ver ubicación</a>
       </div>
     </div>
@@ -68,6 +68,8 @@
       <div class="mt-6" id="blk-lineup"><p class="lb">Line up</p><div id="ev-lineup"></div></div>
       <div class="mt-4" id="blk-sponsors"><p class="lb">Con el apoyo de</p><div id="ev-sponsors"></div></div>
     </section>
+    <div id="ev-blocks" class="space-y-12"></div>
+
     <section id="sec-map">
       <h2 class="h-sec">Ubicación</h2>
       <p id="ev-map-addr" class="text-bone/80 mb-3 text-sm"></p>
